@@ -61,6 +61,10 @@
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <param name="APP_ID" value="381782658606958" />
+    <param name="APP_NAME" value="TechnionMap" />
+    </gap:plugin>
     <!-- 
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
