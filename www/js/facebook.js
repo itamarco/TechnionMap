@@ -36,5 +36,15 @@ var facebook = {
                    { scope: "email" }
                    );
       }
+
+      getLoginStatus: function () {
+                FB.getLoginStatus(function(response) {
+                                  if (response.status == 'connected') {
+                                  alert('logged in');
+                                  } else {
+                                  alert('not logged in');
+                                  }
+                                  });
+      }
 }
             

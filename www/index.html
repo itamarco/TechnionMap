@@ -112,18 +112,20 @@
             $(document).ready( function ()
             {
                 $('#connectButton').click(function(){
-                    network.login();
-                    $.getJSON("http://{server_address}?callback=?", 
-                        { 
-                            "userID": "0507857244",
-                            "location":{
-                                            "longitude" : 43.2343, 
-                                            "latitude"  : 65.343 
-                                        },
-                            "key":"our_secret_key"
-                        }, 
-                        jsonParser
-                    );  
+                    alert("button pressed");
+                    facebook.getLoginStatus();
+                    // network.login();
+                    // $.getJSON("http://{server_address}?callback=?", 
+                    //     { 
+                    //         "userID": "0507857244",
+                    //         "location":{
+                    //                         "longitude" : 43.2343, 
+                    //                         "latitude"  : 65.343 
+                    //                     },
+                    //         "key":"our_secret_key"
+                    //     }, 
+                    //     jsonParser
+                    // );  
                 });
             }); // end of document.ready
 
