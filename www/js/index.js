@@ -19,9 +19,9 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        log.error("This is log error");
         this.bindEvents();
         facebook.init();
+        log.info("reached facebook init");
     },
     // Bind Event Listeners
     //
@@ -50,17 +50,3 @@ var app = {
     }
 };
 
-var log = {
-    outlet: "#logData",
-
-    error: function (data) {
-        this.log("ERROR", data);
-    },
-    info: function (data) {
-        this.log("INFO", data);
-    },
-
-    log: function (info, data) {
-        ("#" + this.outlet).append(info + ": ").append(data);
-    }
-};
