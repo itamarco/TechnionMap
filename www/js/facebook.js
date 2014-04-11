@@ -20,7 +20,7 @@ var facebook = {
                   FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
                   log.info("facebook inited");
             } catch (e) {
-                  log.error(e);
+                  alert(e);
             }
       },
 
