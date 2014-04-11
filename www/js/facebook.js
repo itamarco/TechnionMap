@@ -21,7 +21,7 @@ var facebook = {
             } catch (e) {
                   alert(e);
             }
-      }
+      },
 
 
       login: function() {
@@ -35,7 +35,7 @@ var facebook = {
                    },
                    { scope: "email" }
                    );
-      }
+      },
 
       getLoginStatus: function () {
                 FB.getLoginStatus(function(response) {
@@ -46,5 +46,5 @@ var facebook = {
                                   }
                                   });
       }
-}
+};
             

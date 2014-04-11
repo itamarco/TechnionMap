@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        log.error("This is log error");
         this.bindEvents();
         facebook.init();
     },
@@ -45,6 +46,21 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        log.info('Received Event: ' + id);
+    }
+};
+
+var log = {
+    var outlet : "#logData",
+
+    error: function (data) {
+        this.log("ERROR", data);
+    },
+    info: function (data) {
+        this.log("INFO", data);
+    },
+
+    log: function (info, data) {
+        ("#" + outlet).append(info + ": ").append(data);
     }
 };
