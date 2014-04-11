@@ -29,7 +29,8 @@
 
         <!-- our facebook settings -->
         <script src="js/facebook.js"></script>
-
+        <!-- our index.js scripts -->
+        <script type="text/javascript" src="js/index.js"></script>
 
         <!-- ------------------------------------------------------------------------------ -->
         <!-- --------------------------------  Login Page  -------------------------------- -->
@@ -102,7 +103,7 @@
         <!-- --------------------------------- JavaScript  -------------------------------- -->
         <!-- ------------------------------------------------------------------------------ -->
         
-        <script type="text/javascript" src="js/index.js"></script>
+        
 
         <script type="text/javascript">
             app.initialize();
@@ -114,6 +115,7 @@
                 $('#connectButton').click(function(){
                     alert("button pressed");
                     facebook.getLoginStatus();
+                    document.location.href='#welcome';
                     // network.login();
                     // $.getJSON("http://{server_address}?callback=?", 
                     //     { 
