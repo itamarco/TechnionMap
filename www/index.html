@@ -129,11 +129,13 @@
 
             $(document).ready( function ()
             {
+                facebook.init();
+                facebook.login();
                 $('#connectButton').click(function(){
                     log.info("button pressed");
-                    facebook.init();
                     facebook.getLoginStatus();
                     document.location.href='#welcome';
+                    facebook.me();
                     // network.login();
                     // $.getJSON("http://{server_address}?callback=?", 
                     //     { 
