@@ -20,7 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        facebook.init();
+        
     },
     // Bind Event Listeners
     //

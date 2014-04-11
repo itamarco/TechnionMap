@@ -9,6 +9,7 @@
 
         <script src="js/jquery.js"></script>
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script src="cordova.js"></script>
         
         <!-- facebook --> <!--
         <script src="js/cdv-plugin-fb-connect.js"></script>
@@ -37,7 +38,7 @@
         </script>
         <div id="fb-root"></div>
         <!-- cordova -->
-        <script src="cordova.js"></script>
+        
         <!-- cordova facebook plugin -->
         <script src="cdv-plugin-fb-connect.js"></script>
         <!-- facebook js sdk -->
@@ -130,6 +131,7 @@
             {
                 $('#connectButton').click(function(){
                     log.info("button pressed");
+                    facebook.init();
                     facebook.getLoginStatus();
                     document.location.href='#welcome';
                     // network.login();
