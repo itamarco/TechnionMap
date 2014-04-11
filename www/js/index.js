@@ -51,7 +51,7 @@ var app = {
 };
 
 var log = {
-    var outlet : "#logData",
+    outlet: "#logData",
 
     error: function (data) {
         this.log("ERROR", data);
@@ -61,6 +61,6 @@ var log = {
     },
 
     log: function (info, data) {
-        ("#" + outlet).append(info + ": ").append(data);
+        ("#" + this.outlet).append(info + ": ").append(data);
     }
 };
