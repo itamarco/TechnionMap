@@ -21,7 +21,6 @@ var app = {
     initialize: function() {
         this.bindEvents();
         facebook.init();
-        log.info("reached facebook init");
     },
     // Bind Event Listeners
     //
