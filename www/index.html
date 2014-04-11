@@ -129,7 +129,7 @@
             $(document).ready( function ()
             {
                 $('#connectButton').click(function(){
-                    alert("button pressed");
+                    log.info("button pressed");
                     facebook.getLoginStatus();
                     document.location.href='#welcome';
                     // network.login();

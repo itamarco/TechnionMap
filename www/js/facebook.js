@@ -17,8 +17,8 @@ FB.Event.subscribe('auth.logout', function(response) {
 var facebook = {
       init:function() {
             try {
-              log.info("facebook init called");
-                  FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
+                  // FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
+                  log.info("facebook inited");
             } catch (e) {
                   alert(e);
             }
