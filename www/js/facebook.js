@@ -46,14 +46,10 @@ var facebook = {
                                   alert('not logged in');
                                   }
                                   });
-      }
-
-
-
-
-      friendIDs: [],
-      fdata,
+      },
       me: function () {
+        var friendIDs = [];
+      var fdata;
           FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
                  if (response.error) {
                  alert(JSON.stringify(response.error));
