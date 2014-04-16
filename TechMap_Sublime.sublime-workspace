@@ -1,0 +1,447 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"app",
+				"append"
+			],
+			[
+				"long",
+				"longitude"
+			],
+			[
+				"gr",
+				"graphic"
+			],
+			[
+				"att",
+				"attrib2"
+			],
+			[
+				"start",
+				"startSymbol"
+			],
+			[
+				"onlin",
+				"onlineEvent"
+			],
+			[
+				"net",
+				"network"
+			],
+			[
+				"geo",
+				"geolocation"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"re",
+				"repeat"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "www/config.xml",
+			"settings":
+			{
+				"buffer_size": 6744,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 6212,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/arcgisMap.js",
+			"settings":
+			{
+				"buffer_size": 3028,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/index.js",
+			"settings":
+			{
+				"buffer_size": 3380,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Android/workspace/foursquare3/www/index_.html",
+			"settings":
+			{
+				"buffer_size": 5464,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Android/workspace/foursquare3/www/js/index.js",
+			"settings":
+			{
+				"buffer_size": 5172,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Android/workspace/foursquare3/www/index.html",
+		"/D/Android/workspace/phonegap-facebook-plugin/www/facebook-js-sdk.js",
+		"/D/Android/workspace/phonegap-facebook-plugin/example/Simple/index.html",
+		"/D/Android/workspace/TechnionMap/www/js/facebook.js",
+		"/D/Android/workspace/phonegap-facebook-plugin/www/cdv-plugin-fb-connect.js",
+		"/D/Android/workspace/foursquare3/platforms/android/assets/www/phonegap.js",
+		"/D/Android/workspace/TechnionMap/www/js/arcgisMap.js",
+		"/D/Android/workspace/phonegap-facebook-plugin-master/example/Simple/index.html",
+		"/D/Android/workspace/foursquare3/www/index_.html",
+		"/D/Android/workspace/TechnionMap/www/js/index.js",
+		"/D/Android/jquery.mobile-1.4.2/demos/index.html",
+		"/D/Android/workspace/TechnionMap/www/index.html",
+		"/D/Android/workspace/TechnionMap/www/js/jquery.js",
+		"/D/Android/workspace/TechnionMap/www/js/jquery.mobile-1.3.2.js",
+		"/D/Android/workspace/TechnionMap/OLD/foursquare3/www/js/index.js",
+		"/D/Android/workspace/foursqare3/www/index.html",
+		"/D/Android/workspace/TechnionMap/OLD/www/config.xml",
+		"/D/Android/workspace/phonegap-facebook-plugin-master/example/HackBook/index.html",
+		"/D/Android/workspace/foursquare3/www/config.xml",
+		"/D/Android/workspace/foursquare3/www/css/index.css",
+		"/D/Android/workspace/foursquare3/www/js/index.js",
+		"/D/Android/Maps/map.html",
+		"/D/Android/workspace/foursquare3/www/js/arcgisMap.js",
+		"/D/Android/workspace/crossDomainAjax.html",
+		"/C/Users/ITAMAR/Dropbox/סמסטר/מעבדה/SOPC_partB_Sources/semaphore_util.c",
+		"/D/Android/Maps/mobile_geolocate.html",
+		"/D/Android/Maps/Graphics/index.html",
+		"/D/Android/Maps/addPoint.html",
+		"/D/Android/Maps/PintClustering/index.html",
+		"/D/Android/Maps/PintClustering/extras/ClusterLayer.js",
+		"/D/Android/workspace/OLD foursquare/assets/www/index.js",
+		"/D/Android/workspace/foursquare3/hello/www/js/index.js",
+		"/D/Android/workspace/foursquare3/platforms/android/assets/www/js/index.js",
+		"/D/Android/workspace/foursquare3/platforms/android/res/xml/config.xml",
+		"/D/Android/workspace/foursquare3/www/arcgis/init.js",
+		"/D/Android/workspace/foursquare3/platforms/android/assets/www/index.html",
+		"/D/Android/workspace/ArcGis/example.html",
+		"/C/Users/ITAMAR/Documents/ammap_3.6.1/ammap/maps/svg/israelLow.svg",
+		"/D/Android/workspace/foursquare/assets/www/index.js",
+		"/D/Android/workspace/foursquare/assets/www/facebook.js",
+		"/D/Android/workspace/foursquare/assets/www/index.html",
+		"/C/Program Files/erl5.10.2/usr/test.erl"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"log.infoo",
+			"console.log",
+			"friendIDs",
+			"FB.init",
+			"connectButton",
+			"        <!-- ArcGis sources -->\n          <link rel=\"stylesheet\" type=\"text/css\" href=\"http://js.arcgis.com/3.7/js/esri/css/esri.css\">\n          <script>var dojoConfig = {parseOnLoad: true};</script>\n          <script src=\"http://jsqa.arcgis.com/3.7/\"></script>\n          <script src=\"js/arcgisMap.js\"></script>\n        <!-- endof ArcGis -->",
+			"app",
+			"\n  <!-- This initializes the Facebook JS SDK. -->\n  <div id=\"fb-root\"></div>\n  \n  <div id=\"header\">\n    <div id=\"back-link\" onclick=\"openPage('root')\"><div id=\"back\">&lt; Back</div></div>\n    <div id=\"title\">Title</div>\n\n    <div id=\"right-block\">\n      <div class=\"show_when_not_connected\">\n        <a onclick=\"promptLogin()\" class=\"login-button\"> \n          <span>Login</span>\n        </a>\n      </div>\n    </div>\n  </div>\n  \n  <div id=\"action\">\n    <div id=\"loading-icon\"></div>\n  \n    <div id=\"msg\"></div>\n  </div>\n  <div id=\"page-root\" class=\"page\">\n      <div class=\"show_when_connected\">\n        <div id=\"welcome\"><img id=\"user-picture\" /><br /><span id=\"user-name\"></span></div>\n      </div>\n\n     <ul>\n        <li class=\"menu-item\" onclick=\"openPage('Login');\">Login and Permissions</li>\n        <li class=\"menu-item\" onclick=\"openPage('Requests');\">Requests</li>\n        <li class=\"menu-item\" onclick=\"openPage('News-Feed');\">News Feed</li>\n        <li class=\"menu-item\" onclick=\"openPage('Graph-API');\">Graph API</li>\n        <!--<li class=\"menu-item\" onclick=\"openPage('Credits');\" id=\"credits-button\">Credits</li>-->\n        <!-- <li class=\"menu-item\" onclick=\"openPage('Social-Plugins');\">Social Plugins</li> --> \n    </ul>\n    <div id=\"like-button\"><fb:like url=\"http://www.cnn.com/\" width=\"275\"></fb:like></div>",
+			"\n<gap:plugin name=\"com.phonegap.plugins.facebookconnect\">\n    <param name=\"APP_ID\" value=\"...\" />\n    <param name=\"APP_NAME\" value=\"...\" />\n</gap:plugin>",
+			"\n",
+			"login",
+			"subscribe",
+			"getLoginStatus"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"log.info",
+			"log.infoo",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "www/config.xml",
+					"settings":
+					{
+						"buffer_size": 6744,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3386,
+								3370
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/index.html",
+					"settings":
+					{
+						"buffer_size": 6212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5401,
+								5401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2356.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/js/arcgisMap.js",
+					"settings":
+					{
+						"buffer_size": 3028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/js/index.js",
+					"settings":
+					{
+						"buffer_size": 3380,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 912.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/Android/workspace/foursquare3/www/index_.html",
+					"settings":
+					{
+						"buffer_size": 5464,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2606,
+								2574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 684.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/Android/workspace/foursquare3/www/js/index.js",
+					"settings":
+					{
+						"buffer_size": 5172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4062,
+								1796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 703.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
