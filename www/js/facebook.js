@@ -1,9 +1,9 @@
 
 //These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
 
-if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) log.error('Cordova variable does not exist. Check that you have included cordova.js correctly');
+if (typeof CDV == 'undefined') log.error('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+if (typeof FB == 'undefined') log.error('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
 FB.Event.subscribe('auth.login', function(response) {
                    alert('auth.login event');
@@ -20,7 +20,7 @@ var facebook = {
                   FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
                   log.info("facebook inited");
             } catch (e) {
-                  alert(e);
+                  log.error(e);
             }
       },
 
