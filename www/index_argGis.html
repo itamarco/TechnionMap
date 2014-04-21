@@ -18,11 +18,11 @@
         <script src="js/facebook-js-sdk.js"></script> -->
         <!-- endof facebbok -->
 
-        <!-- Gmaps imports-->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="js/gmaps.js"></script>
-        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
+        <!-- ArcGis -->
+        <script src="http://js.arcgis.com/3.9compact/"></script>
+        <link rel="stylesheet" href="http://js.arcgis.com/3.9/js/esri/css/esri.css" />
+
+
 
 
         <title>Hello World</title>
@@ -46,6 +46,17 @@
             };
         </script>
 
+        <!-- ArcGis dojo -->
+        <script>
+            require(["esri/map", "dojo/domReady!"], function(Map) { 
+                map = new Map("mapDiv", {
+                    center: [35.01892, 32.77917],
+                    zoom: 16,
+                    basemap: "streets"
+                });
+
+            });
+        </script>
 
         <div id="fb-root"></div>
         <!-- cordova -->
@@ -138,7 +149,7 @@
             app.initialize();
 
             var server_address = "";
-            var map;
+
             $(document).ready( function ()
             {
                 // facebook.init();
@@ -161,36 +172,6 @@
                     //     }, 
                     //     jsonParser
                     // );  
-                });
-
-
-                //  Gmaps init
-                map = new GMaps({
-                    el: '#mapDiv',
-                    lat: -12.043333,
-                    lng: -77.028333
-                });
-                map.addMarker({
-                    lat: -12.043333,
-                    lng: -77.03,
-                    title: 'Lima',
-                    details: {
-                        database_id: 42,
-                        author: 'HPNeo'
-                    },
-                    click: function(e){
-                        if(console.log)
-                            console.log(e);
-                        log.info("Marker clicked");
-                    }
-                });
-                map.addMarker({
-                    lat: -12.042,
-                    lng: -77.028333,
-                    title: 'Marker with InfoWindow',
-                    infoWindow: {
-                        content: '<p>HTML Content</p>'
-                    }
                 });
             }); // end of document.ready
 
