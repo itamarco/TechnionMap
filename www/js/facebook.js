@@ -51,17 +51,17 @@ var facebook = {
 	},
 	
 	friends: function () {
-		log.info("friends");
 		var friendIDs = [];
 		var fdata;
 			FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
 						 if (response.error) {
-						 	alert("friends failed");
 						 	log.error(JSON.stringify(response.error));
 						 }
 						 else {
+						 	log.info(JSON.stringify(response))
 							//var friends = response.data;
 						 	response.data.forEach(function(item) {
+						 		alert(item + "\n" + item.id);
 						 			friendIDs.push(item.id)
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
