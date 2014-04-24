@@ -65,11 +65,11 @@ var facebook = {
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
 									 // data.appendChild(d);
-									 log.error(friendIDs[0] + " " friendIDs[1]);
+									 log.error(friendIDs[0] + " " +friendIDs[1]);
 									 });
 						 }
 			});
-		log.error(friendIDs[1] + " " friendIDs[2]);
+		log.error(friendIDs[1] + " "+ friendIDs[2]);
 		return friendIDs;
 	}
 };
