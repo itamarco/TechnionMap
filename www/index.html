@@ -132,12 +132,14 @@
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
+					addMarker(position.lat,position.lng, "Me");
 					var friendsIds = facebook.friends();
+					log.info(friendsIds);
 					friendsIds.foreach(function(item){
 						log.info(item);
 					});
 
-					addMarker(position.lat,position.lng, "Me");
+					
 					// facebook.getLoginStatus();
 					// document.location.href='#welcome';
 					// facebook.me();
