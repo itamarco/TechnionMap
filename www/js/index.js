@@ -71,3 +71,46 @@ var geoLocation = {
               'message: ' + error.message + '\n');
     }
 };
+
+
+var server = {
+    host: "127.0.0.1",
+    responseJson: {},
+    request: function(jsonRequest, callBack){
+        //this.ajaxCall(jsonRequest,callBack);
+        callBack(jsonRequest);
+    },
+    ajaxCall: function(jsonRequest, callBack){
+        $.ajax({
+           type: 'POST',
+            url: this.host,
+            data: jsonRequest, 
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            jsonpCallback: 'jsonParser',
+            success: callBack,
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect.\n Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found. [404]');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error [500].');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error.\n' + jqXHR.responseText);
+                }
+            }
+        });
+    },
+
+    getData: function(){
+
+    }
+};

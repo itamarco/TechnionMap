@@ -1,204 +1,211 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
-        <link rel="stylesheet" href="css/index.css" />
-        
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		
 
 
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery.mobile-1.3.2.min.js"></script>
-        <script src="cordova.js"></script>
-        
-        <!-- facebook --> <!--
-        <script src="js/cdv-plugin-fb-connect.js"></script>
-        <script src="js/facebook-js-sdk.js"></script> -->
-        <!-- endof facebbok -->
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script src="cordova.js"></script>
+		
+		<!-- facebook --> <!--
+		<script src="js/cdv-plugin-fb-connect.js"></script>
+		<script src="js/facebook-js-sdk.js"></script> -->
+		<!-- endof facebbok -->
 
-        <!-- Gmaps imports-->
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="js/gmaps.js"></script>
-        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
-
-
-        <title>Technion Map</title>
-    </head> 
-    <body>
-        <!-- debug log -->
-        <script>
-            var log = {
-                outlet: "#logData",
-
-                error: function (data) {
-                    this.log("ERROR", data);
-                },
-                info: function (data) {
-                    this.log("INFO", data);
-                },
-
-                log: function (info, data) {
-                    $(this.outlet).append(info + ": ").append(data).append("<br/>");
-                }
-            };
-        </script>
+		<!-- Gmaps imports-->
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="js/gmaps.js"></script>
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
 
 
-        <div id="fb-root"></div>
-        <!-- cordova -->
-        
-        <!-- cordova facebook plugin -->
-        <script src="cdv-plugin-fb-connect.js"></script>
-        <!-- facebook js sdk -->
-        <script src="facebook-js-sdk.js"></script>
+		<title>Technion Map</title>
+	</head> 
+	<body>
+		<!-- debug log -->
+		<script>
+			var log = {
+				outlet: "#logData",
 
-        <!-- our facebook settings -->
-        <script src="js/facebook.js"></script>
-        <!-- our index.js scripts -->
-        <script type="text/javascript" src="js/index.js"></script>
+				error: function (data) {
+					this.log("ERROR", data);
+				},
+				info: function (data) {
+					this.log("INFO", data);
+				},
 
-        <!-- ------------------------------------------------------------------------------ -->
-        <!-- --------------------------------  Login Page  -------------------------------- -->
-        <!-- ------------------------------------------------------------------------------ -->
-        <div data-role="page" id="login" data-theme="b">
-            <header></header>
-            <div data-role="content">
-                <div>
-                    <h3>log</h3>
-                    <p id="logData"></p>
-                </div>
-                <div>
-                    <p>
-                        Welcome to Technion foursquare. <br>
-                        Connect to see your friends.
-                    </p>
-                    <div id="mapDiv"></div>
-                    <button id="connectButton">Connect</button>
-                </div>
-                <div>
-                    <h3>Position</h3>
-                    <p id="cur_position"></p>
-                </div>
-
-                <!-- Msgs -->
-              <div data-role="popup" datd-theme="e" id="noNetwork">
-                    <p>No network connection detected.<br>You have to be online.</p>
-                </div>
-            </div>
-            <div data-role="footer">(c) Technion foursquare</div>
-        </div>
-        <!-- ------------------------------------------------------------------------------ -->
-        <!-- --------------------------------- Welcome Page-------------------------------- -->
-        <!-- ------------------------------------------------------------------------------ -->
-        <div data-role="page" id="welcome">
-            <div data-role="header">
-                <h2>Technion Map</h2>
-                <div id="LocateButton"></div>
-            </div>
-            <div data-role="content">
-                
-                    <div id="map" class="map"></div>
-                    <div id="debug"></div>
-               
-            </div>
-            <div data-role="footer"></div>
-        </div>
-        <!-- ------------------------------------------------------------------------------ -->
-        <!-- --------------------------------- ??? Page---------------------------------- -->
-        <!-- ------------------------------------------------------------------------------ -->
-        <div data-role="page" id="aaaaa">
-            <div data-role="header"></div>
-            <div data-role="content">
-
-            </div>
-            <div data-role="footer"></div>
-        </div>
-
-        <!-- ------------------------------------------------------------------------------ -->
-        <!-- --------------------------------- ?? Page---------------------------------- -->
-        <!-- ------------------------------------------------------------------------------ -->
-        <div data-role="page" id="bbbb">
-            <div data-role="header"></div>
-            <div data-role="content">
-
-            </div>
-            <div data-role="footer"></div>
-        </div>
-
-        <!-- ------------------------------------------------------------------------------ -->
-        <!-- --------------------------------- JavaScript  -------------------------------- -->
-        <!-- ------------------------------------------------------------------------------ -->
-        
-        
-
-        <script type="text/javascript">
-            app.initialize();
-
-            var server_address = "";
-            var map;
-            $(document).ready( function ()
-            {
-                // facebook.init();
-                // facebook.login();
-                geoLocation.get();
-                $('#connectButton').click(function(){
-                    log.info("button pressed");
-                    // facebook.getLoginStatus();
-                    document.location.href='#welcome';
-                    // facebook.me();
-                    // network.login();
-                    // $.getJSON("http://{server_address}?callback=?", 
-                    //     { 
-                    //         "userID": "0507857244",
-                    //         "location":{
-                    //                         "longitude" : 43.2343, 
-                    //                         "latitude"  : 65.343 
-                    //                     },
-                    //         "key":"our_secret_key"
-                    //     }, 
-                    //     jsonParser
-                    // );  
-                });
+				log: function (info, data) {
+					$(this.outlet).append(info + ": ").append(data).append("<br/>");
+				}
+			};
+		</script>
 
 
-                //  Gmaps init
-                map = new GMaps({
-                    el: '#mapDiv',
-                    lat: -12.043333,
-                    lng: -77.028333
-                });
-                
-                map.addMarker({
-                    lat: -12.043333,
-                    lng: -77.03,
-                    title: 'Lima',
-                    details: {
-                        database_id: 42,
-                        author: 'HPNeo'
-                    },
-                    click: function(e){
-                        log.info("Marker clicked");
-                    }
-                });
+		<div id="fb-root"></div>
+		<!-- cordova -->
+		
+		<!-- cordova facebook plugin -->
+		<script src="cdv-plugin-fb-connect.js"></script>
+		<!-- facebook js sdk -->
+		<script src="facebook-js-sdk.js"></script>
 
-                map.addMarker({
-                    lat: -12.042,
-                    lng: -77.028333,
-                    title: 'Marker with InfoWindow',
-                    infoWindow: {
-                        content: '<p>HTML Content</p>'
-                    }
-                });
-            }); // end of document.ready
+		<!-- our facebook settings -->
+		<script src="js/facebook.js"></script>
+		<!-- our index.js scripts -->
+		<script type="text/javascript" src="js/index.js"></script>
 
-            function jsonParser(info){
-                console.log(info); //show json answer in console
-            }
-        </script>
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------  Login Page  -------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		<div data-role="page" id="login" data-theme="b">
+			<header></header>
+			<div data-role="content">
+				<div>
+					<h3>log</h3>
+					<p id="logData"></p>
+				</div>
+				<div>
+					<div id="mapDiv"></div>
+					<button id="connectButton">Connect</button>
+				</div>
+				<div>
+					<h3>Position</h3>
+					<p id="cur_position"></p>
+				</div>
+
+				<!-- Msgs -->
+			  <div data-role="popup" datd-theme="e" id="noNetwork">
+					<p>No network connection detected.<br>You have to be online.</p>
+				</div>
+			</div>
+			<div data-role="footer">(c) Technion foursquare</div>
+		</div>
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------- Welcome Page-------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		<div data-role="page" id="welcome">
+			<div data-role="header">
+				<h2>Technion Map</h2>
+				<div id="LocateButton"></div>
+			</div>
+			<div data-role="content">
+				
+					<div id="map" class="map"></div>
+					<div id="debug"></div>
+			   
+			</div>
+			<div data-role="footer"></div>
+		</div>
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------- ??? Page---------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		<div data-role="page" id="aaaaa">
+			<div data-role="header"></div>
+			<div data-role="content">
+
+			</div>
+			<div data-role="footer"></div>
+		</div>
+
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------- ?? Page---------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		<div data-role="page" id="bbbb">
+			<div data-role="header"></div>
+			<div data-role="content">
+
+			</div>
+			<div data-role="footer"></div>
+		</div>
+
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------- JavaScript  -------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		
+		
+
+		<script type="text/javascript">
+			app.initialize();
+
+			var server_address = "http://84.228.155.27:8888";
+			var map;
+			$(document).ready( function ()
+			{
+				facebook.init();
+				facebook.login();
+				var friendsIds = facebook.friends();
+				friendsIds.foreach(function(item){
+					log.info(item);
+				});
+				geoLocation.get();
+				server.request({})
+				$('#connectButton').click(function(){
+					// facebook.getLoginStatus();
+					// document.location.href='#welcome';
+					// facebook.me();
+					// network.login();
 
 
 
-    </body>
+
+					// $.getJSON( server_address + "?callback=?", 
+					// 	{ 
+					// 		"userID": "0507857244",
+					// 		"location":{
+					// 						"longitude" : "43.2343", 
+					// 						"latitude"  : "65.343" 
+					// 					},
+					// 		"key":"our_secret_key"
+					// 	}, 
+					// 	jsonParser
+					// );  
+				});
+
+
+				//  Gmaps init
+				//initMap();
+			}); // end of document.ready
+
+			function jsonParser(data){
+				log.info("Data recieved:" + data.userID); //show json answer in console
+			}
+			function initMap(){
+				map = new GMaps({
+					el: '#mapDiv',
+					lat: -12.043333,
+					lng: -77.028333
+				});
+				
+				map.addMarker({
+					lat: -12.043333,
+					lng: -77.03,
+					title: 'Lima',
+					details: {
+						database_id: 42,
+						author: 'HPNeo'
+					},
+					click: function(e){
+						log.info("Marker clicked");
+					}
+				});
+
+				map.addMarker({
+					lat: -12.042,
+					lng: -77.028333,
+					title: 'Marker with InfoWindow',
+					infoWindow: {
+						content: '<p>HTML Content</p>'
+					}
+				});
+			}
+		</script>
+
+
+
+	</body>
 </html>
