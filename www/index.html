@@ -130,10 +130,10 @@
 				geoLocation.get();
 				initMap();	
 				$('#connectButton').click(function(){
-					// var friendsIds = facebook.friends();
-					// friendsIds.foreach(function(item){
-					// 	log.info(item);
-					// });
+					var friendsIds = facebook.friends();
+					friendsIds.foreach(function(item){
+						log.info(item);
+					});
 
 					addMarker(position.lat,position.lng, "Me");
 					// facebook.getLoginStatus();
