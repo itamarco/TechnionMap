@@ -51,11 +51,12 @@ var facebook = {
 	},
 	
 	friends: function () {
-		alert("frieds");
+		log.info("friends");
 		var friendIDs = [];
 		var fdata;
 			FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
 						 if (response.error) {
+						 	alert("friends failed");
 						 	log.error(JSON.stringify(response.error));
 						 }
 						 else {
@@ -68,6 +69,7 @@ var facebook = {
 									 });
 						 }
 			});
+
 		return friendIDs;
 	}
 };
