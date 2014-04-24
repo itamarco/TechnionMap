@@ -63,12 +63,7 @@
 		<!-- --------------------------------  Login Page  -------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="login" data-theme="b">
-			<header></header>
 			<div data-role="content">
-				<div>
-					<h3>log</h3>
-					<p id="logData"></p>
-				</div>
 				<div>
 					<div id="mapDiv"></div>
 					<button id="connectButton">Connect</button>
@@ -77,7 +72,10 @@
 					<h3>Position</h3>
 					<p id="cur_position"></p>
 				</div>
-
+				<div>
+					<h3>log</h3>
+					<p id="logData"></p>
+				</div>
 				<!-- Msgs -->
 			  <div data-role="popup" datd-theme="e" id="noNetwork">
 					<p>No network connection detected.<br>You have to be online.</p>
@@ -126,11 +124,12 @@
 			{
 				facebook.init();
 				
-
+				facebook.login();
+				facebook.getLoginStatus();
 				geoLocation.get();
 				initMap();	
 				$('#connectButton').click(function(){
-					facebook.login();
+
 					var friendsIds = facebook.friends();
 					friendsIds.foreach(function(item){
 						log.info(item);
@@ -186,7 +185,7 @@
 					icon: {
 						url: 'img/marker.png',
 						scaledSize: {
-							width: 80 ,
+							width: 80,
 							height: 80
 						}
 					},

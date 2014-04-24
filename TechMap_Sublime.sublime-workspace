@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"ge",
+				"geoLocation"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"init",
+				"initMap"
+			],
+			[
+				"frien",
+				"friendsIds"
+			],
+			[
+				"fri",
+				"friendIDs"
+			],
+			[
+				"ca",
+				"callBack"
+			],
+			[
+				"pars",
+				"jsonParser"
+			],
+			[
+				"in",
+				"info"
+			],
+			[
+				"quer",
+				"queryObj"
+			],
+			[
+				"th",
+				"theUrl"
+			],
+			[
 				"app",
 				"append"
 			],
@@ -59,15 +99,23 @@
 			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 6212,
+				"buffer_size": 5407,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/js/arcgisMap.js",
+			"file": "/D/Android/gmaps-edbb736/examples/examples.css",
 			"settings":
 			{
-				"buffer_size": 3028,
+				"buffer_size": 965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/css/index.css",
+			"settings":
+			{
+				"buffer_size": 3344,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,24 +123,24 @@
 			"file": "www/js/index.js",
 			"settings":
 			{
-				"buffer_size": 3380,
+				"buffer_size": 5033,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/Android/workspace/foursquare3/www/index_.html",
+			"file": "/D/Android/nodejs/server.js",
 			"settings":
 			{
-				"buffer_size": 5464,
-				"line_ending": "Unix"
+				"buffer_size": 530,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/Android/workspace/foursquare3/www/js/index.js",
+			"file": "www/js/facebook.js",
 			"settings":
 			{
-				"buffer_size": 5172,
-				"line_ending": "Unix"
+				"buffer_size": 2133,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -120,15 +168,25 @@
 	},
 	"file_history":
 	[
+		"/D/Android/workspace/crossDomainAjax.html",
+		"/D/Android/workspace/TechnionMap/www/js/node.js",
+		"/D/Android/workspace/TechnionMap/www/js/nod.js",
+		"/D/Android/workspace/TechnionMap/www/js/facebook.js",
+		"/D/Android/workspace/foursquare3/www/js/index.js",
+		"/D/Android/gmaps-edbb736/examples/markers.html",
+		"/D/Android/workspace/TechnionMap/www/markers.html",
+		"/D/Android/workspace/TechnionMap/www/js/gmaps.js",
+		"/D/Android/workspace/foursquare3/www/index_.html",
+		"/D/Android/workspace/TechnionMap/www/index_argGis.html",
+		"/D/Android/gmaps-edbb736/test/index.html",
+		"/D/Android/gmaps-edbb736/test/lib/jasmine-html.js",
+		"/D/Android/workspace/TechnionMap/www/js/arcgisMap.js",
 		"/D/Android/workspace/foursquare3/www/index.html",
 		"/D/Android/workspace/phonegap-facebook-plugin/www/facebook-js-sdk.js",
 		"/D/Android/workspace/phonegap-facebook-plugin/example/Simple/index.html",
-		"/D/Android/workspace/TechnionMap/www/js/facebook.js",
 		"/D/Android/workspace/phonegap-facebook-plugin/www/cdv-plugin-fb-connect.js",
 		"/D/Android/workspace/foursquare3/platforms/android/assets/www/phonegap.js",
-		"/D/Android/workspace/TechnionMap/www/js/arcgisMap.js",
 		"/D/Android/workspace/phonegap-facebook-plugin-master/example/Simple/index.html",
-		"/D/Android/workspace/foursquare3/www/index_.html",
 		"/D/Android/workspace/TechnionMap/www/js/index.js",
 		"/D/Android/jquery.mobile-1.4.2/demos/index.html",
 		"/D/Android/workspace/TechnionMap/www/index.html",
@@ -140,10 +198,8 @@
 		"/D/Android/workspace/phonegap-facebook-plugin-master/example/HackBook/index.html",
 		"/D/Android/workspace/foursquare3/www/config.xml",
 		"/D/Android/workspace/foursquare3/www/css/index.css",
-		"/D/Android/workspace/foursquare3/www/js/index.js",
 		"/D/Android/Maps/map.html",
 		"/D/Android/workspace/foursquare3/www/js/arcgisMap.js",
-		"/D/Android/workspace/crossDomainAjax.html",
 		"/C/Users/ITAMAR/Dropbox/סמסטר/מעבדה/SOPC_partB_Sources/semaphore_util.c",
 		"/D/Android/Maps/mobile_geolocate.html",
 		"/D/Android/Maps/Graphics/index.html",
@@ -179,6 +235,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".js",
+			"<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <title>GMaps.js &mdash; Markers</title>\n  <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js\"></script>\n  <script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>\n  <script type=\"text/javascript\" src=\"../gmaps.js\"></script>\n  <link rel=\"stylesheet\" href=\"http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css\" />\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"examples.css\" />\n  <script type=\"text/javascript\">\n    var map;\n    $(document).ready(function(){\n      map = new GMaps({\n        el: '#map',\n        lat: -12.043333,\n        lng: -77.028333\n      });\n      map.addMarker({\n        lat: -12.043333,\n        lng: -77.03,\n        title: 'Lima',\n        details: {\n          database_id: 42,\n          author: 'HPNeo'\n        },\n        click: function(e){\n          if(console.log)\n            console.log(e);\n          alert('You clicked in this marker');\n        },\n        mouseover: function(e){\n          if(console.log)\n            console.log(e);\n        }\n      });\n      map.addMarker({\n        lat: -12.042,\n        lng: -77.028333,\n        title: 'Marker with InfoWindow',\n        infoWindow: {\n          content: '<p>HTML Content</p>'\n        }\n      });\n    });\n  </script>\n</head>\n<body>\n  <h1>GMaps.js &mdash; Markers</h1>\n  <div class=\"row\">\n    <div class=\"span11\">\n      <div id=\"map\"></div>\n    </div>\n    <div class=\"span6\">\n      <p>With GMaps.js you can add markers this way:</p>\n      <pre>map.addMarker({\n  lat: -12.043333,\n  lng: -77.028333,\n  title: 'Lima',\n  click: function(e){\n    alert('You clicked in this marker');\n  }\n});</pre>\n      <p><strong>latitude</strong> and <strong>longitude</strong> are required. You can also attach additional information with <code>details</code>, which will be passed to Event object (<code>e</code>) in the events previously defined.</p>\n      <p><span class=\"label notice\">Note </span>If you want to show an Info Window, you must add:</p>\n      <pre>infoWindow: {\n        content: '&lt;p&gt;HTML Content&lt;/p&gt;'\n      }</pre>\n      <p><span class=\"label notice\">Note</span>The Info Windows also can bind these events: <code>closeclick</code>, <code>content_changed</code>, <code>domready</code>, <code>position_changed</code> and <code>zindex_changed</code></p>\n    </div>\n  </div>\n</body>\n</html>\n",
 			"log.infoo",
 			"console.log",
 			"friendIDs",
@@ -238,7 +296,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 969.0,
+						"translation.y": 266.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -248,35 +306,91 @@
 					"file": "www/index.html",
 					"settings":
 					{
-						"buffer_size": 6212,
+						"buffer_size": 5407,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5401,
-								5401
+								3997,
+								3997
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2356.0,
+						"translation.y": 2177.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "www/js/arcgisMap.js",
+					"file": "/D/Android/gmaps-edbb736/examples/examples.css",
 					"settings":
 					{
-						"buffer_size": 3028,
+						"buffer_size": 965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								297,
+								297
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 313.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/css/index.css",
+					"settings":
+					{
+						"buffer_size": 3344,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2482,
+								2482
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1496.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/js/index.js",
+					"settings":
+					{
+						"buffer_size": 5033,
 						"regions":
 						{
 						},
@@ -290,7 +404,7 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -300,85 +414,57 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "www/js/index.js",
-					"settings":
-					{
-						"buffer_size": 3380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 912.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/D/Android/workspace/foursquare3/www/index_.html",
-					"settings":
-					{
-						"buffer_size": 5464,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2606,
-								2574
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 684.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 5,
-					"file": "/D/Android/workspace/foursquare3/www/js/index.js",
+					"file": "/D/Android/nodejs/server.js",
 					"settings":
 					{
-						"buffer_size": 5172,
+						"buffer_size": 530,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4062,
-								1796
+								404,
+								404
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 703.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/js/facebook.js",
+					"settings":
+					{
+						"buffer_size": 2133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2132,
+								2132
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 770.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -439,7 +525,7 @@
 		"width": 0.0
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 150.0,
