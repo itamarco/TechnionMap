@@ -58,10 +58,8 @@ var facebook = {
 						 	log.error(JSON.stringify(response.error));
 						 }
 						 else {
-						 	log.info(JSON.stringify(response))
 							//var friends = response.data;
 						 	response.data.forEach(function(item) {
-						 		alert(item + "\n" + item.id);
 						 			friendIDs.push(item.id)
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
@@ -69,7 +67,7 @@ var facebook = {
 									 });
 						 }
 			});
-
+		log.error(friendIDs);
 		return friendIDs;
 	}
 };

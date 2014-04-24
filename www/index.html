@@ -135,7 +135,7 @@
 					addMarker(position.lat,position.lng, "Me");
 					var friendsIds = facebook.friends();
 					log.info(friendsIds);
-					friendsIds.foreach(function(item){
+					friendsIds.forEach(function(item){
 						log.info(item);
 					});
 
