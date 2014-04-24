@@ -60,7 +60,8 @@ var facebook = {
 						 else {
 							//var friends = response.data;
 						 	response.data.forEach(function(item) {
-						 			friendIDs.push(item.id)
+						 			friendIDs.push(item.id);
+						 			friendIDs.push("item.id");
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
 									 // data.appendChild(d);
