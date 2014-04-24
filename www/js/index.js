@@ -32,7 +32,14 @@ var app = {
     }
 };
 
+var position = {
+    lng: "undef",
+    lat: "undef"
+};
+
 var geoLocation = {
+    campus_lng: 35.2264997,
+    campus_lat: 31.654524800000003,
     get : function() {
         log.info("fetching geolocation");
         navigator.geolocation.getCurrentPosition(this.onSuccsess, this.onError);
@@ -51,23 +58,29 @@ var geoLocation = {
                             
         */              
         //data with map 
+            
+            position.lng = pos.coords.longitude;
+            position.lat = pos.coords.latitude;
+
+            log.info(position.lat);
+
             var text = "<div>Latitude: " + pos.coords.latitude + 
                         "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + 
                         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
             $("#cur_position").html(text);
-            console.log(text);
             
-            var mapwidth = $(window).width();//parseInt($('#map').css("width"), 10);  // remove 'px' from width value
-            var mapheight = 180;//parseInt($('#map').css("height"), 10);
-            //$('img#map').css('visibility','visible');
-            $('img#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" + 
-                pos.coords.latitude + "," + pos.coords.longitude + 
-                "&zoom=13&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-                pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
+            
+            // var mapwidth = $(window).width();//parseInt($('#map').css("width"), 10);  // remove 'px' from width value
+            // var mapheight = 180;//parseInt($('#map').css("height"), 10);
+            // //$('img#map').css('visibility','visible');
+            // $('img#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" + 
+            //     pos.coords.latitude + "," + pos.coords.longitude + 
+            //     "&zoom=13&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
+            //     pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
 
     },
     onError : function(error) {
-        $("#cur_position").html('code: '    + error.code    + '\n' +
+        log.error('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
 };

@@ -112,16 +112,6 @@
 			<div data-role="footer"></div>
 		</div>
 
-		<!-- ------------------------------------------------------------------------------ -->
-		<!-- --------------------------------- ?? Page---------------------------------- -->
-		<!-- ------------------------------------------------------------------------------ -->
-		<div data-role="page" id="bbbb">
-			<div data-role="header"></div>
-			<div data-role="content">
-
-			</div>
-			<div data-role="footer"></div>
-		</div>
 
 		<!-- ------------------------------------------------------------------------------ -->
 		<!-- --------------------------------- JavaScript  -------------------------------- -->
@@ -131,20 +121,21 @@
 
 		<script type="text/javascript">
 			app.initialize();
-
-			var server_address = "http://84.228.155.27:8888";
 			var map;
 			$(document).ready( function ()
 			{
 				facebook.init();
 				facebook.login();
-				var friendsIds = facebook.friends();
-				friendsIds.foreach(function(item){
-					log.info(item);
-				});
+
 				geoLocation.get();
-				server.request({})
+				initMap();	
 				$('#connectButton').click(function(){
+					// var friendsIds = facebook.friends();
+					// friendsIds.foreach(function(item){
+					// 	log.info(item);
+					// });
+
+					addMarker(position.lat,position.lng, "Me");
 					// facebook.getLoginStatus();
 					// document.location.href='#welcome';
 					// facebook.me();
@@ -174,32 +165,37 @@
 			function jsonParser(data){
 				log.info("Data recieved:" + data.userID); //show json answer in console
 			}
+
 			function initMap(){
 				map = new GMaps({
 					el: '#mapDiv',
-					lat: -12.043333,
-					lng: -77.028333
-				});
-				
+					lat: geoLocation.campus_lat,
+					lng: geoLocation.campus_lng,
+					zoom:16
+				});		
+			}
+
+			function addMarker(lat,lng, id){
+				log.info(lat);
+				log.info(lng);
 				map.addMarker({
-					lat: -12.043333,
-					lng: -77.03,
+					lat: lat,
+					lng: lng,
 					title: 'Lima',
+					icon: {
+						url: 'img/marker.png',
+						scaledSize: {
+							width: 80 ,
+							height: 80
+						}
+					},
+  					//shadow: 'schools_maps.shadow.png',
 					details: {
 						database_id: 42,
 						author: 'HPNeo'
 					},
 					click: function(e){
-						log.info("Marker clicked");
-					}
-				});
-
-				map.addMarker({
-					lat: -12.042,
-					lng: -77.028333,
-					title: 'Marker with InfoWindow',
-					infoWindow: {
-						content: '<p>HTML Content</p>'
+						log.info(id);
 					}
 				});
 			}
