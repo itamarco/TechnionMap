@@ -42,7 +42,7 @@ var facebook = {
 	getLoginStatus: function () {
 		FB.getLoginStatus(function(response) {
 						if (response.status == 'connected') {
-							alert('logged in');
+							log.info('logged in');
 						} 
 						else {
 							alert('not logged in');
@@ -59,8 +59,7 @@ var facebook = {
 						 	log.error(JSON.stringify(response.error));
 						 }
 						 else {
-						 	var data = document.getElementById('data');
-							var friends = response.data;
+							//var friends = response.data;
 						 	response.data.forEach(function(item) {
 						 			friendIDs.push(item.id)
 									 // var d = document.createElement('div');
