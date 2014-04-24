@@ -68,7 +68,8 @@ var facebook = {
 									 });
 						 }
 			});
-		console.log("friendIDs inside facebook: " + friendIDs);
+		console.log("friendIDs inside facebook: ");
+		console.log(friendIDs);
 		return friendIDs;
 	}
 };
