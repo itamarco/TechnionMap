@@ -59,7 +59,6 @@ var facebook = {
 						 }
 						 else {
 							//var friends = response.data;
-							console.log(response.data);
 						 	response.data.forEach(function(item) {
 						 			friendIDs.push(item.id);
 									 // var d = document.createElement('div');
@@ -69,7 +68,7 @@ var facebook = {
 									 });
 						 }
 			});
-			console.log(friendIDs);
+		console.log("friendIDs inside facebook: " + friendIDs);
 		return friendIDs;
 	}
 };
