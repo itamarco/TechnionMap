@@ -50,7 +50,7 @@ var facebook = {
 					});
 	},
 	
-	friends: function () {
+	friends: function (callback) {
 		var friendIDs = [];
 		var fdata;
 			FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
@@ -60,7 +60,7 @@ var facebook = {
 						 else {
 							//var friends = response.data;
 						 	response.data.forEach(function(item) {
-						 			friendIDs.push(item.id);
+						 			callback(item.id);
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
 									 // data.appendChild(d);

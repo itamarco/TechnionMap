@@ -133,13 +133,8 @@
 				$('#friendsButton').click(function(){
 
 					addMarker(position.lat,position.lng, "Me");
-					var ids = facebook.friends();
-					console.log("outside:");
-					console.log(ids);
-					log.info(ids[0]);
-					log.info(ids.length);
-					ids.forEach(function(item){
-						log.info(item);
+					facebook.friends(function(id){
+						log.info(id);
 					});
 
 					
