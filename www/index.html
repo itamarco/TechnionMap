@@ -116,8 +116,9 @@
 						userData.id = res.id;
 						userData.name = res.name;
 						userData.picUrl = res.picture.data.url;
-						$('#userData').append("Connected as userData.nemw <img src='"+ userData.picUrl +"' />");
+						$('#userData').append("Connected as " + userData.name + "<img src='"+ userData.picUrl +"' />");
 
+						console.log(userData);
 						addMarker(position.lat,position.lng, userData, function(user){
 							log.info(user.name);
 						});
@@ -134,7 +135,7 @@
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
-					
+					log.info("User data: " + userData.name);
 
 					
 
@@ -184,7 +185,7 @@
 				});		
 			}
 
-			function addMarker(lat,lng,user,onClick){
+			function addMarker(lat,lng,user,onClickFunction){
 				map.addMarker({
 					lat: lat,
 					lng: lng,
@@ -201,7 +202,7 @@
 						database_id: 42,
 						author: 'HPNeo'
 					},
-					click: onClick(user)
+					click: onClickFunction(user)
 				});
 			}
 		</script>
