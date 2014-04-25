@@ -64,6 +64,8 @@
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="login" data-theme="b">
 			<div data-role="content">
+				<div id="userData">
+				</div>
 				<div>
 					<div id="mapDiv"></div>
 					<button id="connectButton">Login</button>
@@ -133,8 +135,9 @@
 				$('#friendsButton').click(function(){
 
 					addMarker(position.lat,position.lng, "Me");
-					facebook.friends(function(id){
-						log.info(id);
+
+					facebook.api('me','id,name,picture', function(data){
+						$('#userData').append("<img src='"+ data.picture +"'>"+data.name);
 					});
 
 					facebook.api('me/friends', 'id,name,picture', function(data){
