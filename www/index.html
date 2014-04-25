@@ -125,8 +125,8 @@
 			{
 				facebook.init();
 				
-				facebook.login();
-				facebook.getLoginStatus();
+				//facebook.login();
+				//facebook.getLoginStatus();
 				geoLocation.get();
 				initMap();	
 				$('#connectButton').click(facebook.login);
@@ -135,6 +135,12 @@
 					addMarker(position.lat,position.lng, "Me");
 					facebook.friends(function(id){
 						log.info(id);
+					});
+
+					facebook.api('me/friends', 'id,name,picture', function(data){
+						data.forEach(function(item){
+							log.info(item.name);
+						});
 					});
 
 					
