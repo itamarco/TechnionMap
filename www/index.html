@@ -86,22 +86,7 @@
 			</div>
 			<div data-role="footer">(c) Technion foursquare</div>
 		</div>
-		<!-- ------------------------------------------------------------------------------ -->
-		<!-- --------------------------------- Welcome Page-------------------------------- -->
-		<!-- ------------------------------------------------------------------------------ -->
-		<div data-role="page" id="welcome">
-			<div data-role="header">
-				<h2>Technion Map</h2>
-				<div id="LocateButton"></div>
-			</div>
-			<div data-role="content">
-				
-					<div id="map" class="map"></div>
-					<div id="debug"></div>
-			   
-			</div>
-			<div data-role="footer"></div>
-		</div>
+
 		<!-- ------------------------------------------------------------------------------ -->
 		<!-- --------------------------------- ??? Page---------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
@@ -121,8 +106,24 @@
 		
 
 		<script type="text/javascript">
+			var userData = [];
+
 			app.initialize();
 			var map;
+
+			FB.Event.subscribe('auth.login', function(response) {
+				facebook.api('me','id,name,picture', function(res){
+						userData.id = res.id;
+						userData.name = res.name;
+						userData.picUrl = res.picture.data.url;
+						$('#userData').append("Connected as userData.nemw <img src='"+ userData.picUrl +"' />");
+
+						addMarker(position.lat,position.lng, userData, function(user){
+							log.info(user.name);
+						});
+					});
+			});
+
 			$(document).ready( function ()
 			{
 				facebook.init();
@@ -130,18 +131,12 @@
 				//facebook.login();
 				//facebook.getLoginStatus();
 				geoLocation.get();
-				initMap();	
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
-					addMarker(position.lat,position.lng, "Me");
+					
 
-					facebook.api('me','id,name,picture', function(response){
-						console.log(response);
-						log.info(response.name);
-						log.info(response.picture.data.url);
-						$('#userData').append("<img src='"+ response.picture.data.url +"' />" +response.name);
-					});
+					
 
 					// facebook.api('me/friends', 'id,name,picture', function(response){
 					// 		response.data.forEach(function(item){
@@ -173,7 +168,7 @@
 
 
 				//  Gmaps init
-				//initMap();
+				initMap();
 			}); // end of document.ready
 
 			function jsonParser(data){
@@ -189,13 +184,13 @@
 				});		
 			}
 
-			function addMarker(lat,lng, id){
+			function addMarker(lat,lng,id,user,onClick){
 				map.addMarker({
 					lat: lat,
 					lng: lng,
 					title: 'Lima',
 					icon: {
-						url: 'img/marker.png',
+						url: user.picUrl,
 						scaledSize: {
 							width: 80,
 							height: 80
@@ -206,9 +201,7 @@
 						database_id: 42,
 						author: 'HPNeo'
 					},
-					click: function(e){
-						log.info(id);
-					}
+					click: onClick(user)
 				});
 			}
 		</script>
