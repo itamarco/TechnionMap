@@ -69,7 +69,7 @@
 				<div>
 					<div id="mapDiv"></div>
 					<button id="connectButton">Login</button>
-					<button id="friendsButton">friends</button>
+					<button id="friendsButton">Data</button>
 				</div>
 				<div>
 					<h3>Position</h3>
@@ -120,6 +120,8 @@
 
 						console.log(userData);
 						addMarker(position.lat,position.lng, userData, function(user){
+							alert("onClick");
+							console.log(user);
 							log.info(user.name);
 						});
 					});
@@ -193,8 +195,8 @@
 					icon: {
 						url: user.picUrl,
 						scaledSize: {
-							width: 80,
-							height: 80
+							width: 40,
+							height: 40
 						}
 					},
   					//shadow: 'schools_maps.shadow.png',
