@@ -73,6 +73,7 @@ var facebook = {
 	api: function(request, fields, callback){
 		FB.api(request, {fields: fields}, function(response) {
 			if (response.error) {
+				log.error("resopnse error in from FB.api");
 				log.error(JSON.stringify(response.error));
 			} else {
 				callback(response.data);
