@@ -137,6 +137,7 @@
 					addMarker(position.lat,position.lng, "Me");
 
 					facebook.api('me','id,name,picture', function(data){
+						console.log(data);
 						log.info(data.name);
 						$('#userData').append("<img src='"+ data.picture +"'>"+data.name);
 					});
