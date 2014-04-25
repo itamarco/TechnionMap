@@ -137,10 +137,10 @@
 					addMarker(position.lat,position.lng, "Me");
 
 					facebook.api('me','id,name,picture', function(response){
-						alert("callback me");
 						console.log(response);
 						log.info(response.name);
-						$('#userData').append("<img src='"+ response.picture.data.url +"'>"+data.name);
+						log.info(response.picture.data.url);
+						$('#userData').append("<img src='"+ response.picture.data.url +"' />" +response.name);
 					});
 
 					// facebook.api('me/friends', 'id,name,picture', function(response){
@@ -190,8 +190,6 @@
 			}
 
 			function addMarker(lat,lng, id){
-				log.info(lat);
-				log.info(lng);
 				map.addMarker({
 					lat: lat,
 					lng: lng,
