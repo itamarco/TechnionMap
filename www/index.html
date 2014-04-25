@@ -137,14 +137,15 @@
 					addMarker(position.lat,position.lng, "Me");
 
 					facebook.api('me','id,name,picture', function(data){
+						log.info(data.name);
 						$('#userData').append("<img src='"+ data.picture +"'>"+data.name);
 					});
 
-					facebook.api('me/friends', 'id,name,picture', function(data){
-						data.forEach(function(item){
-							log.info(item.name);
-						});
-					});
+					// facebook.api('me/friends', 'id,name,picture', function(data){
+					// 	data.forEach(function(item){
+					// 		log.info(item.name);
+					// 	});
+					// });
 
 					
 					// facebook.getLoginStatus();
