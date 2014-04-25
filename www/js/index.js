@@ -69,6 +69,7 @@ var geoLocation = {
                         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
             $("#cur_position").html(text);
             
+            initMap();
             
             // var mapwidth = $(window).width();//parseInt($('#map').css("width"), 10);  // remove 'px' from width value
             // var mapheight = 180;//parseInt($('#map').css("height"), 10);
