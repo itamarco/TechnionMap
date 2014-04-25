@@ -76,7 +76,7 @@ var facebook = {
 				log.error("resopnse error in from FB.api");
 				log.error(JSON.stringify(response.error));
 			} else {
-				callback(response.data);
+				callback(response);
 			}
 		})
 	}

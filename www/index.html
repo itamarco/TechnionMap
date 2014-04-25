@@ -136,15 +136,15 @@
 
 					addMarker(position.lat,position.lng, "Me");
 
-					facebook.api('me','id,name,picture', function(data){
+					facebook.api('me','id,name,picture', function(response){
 						alert("callback me");
-						console.log(data);
-						log.info(data.name);
-						$('#userData').append("<img src='"+ data.picture.data.url +"'>"+data.name);
+						console.log(response);
+						log.info(response.name);
+						$('#userData').append("<img src='"+ response.picture.data.url +"'>"+data.name);
 					});
 
-					// facebook.api('me/friends', 'id,name,picture', function(data){
-					// 	data.forEach(function(item){
+					// facebook.api('me/friends', 'id,name,picture', function(response){
+					// 		response.data.forEach(function(item){
 					// 		log.info(item.name);
 					// 	});
 					// });
