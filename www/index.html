@@ -108,33 +108,26 @@
 		<script type="text/javascript">
 			var userData = [];
 
+			function User(loc, id, name, picUrl){
+				this.loc = loc;
+				this.id = id;
+				this.name = name;
+				this.pic = picUrl;
+			};
+
 			app.initialize();
 			var map;
 
 			FB.Event.subscribe('auth.login', function(response) {
 				facebook.api('me','id,name,picture', function(res){
-						userData.id = res.id;
-						userData.name = res.name;
-						userData.picUrl = res.picture.data.url;
-						$('#userData').append("Connected as " + userData.name + "<img src='"+ userData.picUrl +"' />");
+						var me = new User(position, res.id, res.name, res.picture.res.picture.data.url);
+						console.log(me);
+						addMarker(me);
 
-						console.log(userData);
-						addMarker(position.lat,position.lng, userData, function(user){
-							alert("onClick");
-							console.log(user);
-							log.info(user.name);
-						});
+						var friendData = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
 
-						friendData = {id:"554861654",
-										name: "Avichai Rubin",
-										picUrl: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg"
-									};
-
-						addMarker(position.lat - 0.0002 ,position.lng + 0.002, friendData, function(user){
-							alert("onClick");
-							console.log(user);
-							log.info(user.name);
-						});
+						console.log(friendData);
+						addMarker(friendData);
 					});
 			});
 
@@ -198,16 +191,16 @@
 				});		
 			}
 
-			function addMarker(lat,lng,user,onClickFunction){
+			function addMarker(user){
 				map.addMarker({
-					lat: lat,
-					lng: lng,
+					lat: user.loc.lat,
+					lng: user.loc.lng,
 					title: 'Lima',
 					icon: {
-						url: user.picUrl,
+						url: user.pic,
 						scaledSize: {
-							width: 40,
-							height: 40
+							width: 50,
+							height: 50
 						}
 					},
   					//shadow: 'schools_maps.shadow.png',
@@ -216,9 +209,13 @@
 						author: 'HPNeo'
 					},
 					click: function() {
-						onClickFunction(user);
+						markerClick(user);
 					}
 				});
+			}
+
+			function markerClick(user){
+				log.info(user.name);
 			}
 		</script>
 
