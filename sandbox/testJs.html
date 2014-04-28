@@ -4,17 +4,15 @@
 
 <script>
 	var loc = {lat: "lat1", lng: "lnggg"};
-	function user(){
-		this.loc = loc;
-		this.data = "data";
-		this.info = function(da){
-			return da
-		}
-	}
+	function User(loc, id, name, picUrl){
+				this.loc = loc;
+				this.id = id;
+				this.name = name;
+				this.pic = picUrl;
+			};
 
-	var user1 = new user();
+	var user1 = new User({lat: "fdasf", lng:"fdsa"}, "itamar", "cohen", "tekoa");
 	console.log(user1);
-	alert(user1.info("daaa!"));
 </script>
 
 </body>

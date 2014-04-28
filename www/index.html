@@ -120,7 +120,10 @@
 
 			FB.Event.subscribe('auth.login', function(response) {
 				facebook.api('me','id,name,picture', function(res){
-						var me = new User(position, res.id, res.name, res.picture.res.picture.data.url);
+						console.log(position);
+						var me = new User(position, res.id, res.name, res.picture.data.url);
+
+						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
 						console.log(me);
 						addMarker(me);
 
