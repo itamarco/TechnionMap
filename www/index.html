@@ -106,7 +106,7 @@
 		
 
 		<script type="text/javascript">
-			var userData = [];
+			var me = {};
 
 			function User(loc, id, name, picUrl){
 				this.loc = loc;
@@ -121,7 +121,7 @@
 			FB.Event.subscribe('auth.login', function(response) {
 				facebook.api('me','id,name,picture', function(res){
 						console.log(position);
-						var me = new User(position, res.id, res.name, res.picture.data.url);
+						me = new User(position, res.id, res.name, res.picture.data.url);
 
 						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
 						console.log(me);
@@ -144,7 +144,8 @@
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
-					log.info("User data: " + userData.name);
+					console.log(me);
+					//log.info("User data: " + me.name);
 
 					
 
