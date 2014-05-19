@@ -5,9 +5,7 @@ if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) log.erro
 if (typeof CDV == 'undefined') log.error('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
 if (typeof FB == 'undefined') log.error('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-// FB.Event.subscribe('auth.login', function(response) {
-// 										alert('auth.login event');
-// 									 });
+`
 
 // FB.Event.subscribe('auth.logout', function(response) {
 // 									 	alert('auth.logout event');
@@ -32,6 +30,7 @@ var facebook = {
 				 		log.info('logged to facebook');
 					} 
 					else {
+						console.log(response);
 						log.error('facebook login failed');
 					}
 				 },
@@ -50,7 +49,7 @@ var facebook = {
 					});
 	},
 	
-	friends: function (callback) {
+	getFriends: function (callback) {
 		var friendIDs = [];
 		var fdata;
 			FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
@@ -60,7 +59,7 @@ var facebook = {
 						 else {
 							//var friends = response.data;
 						 	response.data.forEach(function(item) {
-						 			callback(item.id);
+						 			callback(item);
 									 // var d = document.createElement('div');
 									 // d.innerHTML = "<img src="+item.picture+"/>"+item.name;
 									 // data.appendChild(d);

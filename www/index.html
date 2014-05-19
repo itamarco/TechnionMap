@@ -47,6 +47,7 @@
 
 
 		<div id="fb-root"></div>
+		<div id="events-root"></div>
 		<!-- cordova -->
 		
 		<!-- cordova facebook plugin -->
@@ -108,7 +109,7 @@
 		<script type="text/javascript">
 			var me = {};
 
-			function User(loc, id, name, picUrl){
+			var User = function(loc, id, name, picUrl){
 				this.loc = loc;
 				this.id = id;
 				this.name = name;
