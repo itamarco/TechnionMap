@@ -34,7 +34,10 @@ var app = {
 
 
 var EventsBus =  {
-    elem: document.getElementById("events-root"),
+    elem: "events-root",
+    init: function(){
+        this.elem = document.getElementById(elem);
+    },
     events: {
         'userLocationUpdate' : new Event('userLocationUpdate'),
         'facebookLogedIn' : new Event('facebookLogedIn'),
