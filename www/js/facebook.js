@@ -5,7 +5,6 @@ if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) log.erro
 if (typeof CDV == 'undefined') log.error('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
 if (typeof FB == 'undefined') log.error('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-`
 
 // FB.Event.subscribe('auth.logout', function(response) {
 // 									 	alert('auth.logout event');
