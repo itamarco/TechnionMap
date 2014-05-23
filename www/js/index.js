@@ -37,8 +37,8 @@ var EventsBus =  {
     elem: "events-root",
     init: function(){
         this.elem = document.getElementById(elem);
-        this.events['userLocationUpdate'] = new Event('userLocationUpdate'),
-        this.events['facebookLogedIn'] = new Event('facebookLogedIn'),
+        this.events['userLocationUpdate'] = new Event('userLocationUpdate');
+        this.events['facebookLogedIn'] = new Event('facebookLogedIn');
     
     },
     events: {},
