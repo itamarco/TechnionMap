@@ -107,7 +107,16 @@
 		
 
 		<script type="text/javascript">
-			var me = {};
+			///////// Globals ///////////
+			var me;
+			var map;
+			var position = {
+			    lng: "undef",
+			    lat: "undef"
+			};
+			var friendsData = [];
+			/////////////////////////////
+
 
 			var User = function(loc, id, name, picUrl){
 				this.loc = loc;
@@ -117,7 +126,7 @@
 			};
 
 			app.initialize();
-			var map;
+			
 
 			FB.Event.subscribe('auth.login', function(response) {
 				facebook.api('me','id,name,picture', function(res){
@@ -126,13 +135,21 @@
 
 						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
 						console.log(me);
-						addMarker(me);
 
 						var friendData = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
 
 						console.log(friendData);
-						addMarker(friendData);
+						friendsData.push(friendData);
+						updateMarkers();
 					});
+			});
+
+			EventsBus.subscribe('userLocationUpdate', function(){
+				if(typeof me === 'undefined')
+					return;
+
+				me.loc = position;
+				updateMarkers();
 			});
 
 			$(document).ready( function ()
@@ -196,6 +213,8 @@
 				});		
 			}
 
+
+
 			function addMarker(user){
 				map.addMarker({
 					lat: user.loc.lat,
@@ -218,6 +237,16 @@
 					}
 				});
 			}
+
+			function updateMarkers(){
+				map.removeMarkers();
+
+				addMarker(me);
+				friendsData.forEach(function(friend){
+					addMarker(friend);
+				});
+			}
+
 
 			function markerClick(user){
 				log.info(user.name);

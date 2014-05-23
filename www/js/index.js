@@ -77,6 +77,7 @@ var geoLocation = {
             position.lng = pos.coords.longitude;
             position.lat = pos.coords.latitude;
 
+            EventsBus.trigger('userLocationUpdate');
             log.info(position.lat);
 
             var text = "<div>Latitude: " + pos.coords.latitude + 
