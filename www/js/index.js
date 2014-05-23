@@ -33,26 +33,23 @@ var app = {
 };
 
 
-var EventsBus =  {
-    elem: document.getElementById("events-root"),
-    events: {
-        'userLocationUpdate' : new Event('userLocationUpdate'),
-        'facebookLogedIn' : new Event('facebookLogedIn'),
-    },
-    trigger: function(eventName, data){
-        this.elem.dispatchEvent(events.eventName); 
-    },
-    subscribe: function(eventName, callback){
-        this.elem.addEventListener(eventName, callback ,false);
-    }
-};
+// var EventsBus =  {
+//     elem: document.getElementById("events-root"),
+//     events: {
+//         'userLocationUpdate' : new Event('userLocationUpdate'),
+//         'facebookLogedIn' : new Event('facebookLogedIn'),
+//     },
+//     trigger: function(eventName, data){
+//         this.elem.dispatchEvent(events.eventName); 
+//     },
+//     subscribe: function(eventName, callback){
+//         this.elem.addEventListener(eventName, callback ,false);
+//     }
+// };
 
-var position = {
-    lng: "undef",
-    lat: "undef"
-};
 
-var geoLocation = {
+
+var GeoLocation = {
     campus_lng: 35.2264997,
     campus_lat: 31.654524800000003,
     get : function() {
@@ -77,7 +74,7 @@ var geoLocation = {
             position.lng = pos.coords.longitude;
             position.lat = pos.coords.latitude;
 
-            EventsBus.trigger('userLocationUpdate');
+            // EventsBus.trigger('userLocationUpdate');
             log.info(position.lat);
 
             var text = "<div>Latitude: " + pos.coords.latitude + 

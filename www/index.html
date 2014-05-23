@@ -21,7 +21,7 @@
 		<!-- Gmaps imports-->
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script type="text/javascript" src="js/gmaps.js"></script>
-		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 
 		<title>Technion Map</title>
@@ -111,8 +111,8 @@
 			var me;
 			var map;
 			var position = {
-			    lng: "undef",
-			    lat: "undef"
+			    lng: "undefined",
+			    lat: "undefined"
 			};
 			var friendsData = [];
 			/////////////////////////////
@@ -136,10 +136,10 @@
 						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
 						console.log(me);
 
-						var friendData = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
+						var friend1 = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
 
-						console.log(friendData);
-						friendsData.push(friendData);
+						console.log(friend1);
+						friendsData[friend1.id] = friend1;
 						updateMarkers();
 					});
 			});
@@ -151,14 +151,14 @@
 				me.loc = position;
 				updateMarkers();
 			});
-
+	
 			$(document).ready( function ()
 			{
 				facebook.init();
 				
 				//facebook.login();
 				//facebook.getLoginStatus();
-				geoLocation.get();
+				GeoLocation.get();
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
@@ -242,8 +242,8 @@
 				map.removeMarkers();
 
 				addMarker(me);
-				friendsData.forEach(function(friend){
-					addMarker(friend);
+				Object.keys(friendsData).forEach(function(id){
+					addMarker(friendsData[id]);
 				});
 			}
 
