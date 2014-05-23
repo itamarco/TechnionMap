@@ -33,19 +33,19 @@ var app = {
 };
 
 
-// var EventsBus =  {
-//     elem: document.getElementById("events-root"),
-//     events: {
-//         'userLocationUpdate' : new Event('userLocationUpdate'),
-//         'facebookLogedIn' : new Event('facebookLogedIn'),
-//     },
-//     trigger: function(eventName, data){
-//         this.elem.dispatchEvent(events.eventName); 
-//     },
-//     subscribe: function(eventName, callback){
-//         this.elem.addEventListener(eventName, callback ,false);
-//     }
-// };
+var EventsBus =  {
+    elem: document.getElementById("events-root"),
+    events: {
+        'userLocationUpdate' : new Event('userLocationUpdate'),
+        'facebookLogedIn' : new Event('facebookLogedIn'),
+    },
+    trigger: function(eventName){
+        this.elem.dispatchEvent(events.eventName); 
+    },
+    subscribe: function(eventName, callback){
+        this.elem.addEventListener(eventName, callback ,false);
+    }
+};
 
 
 
