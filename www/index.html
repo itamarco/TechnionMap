@@ -126,6 +126,7 @@
 			};
 
 			app.initialize();
+			EventsBus.init();
 			
 
 			FB.Event.subscribe('auth.login', function(response) {
@@ -144,13 +145,13 @@
 					});
 			});
 
-			// EventsBus.subscribe('userLocationUpdate', function(){
-			// 	if(typeof me === 'undefined')
-			// 		return;
+			EventsBus.subscribe('userLocationUpdate', function(){
+				if(typeof me === 'undefined')
+					return;
 
-			// 	me.loc = position;
-			// 	updateMarkers();
-			// });
+				me.loc = position;
+				updateMarkers();
+			});
 	
 			$(document).ready( function ()
 			{
