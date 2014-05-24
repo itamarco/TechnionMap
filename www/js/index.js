@@ -33,22 +33,22 @@ var app = {
 };
 
 
-var EventsBus =  {
-    elem: "events-root",
-    init: function(){
-        this.elem = document.getElementById(this.elem);
-        this.events['userLocationUpdate'] = new Event('userLocationUpdate');
-        this.events['facebookLogedIn'] = new Event('facebookLogedIn');
+// var EventsBus =  {
+//     elem: "events-root",
+//     init: function(){
+//         this.elem = document.getElementById(this.elem);
+//         this.events['userLocationUpdate'] = new Event('userLocationUpdate');
+//         this.events['facebookLogedIn'] = new Event('facebookLogedIn');
     
-    },
-    events: [],
-    trigger: function(eventName){
-        this.elem.dispatchEvent(this.events[eventName]); 
-    },
-    subscribe: function(eventName, callback){
-        this.elem.addEventListener(eventName, callback ,false);
-    }
-};
+//     },
+//     events: [],
+//     trigger: function(eventName){
+//         this.elem.dispatchEvent(this.events[eventName]); 
+//     },
+//     subscribe: function(eventName, callback){
+//         this.elem.addEventListener(eventName, callback ,false);
+//     }
+// };
 
 
 
@@ -79,7 +79,6 @@ var GeoLocation = {
             position.lat = pos.coords.latitude;
 
             // EventsBus.trigger('userLocationUpdate');
-            log.info(position.lat);
 
             var text = "<div>Latitude: " + pos.coords.latitude + 
                         "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + 
