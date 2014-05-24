@@ -41,7 +41,7 @@ var EventsBus =  {
         this.events['facebookLogedIn'] = new Event('facebookLogedIn');
     
     },
-    events: {},
+    events: [],
     trigger: function(eventName){
         this.elem.dispatchEvent(this.events[eventName]); 
     },
