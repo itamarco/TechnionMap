@@ -36,14 +36,14 @@ var app = {
 var EventsBus =  {
     elem: "events-root",
     init: function(){
-        this.elem = document.getElementById(elem);
+        this.elem = document.getElementById(this.elem);
         this.events['userLocationUpdate'] = new Event('userLocationUpdate');
         this.events['facebookLogedIn'] = new Event('facebookLogedIn');
     
     },
     events: {},
     trigger: function(eventName){
-        this.elem.dispatchEvent(this.events.eventName); 
+        this.elem.dispatchEvent(this.events[eventName]); 
     },
     subscribe: function(eventName, callback){
         this.elem.addEventListener(eventName, callback ,false);
@@ -57,8 +57,8 @@ var GeoLocation = {
     campus_lat: 31.654524800000003,
     get : function() {
         log.info("fetching geolocation");
-        navigator.geolocation.watchPosition(this.onSuccsess, this.onError);
-        // navigator.geolocation.getCurrentPosition(this.onSuccsess, this.onError);
+        // navigator.geolocation.watchPosition(this.onSuccsess, this.onError);
+        navigator.geolocation.getCurrentPosition(this.onSuccsess, this.onError);
     },
     onSuccsess : function(pos) {
         /*
