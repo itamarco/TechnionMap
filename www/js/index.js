@@ -43,7 +43,7 @@ var EventsBus =  {
     },
     events: {},
     trigger: function(eventName){
-        this.elem.dispatchEvent(events.eventName); 
+        this.elem.dispatchEvent(this.events.eventName); 
     },
     subscribe: function(eventName, callback){
         this.elem.addEventListener(eventName, callback ,false);
@@ -57,7 +57,8 @@ var GeoLocation = {
     campus_lat: 31.654524800000003,
     get : function() {
         log.info("fetching geolocation");
-        navigator.geolocation.getCurrentPosition(this.onSuccsess, this.onError);
+        navigator.geolocation.watchPosition(this.onSuccsess, this.onError);
+        // navigator.geolocation.getCurrentPosition(this.onSuccsess, this.onError);
     },
     onSuccsess : function(pos) {
         /*
@@ -77,7 +78,7 @@ var GeoLocation = {
             position.lng = pos.coords.longitude;
             position.lat = pos.coords.latitude;
 
-            EventsBus.trigger('userLocationUpdate');
+            // EventsBus.trigger('userLocationUpdate');
             log.info(position.lat);
 
             var text = "<div>Latitude: " + pos.coords.latitude + 
