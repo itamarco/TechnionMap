@@ -156,9 +156,9 @@
 				//facebook.login();
 				//facebook.getLoginStatus();
 				GeoLocation.get();
-				setTimeout(function(){
+				setInterval(function(){
 					log.info("timeout");
-				},5000);
+				},4000);
 				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
