@@ -155,7 +155,10 @@
 				
 				//facebook.login();
 				//facebook.getLoginStatus();
-				GeoLocation.get();
+				setTimeout(function(){
+					GeoLocation.get();
+				},5000)
+				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
