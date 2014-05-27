@@ -62,17 +62,16 @@ var GeoLocation = {
     },
     onSuccsess : function(pos) {
         /*
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + pos.coords.latitude              + '<br />' +
-                            'Longitude: '          + pos.coords.longitude             + '<br />' +
-                            'Altitude: '           + pos.coords.altitude              + '<br />' +
-                            'Accuracy: '           + pos.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + pos.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + pos.coords.heading               + '<br />' +
-                            'Speed: '              + pos.coords.speed                 + '<br />' +
-                            'Timestamp: '          +                                   pos.timestamp          + '<br />';
-                            
-        */              
+                'Latitude: '           + pos.coords.latitude              + '<br />' +
+                'Longitude: '          + pos.coords.longitude             + '<br />' +
+                'Altitude: '           + pos.coords.altitude              + '<br />' +
+                'Accuracy: '           + pos.coords.accuracy              + '<br />' +
+                'Altitude Accuracy: '  + pos.coords.altitudeAccuracy      + '<br />' +
+                'Heading: '            + pos.coords.heading               + '<br />' +
+                'Speed: '              + pos.coords.speed                 + '<br />' +
+                'Timestamp: '          + pos.timestamp                    + '<br />';
+        */                  
+        
         //data with map 
             
             position.lng = pos.coords.longitude;
