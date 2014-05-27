@@ -93,7 +93,13 @@
 		
 		<!-- cordova -->
 		<script src="cordova.js"></script>
+		<!-- cordova facebook plugin -->
+		<script src="cdv-plugin-fb-connect.js"></script>
+		<!-- facebook js sdk -->
+		<script src="facebook-js-sdk.js"></script>
 
+		<!-- our facebook settings -->
+		<script src="js/facebook.js"></script>		
 		<!-- our index.js scripts -->
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
@@ -119,21 +125,21 @@
 			// EventsBus.init();
 			
 
-			// FB.Event.subscribe('auth.login', function(response) {
-			// 	facebook.api('me','id,name,picture', function(res){
-			// 			console.log(position);
-			// 			me = new User(position, res.id, res.name, res.picture.data.url);
+			FB.Event.subscribe('auth.login', function(response) {
+				facebook.api('me','id,name,picture', function(res){
+						console.log(position);
+						me = new User(position, res.id, res.name, res.picture.data.url);
 
-			// 			$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
-			// 			console.log(me);
+						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
+						console.log(me);
 
-			// 			var friend1 = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
+						var friend1 = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
 
-			// 			console.log(friend1);
-			// 			friendsData[friend1.id] = friend1;
-			// 			updateMarkers();
-			// 		});
-			// });
+						console.log(friend1);
+						friendsData[friend1.id] = friend1;
+						updateMarkers();
+					});
+			});
 
 			// EventsBus.subscribe('userLocationUpdate', function(){
 			// 	if(typeof me === 'undefined')
@@ -144,13 +150,17 @@
 			// });
 	
 			$(document).ready( function ()
-			{	
+			{
+				facebook.init();
+				
+				//facebook.login();
+				//facebook.getLoginStatus();
 				GeoLocation.get();
 				setInterval(function(){
 					log.info("timeout");
 				},4000);
 				
-				$('#connectButton').click();
+				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
 					console.log(me);
