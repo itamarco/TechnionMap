@@ -84,17 +84,6 @@ var GeoLocation = {
                         "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + 
                         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
             $("#cur_position").html(text);
-            
-            initMap();
-            
-            // var mapwidth = $(window).width();//parseInt($('#map').css("width"), 10);  // remove 'px' from width value
-            // var mapheight = 180;//parseInt($('#map').css("height"), 10);
-            // //$('img#map').css('visibility','visible');
-            // $('img#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" + 
-            //     pos.coords.latitude + "," + pos.coords.longitude + 
-            //     "&zoom=13&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-            //     pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
-
     },
     onError : function(error) {
         log.error('code: '    + error.code    + '\n' +

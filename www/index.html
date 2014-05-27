@@ -107,8 +107,8 @@
 			var me;
 			var map;
 			var position = {
-			    lng: "undefined",
-			    lat: "undefined"
+			    lng: 35.2265681,
+			    lat: 31.6536556
 			};
 			var friendsData = [];
 			/////////////////////////////
@@ -122,10 +122,12 @@
 			};
 
 			app.initialize();
+			
 			// EventsBus.init();
 			
 
-			FB.Event.subscribe('auth.login', function(response) {
+			// FB.Event.subscribe('auth.login', function(response) {
+			function DEBUG_fb_login_event(){
 				facebook.api('me','id,name,picture', function(res){
 						console.log(position);
 						me = new User(position, res.id, res.name, res.picture.data.url);
@@ -137,9 +139,11 @@
 
 						console.log(friend1);
 						friendsData[friend1.id] = friend1;
+
 						updateMarkers();
 					});
-			});
+			}
+			// });
 
 			// EventsBus.subscribe('userLocationUpdate', function(){
 			// 	if(typeof me === 'undefined')
@@ -152,13 +156,14 @@
 			$(document).ready( function ()
 			{
 				facebook.init();
-				
+				initGmap();	
 				//facebook.login();
 				//facebook.getLoginStatus();
 				GeoLocation.get();
-				setInterval(function(){
-					log.info("timeout");
-				},4000);
+				setTimeout(DEBUG_fb_login_event,5000);
+				// setInterval(function(){
+				// 	log.info("timeout");
+				// },4000);
 				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
@@ -205,7 +210,8 @@
 				log.info("Data recieved:" + data.userID); //show json answer in console
 			}
 
-			function initMap(){
+			function initGmap(){
+				console.log(position);
 				map = new GMaps({
 					el: '#mapDiv',
 					lat: position.lat,
