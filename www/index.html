@@ -131,6 +131,10 @@
 				facebook.api('me','id,name,picture', function(res){
 						console.log(position);
 						me = new User(position, res.id, res.name, res.picture.data.url);
+						Server.request({get:"friends"}, function(data){
+							log.info(data);
+						});
+						
 
 						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
 						console.log(me);
@@ -138,10 +142,19 @@
 						var friend1 = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
 
 						console.log(friend1);
+
+
 						friendsData[friend1.id] = friend1;
 
-						updateMarkers();
+						
 					});
+				Server.request("friends")
+				facebook.api('me/friends','id,name,picture',function(res){
+					res.data.forEach(function(friend){
+
+					});
+				});
+				updateMarkers();
 			}
 			// });
 
@@ -169,36 +182,6 @@
 				$('#friendsButton').click(function(){
 
 					console.log(me);
-					//log.info("User data: " + me.name);
-
-					
-
-					// facebook.api('me/friends', 'id,name,picture', function(response){
-					// 		response.data.forEach(function(item){
-					// 		log.info(item.name);
-					// 	});
-					// });
-
-					
-					// facebook.getLoginStatus();
-					// document.location.href='#welcome';
-					// facebook.me();
-					// network.login();
-
-
-
-
-					// $.getJSON( server_address + "?callback=?", 
-					// 	{ 
-					// 		"userID": "0507857244",
-					// 		"location":{
-					// 						"longitude" : "43.2343", 
-					// 						"latitude"  : "65.343" 
-					// 					},
-					// 		"key":"our_secret_key"
-					// 	}, 
-					// 	jsonParser
-					// );  
 				});
 
 
@@ -223,6 +206,9 @@
 
 
 			function addMarker(user){
+				if(!isValidUser(user)){
+					return;
+				}
 				map.addMarker({
 					lat: user.loc.lat,
 					lng: user.loc.lng,
@@ -257,6 +243,25 @@
 
 			function markerClick(user){
 				log.info(user.name);
+			}
+
+			function isValidUser(user){
+				if(typeof user === 'undefined')
+					return false;
+				if(typeof user.id === 'undefined')
+					return false;
+				if(typeof user.name === 'undefined')
+					return false;
+				if(typeof user.pic === 'undefined')
+					return false;
+				if(typeof user.loc === 'undefined')
+					return false;
+				if(typeof user.loc.lat === 'undefined')
+					return false;
+				if(typeof user.loc.lng === 'undefined')
+					return false;
+
+				return true;
 			}
 		</script>
 

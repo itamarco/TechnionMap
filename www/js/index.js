@@ -84,19 +84,34 @@ var GeoLocation = {
                         "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + 
                         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
             $("#cur_position").html(text);
+            if(typeof me !== 'undefined'){
+                me.loc = position;
+                updateMarkers();
+            }         
+            
     },
     onError : function(error) {
-        log.error('code: '    + error.code    + '\n' +
+        log.error('[GeoLocation] code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
+        delete me.loc;
     }
 };
 
-var server = {
+var Server = {
     host: "127.0.0.1",
-    responseJson: {},
+    init: function(userId){
+        this.userId = userId;
+    },
     request: function(jsonRequest, callBack){
         //this.ajaxCall(jsonRequest,callBack);
-        callBack(jsonRequest);
+        jsonRequest.user = me;
+        console.log(jsonRequest);
+
+        respone = "ok server!!";
+        callBack(respone);
+    },
+    connectionError: function(){
+        log.error("[Server] Can not connect to server");
     },
     ajaxCall: function(jsonRequest, callBack){
         $.ajax({
