@@ -86,7 +86,8 @@ var GeoLocation = {
             $("#cur_position").html(text);
             if(typeof me !== 'undefined'){
                 me.loc = position;
-                updateMarkers();
+                map.updateMarkers();
+                server.set({location: position});
             }         
             
     },
@@ -97,23 +98,40 @@ var GeoLocation = {
     }
 };
 
-var Server = {
-    host: "127.0.0.1",
-    init: function(userId){
-        this.userId = userId;
-    },
-    request: function(jsonRequest, callBack){
-        //this.ajaxCall(jsonRequest,callBack);
-        jsonRequest.user = me;
+function Server(userId){
+    this.userId = userId;
+    this.host = "127.0.0.1";
+    this.set = function(property, value){
+        var jsonRequest = {
+            method: "set",
+            userId: this.userId,
+            property: property,
+            value: value
+        }
+        console.log(jsonRequest);
+    };
+    this.get = function(property, callBack){
+        var jsonRequest = {
+            method: "get",
+            userId: this.userId,
+            property: property
+        }
         console.log(jsonRequest);
 
-        respone = "ok server!!";
+        respone = {
+            status:"success",
+            data: [
+                {id: 698687482, loc: {lat: position.lat - 0.0012, lng: position.lng - 0.002}},
+                {id: 554861654, loc: {lat: position.lat - 0.0002, lng: position.lng + 0.002}},
+                {id: 749873231, loc:{lat: position.lat - 0.0004, lng: position.lng + 0.008}}
+            ]
+        };
         callBack(respone);
-    },
-    connectionError: function(){
+    };
+    this.connectionError = function(){
         log.error("[Server] Can not connect to server");
-    },
-    ajaxCall: function(jsonRequest, callBack){
+    };
+    this.ajaxCall = function(jsonRequest, callBack){
         $.ajax({
            type: 'POST',
             url: this.host,
@@ -141,9 +159,5 @@ var Server = {
                 }
             }
         });
-    },
-
-    getData: function(){
-
-    }
+    };
 };

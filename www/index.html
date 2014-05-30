@@ -106,11 +106,14 @@
 			///////// Globals ///////////
 			var me;
 			var map;
+			var server;
 			var position = {
 			    lng: 35.2265681,
 			    lat: 31.6536556
 			};
-			var friendsData = [];
+			var friends = {}; 
+			var activeFriends  = {};
+			var intervalTime = 10*1000;
 			/////////////////////////////
 
 
@@ -123,78 +126,75 @@
 
 			app.initialize();
 			
-			// EventsBus.init();
-			
-
-			// FB.Event.subscribe('auth.login', function(response) {
-			function DEBUG_fb_login_event(){
-				facebook.api('me','id,name,picture', function(res){
-						console.log(position);
-						me = new User(position, res.id, res.name, res.picture.data.url);
-						Server.request({get:"friends"}, function(data){
-							log.info(data);
-						});
-						
-
-						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
-						console.log(me);
-
-						var friend1 = new User({lat: position.lat - 0.0002, lng: position.lng + 0.002}, "554861654", "Avichai Rubin", "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c0.3.50.50/p50x50/1509892_10152077195916655_1008896354_t.jpg" );
-
-						console.log(friend1);
-
-
-						friendsData[friend1.id] = friend1;
-
-						
-					});
-				Server.request("friends")
-				facebook.api('me/friends','id,name,picture',function(res){
-					res.data.forEach(function(friend){
-
-					});
-				});
-				updateMarkers();
-			}
-			// });
-
-			// EventsBus.subscribe('userLocationUpdate', function(){
-			// 	if(typeof me === 'undefined')
-			// 		return;
-
-			// 	me.loc = position;
-			// 	updateMarkers();
-			// });
-	
-			$(document).ready( function ()
-			{
+			$(document).ready( function (){
 				facebook.init();
 				initGmap();	
 				//facebook.login();
-				//facebook.getLoginStatus();
 				GeoLocation.get();
 				setTimeout(DEBUG_fb_login_event,5000);
-				// setInterval(function(){
-				// 	log.info("timeout");
-				// },4000);
+
 				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
 
-					console.log(me);
 				});
+			}); 
+			
 
+			// FB.Event.subscribe('auth.login', function(response) {
+			function DEBUG_fb_login_event(){
+				// get user data
+				facebook.api('me','id,name,picture', function(res){
+						me = new User(position, res.id, res.name, res.picture.data.url);
+						
+						server =  new Server(res.id);
 
-				//  Gmaps init
-				// initMap();
-			}); // end of document.ready
+						server.set("location", position);
+						map.addPerson(me);
+						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
+						
+					});
+				
+				
+
+				//get friends data;
+				facebook.api('me/friends','id,name,picture',function(res){
+					res.data.forEach(function(friend){
+						friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
+
+						});
+						
+					//update new friends in servver
+					server.set("friends",friends);
+
+					//periodically get friends locations from server
+					(function friendsLocation(){
+						server.get("friends", function(response){
+							activeFriends = [];
+							d("delete actives");
+							d(activeFriends);
+							response.data.forEach(function(friend){
+								if(friend.id in friends){
+									friends[friend.id].loc = friend.loc;
+									activeFriends.push(friends[friend.id]);
+								}
+							});
+							//add friends to map
+							map.updateMarkers();
+						});
+						//repeat
+						setTimeout(friendsLocation, intervalTime);
+					})();
+				});
+				
+			}
+
 
 			function jsonParser(data){
 				log.info("Data recieved:" + data.userID); //show json answer in console
 			}
 
 			function initGmap(){
-				console.log(position);
 				map = new GMaps({
 					el: '#mapDiv',
 					lat: position.lat,
@@ -205,11 +205,11 @@
 
 
 
-			function addMarker(user){
-				if(!isValidUser(user)){
+			GMaps.prototype.addPerson = function(user){
+				if(!user.isValid()){
 					return;
 				}
-				map.addMarker({
+				this.addMarker({
 					lat: user.loc.lat,
 					lng: user.loc.lng,
 					title: 'Lima',
@@ -226,42 +226,44 @@
 						author: 'HPNeo'
 					},
 					click: function() {
-						markerClick(user);
+						this.markerClick(user);
 					}
 				});
 			}
 
-			function updateMarkers(){
-				map.removeMarkers();
+			GMaps.prototype.updateMarkers = function(){
+				this.removeMarkers();
 
-				addMarker(me);
-				Object.keys(friendsData).forEach(function(id){
-					addMarker(friendsData[id]);
-				});
-			}
+				this.addPerson(me);
+				for(var i in activeFriends){
+					map.addPerson(activeFriends[i]);
+				}
+			};
 
 
-			function markerClick(user){
+			GMaps.prototype.markerClick = function(user){
 				log.info(user.name);
 			}
 
-			function isValidUser(user){
-				if(typeof user === 'undefined')
+			User.prototype.isValid = function(){
+				if(typeof this.id === 'undefined')
 					return false;
-				if(typeof user.id === 'undefined')
+				if(typeof this.name === 'undefined')
 					return false;
-				if(typeof user.name === 'undefined')
+				if(typeof this.pic === 'undefined')
 					return false;
-				if(typeof user.pic === 'undefined')
+				if(typeof this.loc === 'undefined')
 					return false;
-				if(typeof user.loc === 'undefined')
+				if(typeof this.loc.lat === 'undefined')
 					return false;
-				if(typeof user.loc.lat === 'undefined')
-					return false;
-				if(typeof user.loc.lng === 'undefined')
+				if(typeof this.loc.lng === 'undefined')
 					return false;
 
 				return true;
+			}
+
+			function d(text){
+				console.log(text);
 			}
 		</script>
 

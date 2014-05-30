@@ -60,7 +60,7 @@ var facebook = {
 							}
   						}
 				};
-			}else if (request == 'friends'){
+			}else if (request == 'me/friends'){
 				response = myFriendsResponse;
 			}else {
 				response = {
