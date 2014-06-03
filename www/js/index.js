@@ -1,5 +1,5 @@
 
-var app = {
+var App = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -83,32 +83,64 @@ var GeoLocation = {
                         "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + 
                         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
             $("#cur_position").html(text);
+            if(typeof me !== 'undefined'){
+                me.loc = position;
+                map.updateMarkers();
+                server.set({location: position});
+            }         
             
-            initMap();
-            
-            // var mapwidth = $(window).width();//parseInt($('#map').css("width"), 10);  // remove 'px' from width value
-            // var mapheight = 180;//parseInt($('#map').css("height"), 10);
-            // //$('img#map').css('visibility','visible');
-            // $('img#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" + 
-            //     pos.coords.latitude + "," + pos.coords.longitude + 
-            //     "&zoom=13&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-            //     pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
-
     },
     onError : function(error) {
-        log.error('code: '    + error.code    + '\n' +
+        log.error('[GeoLocation] code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
+        delete me.loc;
     }
 };
 
-var server = {
-    host: "127.0.0.1",
-    responseJson: {},
-    request: function(jsonRequest, callBack){
-        //this.ajaxCall(jsonRequest,callBack);
-        callBack(jsonRequest);
-    },
-    ajaxCall: function(jsonRequest, callBack){
+function Server(userId){
+    this.userId = userId;
+    this.host = "http://localhost:8888";
+
+    this.setHost = function(host){
+        this.host = host;
+    };
+    this.set = function(property, value){
+        var jsonRequest = {
+            method: "set",
+            userId: this.userId,
+            property: property,
+            value: value
+        }
+        this.ajaxCall(jsonRequest, function(res){
+            d(res);
+        });
+    };
+    this.get = function(property, callBack){
+        var jsonRequest = {
+            method: "POST",
+            userId: this.userId,
+            property: property
+        }
+
+        this.ajaxCall(jsonRequest, function(res){
+            d(res);
+        });
+
+        respone = {
+            status:"success",
+            data: [
+                {id: 698687482, loc: {lat: position.lat - 0.0012, lng: position.lng - 0.002}},
+                {id: 554861654, loc: {lat: position.lat - 0.0002, lng: position.lng + 0.002}},
+                {id: 749873231, loc:{lat: position.lat - 0.0004, lng: position.lng + 0.008}}
+            ]
+        };
+        callBack(respone);
+    };
+    this.connectionError = function(){
+        log.error("[Server] Can not connect to server");
+    };
+    
+    this.ajaxCall = function(jsonRequest, callBack){
         $.ajax({
            type: 'POST',
             url: this.host,
@@ -116,29 +148,24 @@ var server = {
             crossDomain: true,
             contentType: 'application/json',
             dataType: 'jsonp',
-            jsonpCallback: 'jsonParser',
             success: callBack,
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
-                    alert('Not connect.\n Verify Network.');
+                    d('Not connect. Verify Network.');
                 } else if (jqXHR.status == 404) {
-                    alert('Requested page not found. [404]');
+                    d('Requested page not found. [404]');
                 } else if (jqXHR.status == 500) {
-                    alert('Internal Server Error [500].');
+                    d('Internal Server Error [500].');
                 } else if (exception === 'parsererror') {
-                    alert('Requested JSON parse failed.');
+                    d('Requested JSON parse failed.');
                 } else if (exception === 'timeout') {
-                    alert('Time out error.');
+                    d('Time out error.');
                 } else if (exception === 'abort') {
-                    alert('Ajax request aborted.');
+                    d('Ajax request aborted.');
                 } else {
-                    alert('Uncaught Error.\n' + jqXHR.responseText);
+                    d('Uncaught Error.\n' + jqXHR.responseText);
                 }
             }
         });
-    },
-
-    getData: function(){
-
-    }
+    };
 };
