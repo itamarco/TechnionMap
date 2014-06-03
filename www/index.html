@@ -112,7 +112,7 @@
 			    lat: 31.6536556
 			};
 			var friends = {}; 
-			var activeFriends  = {};
+			var activeFriends  = [];
 			var intervalTime = 10*1000;
 			/////////////////////////////
 
@@ -124,7 +124,7 @@
 				this.pic = picUrl;
 			};
 
-			app.initialize();
+			App.initialize();
 			
 			$(document).ready( function (){
 				facebook.init();
@@ -171,8 +171,6 @@
 					(function friendsLocation(){
 						server.get("friends", function(response){
 							activeFriends = [];
-							d("delete actives");
-							d(activeFriends);
 							response.data.forEach(function(friend){
 								if(friend.id in friends){
 									friends[friend.id].loc = friend.loc;
@@ -187,11 +185,6 @@
 					})();
 				});
 				
-			}
-
-
-			function jsonParser(data){
-				log.info("Data recieved:" + data.userID); //show json answer in console
 			}
 
 			function initGmap(){

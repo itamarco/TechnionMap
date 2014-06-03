@@ -1,5 +1,5 @@
 
-var app = {
+var App = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -100,7 +100,11 @@ var GeoLocation = {
 
 function Server(userId){
     this.userId = userId;
-    this.host = "127.0.0.1";
+    this.host = "http://localhost:8888";
+
+    this.setHost = function(host){
+        this.host = host;
+    };
     this.set = function(property, value){
         var jsonRequest = {
             method: "set",
@@ -108,15 +112,20 @@ function Server(userId){
             property: property,
             value: value
         }
-        console.log(jsonRequest);
+        this.ajaxCall(jsonRequest, function(res){
+            d(res);
+        });
     };
     this.get = function(property, callBack){
         var jsonRequest = {
-            method: "get",
+            method: "POST",
             userId: this.userId,
             property: property
         }
-        console.log(jsonRequest);
+
+        this.ajaxCall(jsonRequest, function(res){
+            d(res);
+        });
 
         respone = {
             status:"success",
@@ -131,6 +140,7 @@ function Server(userId){
     this.connectionError = function(){
         log.error("[Server] Can not connect to server");
     };
+    
     this.ajaxCall = function(jsonRequest, callBack){
         $.ajax({
            type: 'POST',
@@ -139,23 +149,22 @@ function Server(userId){
             crossDomain: true,
             contentType: 'application/json',
             dataType: 'jsonp',
-            jsonpCallback: 'jsonParser',
             success: callBack,
             error: function (jqXHR, exception) {
                 if (jqXHR.status === 0) {
-                    alert('Not connect.\n Verify Network.');
+                    d('Not connect. Verify Network.');
                 } else if (jqXHR.status == 404) {
-                    alert('Requested page not found. [404]');
+                    d('Requested page not found. [404]');
                 } else if (jqXHR.status == 500) {
-                    alert('Internal Server Error [500].');
+                    d('Internal Server Error [500].');
                 } else if (exception === 'parsererror') {
-                    alert('Requested JSON parse failed.');
+                    d('Requested JSON parse failed.');
                 } else if (exception === 'timeout') {
-                    alert('Time out error.');
+                    d('Time out error.');
                 } else if (exception === 'abort') {
-                    alert('Ajax request aborted.');
+                    d('Ajax request aborted.');
                 } else {
-                    alert('Uncaught Error.\n' + jqXHR.responseText);
+                    d('Uncaught Error.\n' + jqXHR.responseText);
                 }
             }
         });
