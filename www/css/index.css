@@ -40,7 +40,7 @@ body {
 		font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 		font-size:12px;
 		height:100%;
-		margin:5px;
+		margin:0px;
 		padding:0px;
 		width:100%;
 }
@@ -103,7 +103,8 @@ h1 {
 	width:30%;
 	text-overflow: ellipsis; 
 }
-/*
+
+
 .overlay{
 	display:block;
 	text-align:center;
@@ -137,4 +138,4 @@ h1 {
 	border-left:16px solid transparent;
 	border-right:16px solid transparent;
 	border-bottom:16px solid #336699;
-}*/
+}
