@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
 		<link rel="stylesheet" href="css/index.css" />
@@ -54,8 +54,23 @@
 			<div data-role="header" id="userData">Technion interactive sMap</div>
 					<div id="fb-root"></div>
 					
-			<div role="main" class="ui-content">
-				<div id="mapDiv"></div>
+			<div role="main" class="ui-content" id="mapDiv">
+
+			</div>
+			<div data-role="footer">(c) Technion foursquare</div>
+		</div>
+
+		<!-- ------------------------------------------------------------------------------ -->
+		<!-- --------------------------------- ??? Page---------------------------------- -->
+		<!-- ------------------------------------------------------------------------------ -->
+		<div data-role="page" id="aaaaa">
+			<div data-role="header"></div>
+			<div data-role="content">
+
+
+
+
+				<div></div>
 				<div id="floatingNav">
 					<h3>Position</h3>
 					<p id="cur_position"></p>
@@ -70,16 +85,9 @@
 			 	<div data-role="popup" datd-theme="e" id="noNetwork">
 					<p>No network connection detected.<br>You have to be online.</p>
 				</div>
-			</div>
-			<div data-role="footer">(c) Technion foursquare</div>
-		</div>
 
-		<!-- ------------------------------------------------------------------------------ -->
-		<!-- --------------------------------- ??? Page---------------------------------- -->
-		<!-- ------------------------------------------------------------------------------ -->
-		<div data-role="page" id="aaaaa">
-			<div data-role="header"></div>
-			<div data-role="content">
+
+
 
 			</div>
 			<div data-role="footer"></div>
