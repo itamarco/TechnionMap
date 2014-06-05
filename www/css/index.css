@@ -98,7 +98,8 @@ h1 {
 
 #mapDiv{
 	position:fixed !important;
-position:absolute;
+
+width:90%;
 top:0;
 right:0;
 bottom:0;
