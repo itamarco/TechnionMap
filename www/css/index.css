@@ -96,14 +96,13 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-#header{
-	 height: 75px; top: 0; 
-}
 #mapDiv{
-	top: 75px; bottom: 50px; 
-}
-#buttom{
-	height: 50px; bottom: 0;
+	position:fixed !important;
+position:absolute;
+top:0;
+right:0;
+bottom:0;
+left:0;
 }
 
 #floatingNav {
