@@ -40,6 +40,25 @@
 					$(this.outlet).append(info + ": ").append(data).append("<br/>");
 				}
 			};
+
+
+			function doOnOrientationChange()
+			{
+				switch(window.orientation) 
+				{  
+				  case -90:
+				  case 90:
+					alert('landscape');
+					break; 
+				  default:
+					alert('portrait');
+					break; 
+				}
+			}
+			window.addEventListener('orientationchange', doOnOrientationChange);
+
+			// Initial execution if needed
+			doOnOrientationChange();
 		</script>
 
 
@@ -67,7 +86,7 @@
 					<p id="logData"></p>
 				</div>
 				<!-- Msgs -->
-			 	<div data-role="popup" datd-theme="e" id="noNetwork">
+				<div data-role="popup" datd-theme="e" id="noNetwork">
 					<p>No network connection detected.<br>You have to be online.</p>
 				</div>
 			</div>
@@ -107,8 +126,8 @@
 			var map;
 			var server;
 			var position = {
-			    lng: 35.2265681,
-			    lat: 31.6536556
+				lng: 35.2265681,
+				lat: 31.6536556
 			};
 			var friends = {}; 
 			var activeFriends  = [];
@@ -212,7 +231,7 @@
 							height: 50
 						}
 					},
-  					//shadow: 'schools_maps.shadow.png',
+					//shadow: 'schools_maps.shadow.png',
 					details: {
 						database_id: 42,
 						author: 'HPNeo'
