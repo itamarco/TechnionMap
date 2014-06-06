@@ -42,23 +42,23 @@
 			};
 
 
-			function doOnOrientationChange()
+			function onOrientationChange()
 			{
 				switch(window.orientation) 
 				{  
 				  case -90:
 				  case 90:
-					alert('landscape');
+					d('landscape');
 					break; 
 				  default:
-					alert('portrait');
+					d('portrait');
 					break; 
 				}
 			}
-			window.addEventListener('orientationchange', doOnOrientationChange);
+			window.addEventListener('orientationchange', onOrientationChange);
 
 			// Initial execution if needed
-			doOnOrientationChange();
+			orientationChange();
 		</script>
 
 
@@ -70,27 +70,28 @@
 		<!-- --------------------------------  Login Page  -------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="login" data-theme="b">
-			<div data-role="header" id="userData">Technion interactive sMap</div>
+			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive sMap</div>
 					<div id="fb-root"></div>
 					
 			<div role="main" class="ui-content" id="mapDiv">
-				<div></div>
-				<div id="floatingNav">
-					<h3>Position</h3>
-					<p id="cur_position"></p>
-					<button id="connectButton">Login</button>
-					<button id="friendsButton">Data</button>
-				</div>
-				<div id= "floatingLog">
-					<h3>log</h3>
-					<p id="logData"></p>
-				</div>
+				
 				<!-- Msgs -->
 				<div data-role="popup" datd-theme="e" id="noNetwork">
 					<p>No network connection detected.<br>You have to be online.</p>
 				</div>
 			</div>
-			<div data-role="footer">(c) Technion foursquare</div>
+			<div class="floatingNav"id="userData"></div>
+			<div class="floatingNav">
+				<h3>Position</h3>
+				<p id="cur_position"></p>
+				<button id="connectButton">Login</button>
+				<button id="friendsButton">Data</button>
+			</div>
+			<div class="floatingNav">
+				<h3>log</h3>
+				<p id="logData"></p>
+			</div>
+			<div class="ui-footer ui-footer-fullscreen ui-bar-a ui-footer-fixed slideup" data-fullscreen="true" data-position="fixed" data-theme="a" data-role="footer" role="contentinfo">(c) Technion foursquare</div>
 		</div>
 
 		<!-- ------------------------------------------------------------------------------ -->

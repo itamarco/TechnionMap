@@ -98,25 +98,18 @@ h1 {
 
 #mapDiv{
 	position:fixed !important;
-
-width:90%;
-top:0;
-right:0;
-bottom:0;
-left:0;
+	width:100%;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
 }
 
-#floatingNav {
+.floatingNav {
 		position:relative;
 		top: 60px; 
 		left:40px;
 		width: 20%;
 }
 
-#floatingLog{
-	position: relative;
-	top: 60px;
-	left: 40px;	
-	width:30%;
-	text-overflow: ellipsis; 
-}
+
