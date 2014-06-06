@@ -70,15 +70,10 @@
 		<!-- --------------------------------  Login Page  -------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="login" data-theme="b">
-			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive sMap</div>
-					<div id="fb-root"></div>
+			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
+			<div id="fb-root"></div>
 					
 			<div role="main" class="ui-content" id="mapDiv">
-				
-				<!-- Msgs -->
-				<div data-role="popup" datd-theme="e" id="noNetwork">
-					<p>No network connection detected.<br>You have to be online.</p>
-				</div>
 			</div>
 			<div class="floatingNav"id="userData"></div>
 			<div class="floatingNav">
@@ -91,7 +86,11 @@
 				<h3>log</h3>
 				<p id="logData"></p>
 			</div>
-			<div class="ui-footer ui-footer-fullscreen ui-bar-a ui-footer-fixed slideup" data-fullscreen="true" data-position="fixed" data-theme="a" data-role="footer" role="contentinfo">(c) Technion foursquare</div>
+			<!-- Msgs -->
+			<div data-role="popup" datd-theme="e" id="noNetwork">
+				<p>No network connection detected.<br>You have to be online.</p>
+			</div>
+			<div class="ui-footer ui-footer-fullscreen ui-bar-a ui-footer-fixed slideup" data-fullscreen="true" data-position="fixed" data-theme="a" data-role="footer" role="contentinfo">(c) Itamar Cohen & Yakir udi</div>
 		</div>
 
 		<!-- ------------------------------------------------------------------------------ -->
