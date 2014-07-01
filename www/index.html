@@ -58,7 +58,7 @@
 			window.addEventListener('orientationchange', onOrientationChange);
 
 			// Initial execution if needed
-			orientationChange();
+			onOrientationChange();
 		</script>
 
 
@@ -117,7 +117,7 @@
 		<script src="facebook-js-sdk.js"></script>
 
 		<!-- our facebook settings -->
-		<script src="js/facebook.js"></script>		
+		<script src="js/facebook.js"></script>      
 		<!-- our index.js scripts -->
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
@@ -126,8 +126,8 @@
 			var map;
 			var server;
 			var position = {
-				lng: 35.2265681,
-				lat: 31.6536556
+				lat: 32.777522,
+				lng: 35.023138,
 			};
 			var friends = {}; 
 			var activeFriends  = [];
@@ -146,7 +146,7 @@
 			
 			$(document).ready( function (){
 				facebook.init();
-				initGmap();	
+				initGmap(); 
 				//facebook.login();
 				GeoLocation.get();
 				setTimeout(DEBUG_fb_login_event,5000);
@@ -204,14 +204,69 @@
 				});
 				
 			}
-
+			// bounds of the desired area
+			var allowedBounds = new google.maps.LatLngBounds(
+			     new google.maps.LatLng( 32.778050, 35.020852 ), 
+			     new google.maps.LatLng(32.776129, 35.024275)
+			);
+			
+			var lastValidCenter;
 			function initGmap(){
 				map = new GMaps({
 					el: '#mapDiv',
 					lat: position.lat,
 					lng: position.lng,
 					zoom:16
-				});		
+				});
+
+				var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
+				var neNew = new google.maps.LatLng(32.780134, 35.027484);
+				var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
+
+				map.fitBounds( boundsNew ); 
+				lastValidCenter = map.getCenter();
+
+				google.maps.event.addListener(map, 'center_changed', function() {
+					d("center");
+				    if (allowedBounds.contains(map.getCenter())) {
+				        // still within valid bounds, so save the last valid position
+				        lastValidCenter = map.getCenter();
+				        return; 
+				    }
+
+				    // not valid anymore => return to last valid position
+				    map.panTo(lastValidCenter);
+				});
+				// map.drawOverlay({
+				// 	lat: map.getCenter().lat(),
+				// 	lng: map.getCenter().lng(),
+				// 	content: '<img src="img/campusMap.png"/>',
+				// 	verticalAlign: 'center',
+				// 	horizontalAlign: 'center'
+				// });       
+
+				
+				
+				var ulman = new google.maps.LatLng(32.777522, 35.023138);
+
+				var mapOptions = {
+				zoom: 16,
+				center: ulman
+				};	
+
+				map = new google.maps.Map(document.getElementById('mapDiv'),
+				  mapOptions);				
+			
+				var swNew = new google.maps.LatLng( 32.772556, 35.014608 );
+				var neNew = new google.maps.LatLng( 32.781748, 35.029956 );
+				var campusBounds = new google.maps.LatLngBounds( swNew, neNew );
+
+				var campusOverlay = new google.maps.GroundOverlay(
+					'img/campusMap.png',
+					campusBounds);
+
+				campusOverlay.setMap(map);
+				
 			}
 
 

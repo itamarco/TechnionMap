@@ -53,8 +53,8 @@ var App = {
 
 
 var GeoLocation = {
-    campus_lng: 35.2264997,
-    campus_lat: 31.654524800000003,
+    campus_lat: 32.777522,
+    campus_lng: 35.023138,
     get : function() {
         log.info("fetching geolocation");
         navigator.geolocation.watchPosition(this.onSuccsess, this.onError);
