@@ -1,2 +1,4 @@
 *.sublime-workspace
 TechMap_Sublime.sublime-workspace
+/nbproject/private/
+/nodejs/nbproject/private/
