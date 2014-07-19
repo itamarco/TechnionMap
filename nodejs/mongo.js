@@ -8,18 +8,19 @@ var Collections = ["users"];
 var db = mongojs.connect(mongoUrl + dbName, Collections);
 /////////////////////////////////////////////////////////
 
+exports.ERR = "error";
+exports.NO_DATA = "No data found";
 
-
-exports.find = function(token, callback){
-    var dfd = Q.deffered();
+exports.find = function(token){
+    var dfd = Q.defer();
     db.users.find(token, function(err, data) {
             if( err ){
                     dfd.reject("error");
             } else if (!data){
-                    dfd.reject("No data found");	
+                    dfd.resolve(NO_DATA);	
             } 
             else {
-                dfd.response(data);
+                dfd.resolve(data);
             }
     });
     return dfd.promise;
@@ -36,6 +37,10 @@ exports.find_n_response = function(token, responser){
 			responser.sendJson(data);
 		}
 	});
+};
+
+exports.insert = function(data){
+    db.users.insert(data);
 };
 
 exports.update = function(condition, data){
@@ -67,11 +72,11 @@ exports.k = function(p){
 
 
 
-exports.doSomethingAsync = function (s) {
+exports.asyn = function (s) {
   var deferred = Q.defer();
-
+  d("in async");
   setTimeout(function() {
-    deferred.resolve(s);
+    deferred.resolve(s+1);
   }, 2000);
 
   return deferred.promise;
