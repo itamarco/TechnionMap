@@ -28,6 +28,21 @@ exports.userLogin = function(user, callback){
         .done();
 };
 
+exports.updateFriendsList = function(friendsData , callback){
+//  friendsData = {
+//      userId: 1002,
+//      list:[
+//        10,12,14,16  
+//      ]
+//  };
+  
+  var uid = friendsData.userId;
+  var friends = friendsData.list;
+  
+  db.update({"userId":uid}, {$pushAll:{"friends":friends}});
+  
+};
+
 
 
 function d(txt){
