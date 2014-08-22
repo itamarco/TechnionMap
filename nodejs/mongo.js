@@ -8,16 +8,13 @@ var Collections = ["users"];
 var db = mongojs.connect(mongoUrl + dbName, Collections);
 /////////////////////////////////////////////////////////
 
-exports.ERR = "error";
-exports.NO_DATA = "No data found";
-
 exports.find = function(token){
     var dfd = Q.defer();
     db.users.find(token, function(err, data) {
             if( err ){
-                    dfd.reject("error");
-            } else if (!data){
-                    dfd.resolve(NO_DATA);	
+                   dfd.reject("error");
+            } else if (!data || data.length === 0){
+                   dfd.resolve("No data found");	
             } 
             else {
                 dfd.resolve(data);
@@ -82,6 +79,9 @@ exports.asyn = function (s) {
   return deferred.promise;
 }
 
+exports.remove = function(query){
+    db.users.remove(query);
+}
 function d(txt){
 	console.log(txt)
 };

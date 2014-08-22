@@ -8,16 +8,16 @@ function getTimestamp(){
 }
 
 exports.userLogin = function(user, callback){
-    d(getTimestamp());
     db.find({userId: user.userId})
         .then(function(data){
-            if(data === db.NO_DATA){
+            d(data);
+            if(data === "No data found"){
                 return db.insert(user);
             } else {
                 return db.update(
                             {userId: user.userId},
                             {$set:
-                                    {location: user.location,
+                               {location: user.location,
                                 lastUpdate: getTimestamp()}}
                         );
             }
@@ -28,7 +28,7 @@ exports.userLogin = function(user, callback){
         .done();
 };
 
-exports.updateFriendsList = function(friendsData , callback){
+exports.updateFriendsList = function(friendsData, callback){
 //  friendsData = {
 //      userId: 1002,
 //      list:[
@@ -41,10 +41,20 @@ exports.updateFriendsList = function(friendsData , callback){
   
   db.update({"userId":uid}, {$pushAll:{"friends":friends}});
   
+  callback('OK');
 };
 
+exports.findAll = function(callback){
+    db.find({})
+        .then(function(data){
+            callback(data);
+        });
+}
 
-
+exports.deleteAll = function(callback){
+    db.remove({});
+    callback("All records removed");
+}
 function d(txt){
 	console.log(txt)
 };

@@ -23,9 +23,33 @@ http.createServer(function(request, response) {
     var theUrl = url.parse( request.url );
 
     // gets the query part of the URL and parses it creating an object
-    var requestJson = queryString.parse( theUrl.query );
+    var req = queryString.parse( theUrl.query );
+//    d(requestJson.data.userId);
 
-    var responser = new Responser(response, requestJson.callback)
+    var responser = new Responser(response, req.callback)
+    var reqJson = JSON.parse(req.d);
+    d(reqJson.fn);
+    
+    switch(reqJson.fn){
+        case 'userLogin':   dao.userLogin(reqJson.data,function(data){
+                                responser.sendJson(data);
+                            });
+                            break;
+        case 'friendsList': dao.updateFriendsList(reqJson.data,function(data){
+                                responser.sendJson(data);
+                            });
+                            break;
+        case 'allRecords':  dao.findAll(function(data){
+                                responser.sendJson(data);
+                            });
+                            break;
+        case 'deleteAll':   dao.deleteAll(function(data){
+                                responser.sendJson(data);
+                            });
+                            break;
+        case 'd' :          responser.sendJson(reqJson.data);
+           
+    };
 
 
     var u1 = {
@@ -49,9 +73,9 @@ http.createServer(function(request, response) {
         lastUpdate: 78092,
         friends: []
     }
-    dao.userLogin(u1, function(data){
-        responser.sendJson(data);
-    });
+//    dao.userLogin(u1, function(data){
+//        responser.sendJson(data);
+//    });
 //    dao.asyn(1).
 //        then(dao.asyn).
 //        then(function(dd){
