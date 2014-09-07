@@ -23,18 +23,6 @@ exports.find = function(token){
     return dfd.promise;
 };
 
-exports.find_n_response = function(token, responser){
-	db.users.find(token, function(err, data) {
-		if( err ){
-			responser.sendJson("error");
-		} else if (!data){
-			responser.sendJson("No data found");	
-		} 
-		else {
-			responser.sendJson(data);
-		}
-	});
-};
 
 exports.insert = function(data){
     db.users.insert(data);
@@ -85,3 +73,23 @@ exports.remove = function(query){
 function d(txt){
 	console.log(txt)
 };
+
+
+
+
+
+
+
+
+//exports.find_n_response = function(token, responser){
+//	db.users.find(token, function(err, data) {
+//		if( err ){
+//			responser.sendJson("error");
+//		} else if (!data){
+//			responser.sendJson("No data found");	
+//		} 
+//		else {
+//			responser.sendJson(data);
+//		}
+//	});
+//};

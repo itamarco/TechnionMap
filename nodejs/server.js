@@ -44,7 +44,7 @@ http.createServer(function(request, response) {
                             });
                             break;
         case 'deleteAll':   dao.deleteAll(function(data){
-                                responser.sendJson(data);
+//                                responser.sendJson(data);
                             });
                             break;
         case 'd' :          responser.sendJson(reqJson.data);
