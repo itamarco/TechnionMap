@@ -3,3 +3,4 @@ TechMap_Sublime.sublime-workspace
 /nbproject/private/
 /nodejs/nbproject/private/
 nodejs/mongo.log
+*.log
