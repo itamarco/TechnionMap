@@ -4256,3 +4256,6 @@
 2014-09-07T08:04:48.833+0300 [clientcursormon] mem (MB) res:24 virt:934
 2014-09-07T08:04:48.833+0300 [clientcursormon]  mapped (incl journal view):800
 2014-09-07T08:04:48.833+0300 [clientcursormon]  connections:0
+2014-09-07T08:09:48.871+0300 [clientcursormon] mem (MB) res:24 virt:934
+2014-09-07T08:09:48.871+0300 [clientcursormon]  mapped (incl journal view):800
+2014-09-07T08:09:48.871+0300 [clientcursormon]  connections:0
