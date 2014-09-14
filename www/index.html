@@ -159,8 +159,8 @@
 			}); 
 			
 
-			// FB.Event.subscribe('auth.login', function(response) {
-			function DEBUG_fb_login_event(){
+			FB.Event.subscribe('auth.login', function(response) {
+			// function DEBUG_fb_login_event(){
 				// get user data
 				facebook.api('me','id,name,picture', function(res){
 						me = new User(position, res.id, res.name, res.picture.data.url);
