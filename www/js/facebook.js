@@ -12,7 +12,6 @@ if (typeof FB == 'undefined') log.error('FB variable does not exist. Check that 
 var facebook = {
   init:function() {
     try {
-      log.info("Startin facebook init");
       FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
       log.info("facebook inited");
     } catch (e) {
@@ -23,12 +22,12 @@ var facebook = {
   login: function() {
     FB.login(
     function(response) {
-    if (response.session) {
-      log.info('logged to facebook');
-    }
-    else {
-      console.log(response);
-      log.error('facebook login failed');
+      if (response.authResponse) {
+        log.info('logged to facebook');
+      }
+      else {
+        console.log(response);
+        log.error('facebook login failed');
     }
     },
     { scope: "email" }

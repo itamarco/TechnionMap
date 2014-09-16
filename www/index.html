@@ -147,9 +147,8 @@
 
 			App.initialize();
 			
-			d("App inited");
+	
 			$(document).ready( function (){
-				d("document ready");
 				facebook.init();
 				initGmap(); 
 				facebook.login();
@@ -244,14 +243,6 @@
 				    // not valid anymore => return to last valid position
 				    map.panTo(lastValidCenter);
 				});
-				// map.drawOverlay({
-				// 	lat: map.getCenter().lat(),
-				// 	lng: map.getCenter().lng(),
-				// 	content: '<img src="img/campusMap.png"/>',
-				// 	verticalAlign: 'center',
-				// 	horizontalAlign: 'center'
-				// });       
-
 				
 				
 				var ulman = new google.maps.LatLng(32.777522, 35.023138);
@@ -272,7 +263,7 @@
 					'img/campusMap.png',
 					campusBounds);
 
-				campusOverlay.setMap(map);
+				// campusOverlay.setMap(map);
 				
 			}
 
