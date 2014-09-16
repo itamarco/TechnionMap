@@ -41,6 +41,9 @@
 				}
 			};
 
+			function d(text){
+				log.info(text);
+			}
 
 			function onOrientationChange()
 			{
@@ -144,12 +147,14 @@
 
 			App.initialize();
 			
+			d("App inited");
 			$(document).ready( function (){
+				d("document ready");
 				facebook.init();
 				initGmap(); 
-				//facebook.login();
+				facebook.login();
 				GeoLocation.get();
-				setTimeout(DEBUG_fb_login_event,5000);
+				// setTimeout(DEBUG_fb_login_event,5000);
 
 				
 				$('#connectButton').click(facebook.login);
@@ -203,7 +208,8 @@
 					})();
 				});
 				
-			}
+			});
+
 			// bounds of the desired area
 			var allowedBounds = new google.maps.LatLngBounds(
 			     new google.maps.LatLng( 32.778050, 35.020852 ), 
@@ -211,6 +217,7 @@
 			);
 			
 			var lastValidCenter;
+
 			function initGmap(){
 				map = new GMaps({
 					el: '#mapDiv',
@@ -328,9 +335,6 @@
 				return true;
 			}
 
-			function d(text){
-				console.log(text);
-			}
 		</script>
 
 
