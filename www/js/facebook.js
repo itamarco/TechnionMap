@@ -12,6 +12,7 @@ if (typeof FB == 'undefined') log.error('FB variable does not exist. Check that 
 var facebook = {
   init:function() {
     try {
+      log.info("Startin facebook init");
       FB.init({ appId: "381782658606958", nativeInterface: CDV.FB, useCachedDialogs: false });
       log.info("facebook inited");
     } catch (e) {
