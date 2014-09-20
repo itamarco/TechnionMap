@@ -115,6 +115,7 @@ function Server(userId){
         this.host = host;
     };
     this.updateUser = function(user,callback){
+        d("update user: " + user.userId);
         this.request("upsertUser",user,callback);
     };
     this.getFriends = function(user,callback){

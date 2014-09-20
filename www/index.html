@@ -158,7 +158,9 @@
 				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
-
+					server.updateUser(userConvertor(me), function(res){
+							d(res.msg);
+						});
 				});
 			}); 
 			
