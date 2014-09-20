@@ -97,44 +97,34 @@ var GeoLocation = {
     }
 };
 
+function userConvertor(appUser){
+    var serverUser = new Object();
+    serverUser.userId = appUser.id;
+    serverUser.name = appUser.name;
+    serverUser.picUrl = appUser.pic;
+    serverUser.locatiob = appUser.loc;
+
+    return serverUser;
+}
+
 function Server(userId){
     this.userId = userId;
-    this.host = "http://localhost:8888";
+    this.host = "http://5.144.63.139:8181";
 
     this.setHost = function(host){
         this.host = host;
     };
-    this.set = function(property, value){
-        var jsonRequest = {
-            method: "set",
-            userId: this.userId,
-            property: property,
-            value: value
-        }
-        this.ajaxCall(jsonRequest, function(res){
-            d(res);
-        });
+    this.updateUser = function(user,callback){
+        this.request("upsertUser",user,callback);
     };
-    this.get = function(property, callBack){
-        var jsonRequest = {
-            method: "POST",
-            userId: this.userId,
-            property: property
-        }
-
-        this.ajaxCall(jsonRequest, function(res){
-            d(res);
-        });
-
-        respone = {
-            status:"success",
-            data: [
-                {id: 698687482, loc: {lat: position.lat - 0.0012, lng: position.lng - 0.002}},
-                {id: 554861654, loc: {lat: position.lat - 0.0002, lng: position.lng + 0.002}},
-                {id: 749873231, loc:{lat: position.lat - 0.0004, lng: position.lng + 0.008}}
-            ]
-        };
-        callBack(respone);
+    this.getFriends = function(user,callback){
+        this.request("getFriends",user,callback);
+    };
+    this.request = function(fn,data,callback){
+        var json = new Object();
+        json.fn = fn;
+        json.data = data;
+        this.ajaxCall(json,callback);
     };
     this.connectionError = function(){
         log.error("[Server] Can not connect to server");
@@ -169,3 +159,41 @@ function Server(userId){
         });
     };
 };
+
+
+
+
+
+
+// this.set = function(property, value){
+    //     var jsonRequest = {
+    //         method: "set",
+    //         userId: this.userId,
+    //         property: property,
+    //         value: value
+    //     }
+    //     this.ajaxCall(jsonRequest, function(res){
+    //         d(res);
+    //     });
+    // };
+    // this.get = function(property, callBack){
+    //     var jsonRequest = {
+    //         method: "POST",
+    //         userId: this.userId,
+    //         property: property
+    //     }
+
+    //     this.ajaxCall(jsonRequest, function(res){
+    //         d(res);
+    //     });
+
+    //     respone = {
+    //         status:"success",
+    //         data: [
+    //             {id: 698687482, loc: {lat: position.lat - 0.0012, lng: position.lng - 0.002}},
+    //             {id: 554861654, loc: {lat: position.lat - 0.0002, lng: position.lng + 0.002}},
+    //             {id: 749873231, loc:{lat: position.lat - 0.0004, lng: position.lng + 0.008}}
+    //         ]
+    //     };
+    //     callBack(respone);
+    // };
