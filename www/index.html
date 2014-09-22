@@ -83,7 +83,7 @@
 				<h3>Position</h3>
 				<p id="cur_position"></p>
 				<button id="connectButton">Login</button>
-				<button id="moodButton" href="#moodPopup" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">Set Mood...</button>
+				<button id="moodButton">Set Mood</button>
 				<button id="friendsButton">Update Map</button>
 			</div>
 			<div class="floatingNav">
@@ -91,6 +91,9 @@
 				<p id="logData"></p>
 			</div>
 			<!-- Menues -->
+			<div id="moodDialog">
+				<input type="text" id="moodInput"></input>
+			</div>
 			<div data-role="popup" id="moodPopup" data-theme="b">
 			        <ul data-role="listview" data-inset="true" style="min-width:210px;">
 			            <li data-role="list-divider">Choose an action</li>
@@ -168,6 +171,16 @@
 
 				
 				$('#connectButton').click(facebook.login);
+				$('#moodButton').click(
+					$("#moodDialog").dialog({
+			            title: "Type in your mood",
+			            buttons: {
+			                Update: function () {
+			                    $(this).dialog('close');
+			                }
+			            }
+			        });
+				);
 				$('#friendsButton').click(function(){
 					server.updateUser(me, function(res){
 						d("Got server response");
