@@ -94,6 +94,7 @@
 
         Otherwise, you can specify specific domains:
     -->
+    <access origin="5.144.63.139"/> 
     <access origin="*"/> <!-- allow local pages -->
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
