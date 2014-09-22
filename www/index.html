@@ -83,7 +83,7 @@
 				<h3>Position</h3>
 				<p id="cur_position"></p>
 				<button id="connectButton">Login</button>
-				<button id="moodButton">Set Mood...</button>
+				<button id="moodButton">Set Mood</button>
 				<button id="friendsButton">Update Map</button>
 			</div>
 			<div class="floatingNav">
@@ -96,7 +96,7 @@
 			    <h3>Your mood</h3>
 			    <input type="text" name="addfix" id="fix" value=""/>
 
-			    <button type="submit" >Save</button>
+			    <button type="submit">Save</button>
 			  </form>
 			</div>
 			<!-- Msgs -->
@@ -167,8 +167,9 @@
 
 				
 				$('#connectButton').click(facebook.login);
-				$('#moodButton').click(
+				$('#moodButton').click(function(){
 					$("#moodPopup").popup('open');
+					}
 				);
 				$('#friendsButton').click(function(){
 					server.updateUser(me, function(res){
