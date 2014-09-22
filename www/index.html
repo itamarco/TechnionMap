@@ -158,7 +158,8 @@
 				
 				$('#connectButton').click(facebook.login);
 				$('#friendsButton').click(function(){
-					server.updateUser(userConvertor(me), function(res){
+					server.updateUser(me, function(res){
+						d("Got server response");
 							d(res.msg);
 						});
 				});

@@ -97,15 +97,6 @@ var GeoLocation = {
     }
 };
 
-function userConvertor(appUser){
-    var serverUser = new Object();
-    serverUser.userId = appUser.id;
-    serverUser.name = appUser.name;
-    serverUser.picUrl = appUser.pic;
-    serverUser.locatiob = appUser.loc;
-
-    return serverUser;
-}
 
 function Server(userId){
     this.userId = userId;
@@ -115,10 +106,25 @@ function Server(userId){
         this.host = host;
     };
     this.updateUser = function(user,callback){
-        d("update user: " + user.userId);
-        this.request("upsertUser",user,callback);
+        var data = new Object();
+        data.userId = user.id;
+        data.picUrl = user.pic;
+        data.mood = user.mood;
+        data.location = user.loc;
+        data.locationArea = user.locArea;
+
+        this.request("upsertUser",data,callback);
+    };
+    this.updateFriends = function(user,callback){
+        var data = new Object();
+        data.userId = user.id;
+        data.friends = user.friendsList;
+        this.request("upsertUserFriends",user,callback);
     };
     this.getFriends = function(user,callback){
+        var data = new Object();
+        data.userId = user.id;
+        
         this.request("getFriends",user,callback);
     };
     this.request = function(fn,data,callback){
