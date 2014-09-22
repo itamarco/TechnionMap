@@ -92,11 +92,11 @@
 			</div>
 			<!-- Menues -->
 			<div data-role="popup" id="moodPopup">
-			  <form>
+			  <form id="moodForm">
 			    <h3>Your mood</h3>
-			    <input type="text" name="addfix" id="fix" value=""/>
+			    <input type="text" id="moodInput" value=""/>
 
-			    <button type="submit">Save</button>
+			    <button type="submit">Update</button>
 			  </form>
 			</div>
 			<!-- Msgs -->
@@ -165,18 +165,7 @@
 				GeoLocation.get();
 				// setTimeout(DEBUG_fb_login_event,5000);
 
-				
-				$('#connectButton').click(facebook.login);
-				$('#moodButton').click(function(){
-					$("#moodPopup").popup('open');
-					}
-				);
-				$('#friendsButton').click(function(){
-					server.updateUser(me, function(res){
-						d("Got server response");
-							d(res.msg);
-						});
-				});
+				setButtonsAction();
 			}); 
 			
 
@@ -346,6 +335,31 @@
 				return true;
 			}
 
+
+			function setButtonsAction(){
+
+				$('#connectButton').click(facebook.login);
+				$('#moodButton').click(function(){
+					$("#moodPopup").popup('open');
+					}
+				);
+				$('#friendsButton').click(function(){
+					server.updateUser(me, function(res){
+						d("Got server response");
+							d(res.msg);
+						});
+				});
+				$('#moodForm').submit(function(event){
+					var mood = $("#moodInput").val();
+					$("#moodInput").val()= "";
+					d(mood);
+					return;
+				});
+			}
+
+			function setUserMood(mood){
+
+			}
 		</script>
 
 
