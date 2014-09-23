@@ -98,8 +98,7 @@ var GeoLocation = {
 };
 
 
-function Server(userId){
-    this.userId = userId;
+function Server(){
     this.host = "http://5.144.63.139:8181";
 
     this.setHost = function(host){

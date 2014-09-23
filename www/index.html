@@ -173,7 +173,7 @@
 
 						me = new User(position, res.id, res.name, res.picture.data.url);
 						d("Welcome " + res.name);
-						server =  new Server(res.id);
+						server =  new Server();
 
 						map.addPerson(me);
 						server.updateUser(me, function(res){
