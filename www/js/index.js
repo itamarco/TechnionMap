@@ -141,7 +141,7 @@ function Server(userId){
         $.ajax({
            type: 'POST',
             url: this.host,
-            data: jsonRequest, 
+            data: {d: JSON.stringify(jsonRequest)}, 
             crossDomain: true,
             contentType: 'application/json',
             dataType: 'jsonp',
