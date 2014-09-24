@@ -107,6 +107,7 @@ function Server(){
     this.updateUser = function(user,callback){
         var data = new Object();
         data.userId = user.id;
+        data.name = user.name;
         data.picUrl = user.pic;
         data.mood = user.mood;
         data.location = user.loc;
