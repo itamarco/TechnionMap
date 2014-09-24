@@ -231,24 +231,24 @@
 					zoom:16
 				});
 
-				var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
-				var neNew = new google.maps.LatLng(32.780134, 35.027484);
-				var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
+				// var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
+				// var neNew = new google.maps.LatLng(32.780134, 35.027484);
+				// var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
 
-				map.fitBounds( boundsNew ); 
-				lastValidCenter = map.getCenter();
+				// map.fitBounds( boundsNew ); 
+				// lastValidCenter = map.getCenter();
 
-				google.maps.event.addListener(map, 'center_changed', function() {
-					d("center");
-				    if (allowedBounds.contains(map.getCenter())) {
-				        // still within valid bounds, so save the last valid position
-				        lastValidCenter = map.getCenter();
-				        return; 
-				    }
+				// google.maps.event.addListener(map, 'center_changed', function() {
+				// 	d("center");
+				//     if (allowedBounds.contains(map.getCenter())) {
+				//         // still within valid bounds, so save the last valid position
+				//         lastValidCenter = map.getCenter();
+				//         return; 
+				//     }
 
-				    // not valid anymore => return to last valid position
-				    map.panTo(lastValidCenter);
-				});
+				//     // not valid anymore => return to last valid position
+				//     map.panTo(lastValidCenter);
+				// });
 				
 				
 				// var ulman = new google.maps.LatLng(32.777522, 35.023138);
