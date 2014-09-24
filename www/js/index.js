@@ -115,10 +115,10 @@ function Server(){
 
         this.request("upsertUser",data,callback);
     };
-    this.updateFriends = function(user,callback){
+    this.updateFriends = function(user,friendsList,callback){
         var data = new Object();
         data.userId = user.id;
-        data.friends = user.friendsList;
+        data.friends = friendsList;
         this.request("upsertUserFriends",user,callback);
     };
     this.getFriends = function(user,callback){

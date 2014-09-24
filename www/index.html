@@ -186,24 +186,27 @@
 
 				//get friends data;
 				facebook.api('me/friends','id,name,picture',function(res){
+					var friendsList = [];
 					res.data.forEach(function(friend){
-						d(friend.name);
-						friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
+						friendsList.push(friend.id);
+						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
 
 						});
 						
-					//update new friends in servver
-					server.set("friends",friends);
+					//update friends list in servver
+					server.updateFriends(me,friendsList,function(){});
 
 					//periodically get friends locations from server
 					(function friendsLocation(){
 						server.getFriends(me, function(response){
 							activeFriends = [];
-							response.data.forEach(function(friend){
-								if(friend.id in friends){
-									friends[friend.id].loc = friend.loc;
-									activeFriends.push(friends[friend.id]);
-								}
+							response.data.forEach(function(f){
+								d(f.name);
+								// if(friend.id in friends){
+								// 	friends[friend.id].loc = friend.loc;
+								var friend = User(f.location,f.userId, f.name, f.picUrl);
+								activeFriends.push(friend);
+								// }
 							});
 							//add friends to map
 							map.updateMarkers();
@@ -230,7 +233,7 @@
 					lng: position.lng,
 					zoom:16
 				});
-				
+
 				// var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
 				// var neNew = new google.maps.LatLng(32.780134, 35.027484);
 				// var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
