@@ -96,6 +96,9 @@
 			    <input type="text" id="moodInput" value=""/>
 			    <button id="updateMoodButton">Update</button>
 			</div>
+			<div data-role="popup" datd-theme="e" id="userPopup">
+				<p></p>
+			</div>
 			<!-- Msgs -->
 			<div data-role="popup" datd-theme="e" id="noNetwork">
 				<p>No network connection detected.<br>You have to be online.</p>
@@ -195,7 +198,7 @@
 						
 					//update friends list in servver
 					server.updateFriends(me,friendsList,function(){});
-
+					
 					//periodically get friends locations from server
 					(function friendsLocation(){
 						server.getFriends(me, function(response){
@@ -204,7 +207,7 @@
 								d(f.name);
 								// if(friend.id in friends){
 								// 	friends[friend.id].loc = friend.loc;
-								var friend = User(f.location,f.userId, f.name, f.picUrl);
+								var friend = User(f.location,f.userId, f.name, f.thumbnailURL);
 								activeFriends.push(friend);
 								// }
 							});

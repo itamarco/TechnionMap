@@ -99,7 +99,7 @@ var GeoLocation = {
 
 
 function Server(){
-    this.host = "http://5.144.63.139:8181";
+    this.host = "http://5.144.63.8:8181";
 
     this.setHost = function(host){
         this.host = host;
@@ -119,7 +119,7 @@ function Server(){
         var data = new Object();
         data.userId = user.id;
         data.friends = friendsList;
-        this.request("upsertUserFriends",user,callback);
+        this.request("upsertUserFriends",data,callback);
     };
     this.getFriends = function(user,callback){
         var data = new Object();
