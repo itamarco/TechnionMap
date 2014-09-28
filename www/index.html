@@ -202,6 +202,7 @@
 					//periodically get friends locations from server
 					(function friendsLocation(){
 						server.getFriends(me, function(response){
+							d(response.msg);
 							activeFriends = [];
 							response.data.forEach(function(f){
 								d(f.name);
