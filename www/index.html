@@ -181,7 +181,7 @@
 						server.updateUser(me, function(res){
 							d(res.msg);
 						});
-						$('#userData').append("Connected as " + me.name + "<img src='"+ me.pic +"' />");
+						$('#userData').html("Connected as " + me.name);
 						
 					});
 				
@@ -239,13 +239,13 @@
 				  suppressInfoWindows: false
 				});
 
-				
-				map = new GMaps({
-					el: '#mapDiv',
-					lat: position.lat,
-					lng: position.lng,
-					zoom:16
-				});
+
+				// map = new GMaps({
+				// 	el: '#mapDiv',
+				// 	lat: position.lat,
+				// 	lng: position.lng,
+				// 	zoom:16
+				// });
 
 				// var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
 				// var neNew = new google.maps.LatLng(32.780134, 35.027484);
@@ -267,15 +267,15 @@
 				// });
 				
 				
-				// var ulman = new google.maps.LatLng(32.777522, 35.023138);
+				var ulman = new google.maps.LatLng(32.777522, 35.023138);
 
-				// var mapOptions = {
-				// zoom: 16,
-				// center: ulman
-				// };	
+				var mapOptions = {
+				zoom: 16,
+				center: ulman
+				};	
 
-				// map = new google.maps.Map(document.getElementById('mapDiv'),
-				//   mapOptions);				
+				map = new google.maps.Map(document.getElementById('mapDiv'),
+				  mapOptions);				
 			
 				// var swNew = new google.maps.LatLng( 32.772556, 35.014608 );
 				// var neNew = new google.maps.LatLng( 32.781748, 35.029956 );
