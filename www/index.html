@@ -177,7 +177,7 @@
 						me = new User(position, parseInt(res.id), res.name, res.picture.data.url);
 						server =  new Server();
 
-						// map.addPerson(me);
+						map.addPerson(me);
 						server.updateUser(me, function(res){
 							d(res.msg);
 						});
@@ -212,7 +212,7 @@
 								// }
 							});
 							//add friends to map
-							// map.updateMarkers();
+							map.updateMarkers();
 						});
 						//repeat
 						setTimeout(friendsLocation, intervalTime);
@@ -325,7 +325,7 @@
 
 
 
-			GMaps.prototype.addPerson = function(user){
+			google.maps.Map.prototype.addPerson = function(user){
 				if(!user.isValid()){
 					return;
 				}
@@ -351,7 +351,7 @@
 				});
 			}
 
-			GMaps.prototype.updateMarkers = function(){
+			google.maps.Map.prototype.updateMarkers = function(){
 				this.removeMarkers();
 
 				this.addPerson(me);
@@ -361,7 +361,7 @@
 			};
 
 
-			GMaps.prototype.markerClick = function(user){
+			google.maps.Map.prototype.markerClick = function(user){
 				log.info(user.name);
 			}
 
