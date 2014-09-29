@@ -191,7 +191,7 @@
 				facebook.api('me/friends','id,name,picture',function(res){
 					var friendsList = [];
 					res.data.forEach(function(friend){
-						friendsList.push(parseInt(friend.id);
+						friendsList.push(parseInt(friend.id));
 						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
 
 						});
