@@ -134,11 +134,8 @@
 		<script src="js/facebook.js"></script>      
 		<!-- our index.js scripts -->
 		<script type="text/javascript" src="js/index.js"></script>
-<<<<<<< HEAD
 		</style>
 		
-=======
->>>>>>> parent of e263ca6... map
 		<script type="text/javascript">
 			///////// Globals ///////////
 			var me;
@@ -163,13 +160,9 @@
 
 			App.initialize();
 			
-<<<<<<< HEAD
 
 
 
-=======
-	
->>>>>>> parent of e263ca6... map
 			$(document).ready( function (){
 				facebook.init();
 				initGmap(); 
@@ -178,6 +171,8 @@
 				// setTimeout(DEBUG_fb_login_event,5000);
 
 				setButtonsAction();
+
+
 			}); 
 			
 
@@ -203,7 +198,7 @@
 				facebook.api('me/friends','id,name,picture',function(res){
 					var friendsList = [];
 					res.data.forEach(function(friend){
-						friendsList.push(friend.id);
+						friendsList.push(parseInt(friend.id));
 						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
 
 						});
