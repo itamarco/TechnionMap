@@ -16,7 +16,7 @@
 
 
 		<!-- Gmaps imports-->
-		<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+		<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
 		<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyCnsKcd_Ty9fI2Adikzn9MZnFYYleJlx0w"></script>
 		<script type="text/javascript" src="js/gmaps.js"></script>
 		
@@ -164,7 +164,17 @@
 			App.initialize();
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+			var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
+			  mapId: '08097405334273999136-05414812628978701557',
+			  layerKey: 'bldgs',
+			  map: map,
+			  clickable: true,
+			  suppressInfoWindows: false
+			});
+>>>>>>> parent of d2c68e6... map
 
 
 =======
@@ -250,13 +260,6 @@
 					zoom:16
 				});
 
-				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-				  mapId: '08097405334273999136-05414812628978701557',
-				  layerKey: 'bldgs',
-				  map: map,
-				  clickable: true,
-				  suppressInfoWindows: false
-				});
 				// var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
 				// var neNew = new google.maps.LatLng(32.780134, 35.027484);
 				// var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
