@@ -133,6 +133,9 @@
 		<script src="js/facebook.js"></script>      
 		<!-- our index.js scripts -->
 		<script type="text/javascript" src="js/index.js"></script>
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyCnsKcd_Ty9fI2Adikzn9MZnFYYleJlx0w"></script>
+		<script>
 		<script type="text/javascript">
 			///////// Globals ///////////
 			var me;
@@ -157,7 +160,15 @@
 
 			App.initialize();
 			
-	
+			var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
+			  mapId: '08097405334273999136-05414812628978701557',
+			  layerKey: 'bldgs',
+			  map: map,
+			  clickable: true,
+			  suppressInfoWindows: false
+			});
+
+
 			$(document).ready( function (){
 				facebook.init();
 				initGmap(); 
@@ -166,6 +177,8 @@
 				// setTimeout(DEBUG_fb_login_event,5000);
 
 				setButtonsAction();
+
+
 			}); 
 			
 
@@ -191,7 +204,7 @@
 				facebook.api('me/friends','id,name,picture',function(res){
 					var friendsList = [];
 					res.data.forEach(function(friend){
-						friendsList.push(friend.id);
+						friendsList.push(parseInt(friend.id));
 						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
 
 						});
