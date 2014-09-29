@@ -125,7 +125,7 @@ function Server(){
         var data = new Object();
         data.userId = user.id;
         
-        this.request("getFriends",user,callback);
+        this.request("getFriends",data,callback);
     };
     this.request = function(fn,data,callback){
         var json = new Object();
