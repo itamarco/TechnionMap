@@ -238,12 +238,12 @@
 			var lastValidCenter;
 
 			function initGmap(){
-				map = new GMaps({
-					el: '#mapDiv',
-					lat: position.lat,
-					lng: position.lng,
-					zoom:16
-				});
+				// map = new GMaps({
+				// 	el: '#mapDiv',
+				// 	lat: position.lat,
+				// 	lng: position.lng,
+				// 	zoom:16
+				// });
 
 				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
 				  mapId: '08097405334273999136-05414812628978701557',
@@ -272,15 +272,15 @@
 				// });
 				
 				
-				// var ulman = new google.maps.LatLng(32.777522, 35.023138);
+				var ulman = new google.maps.LatLng(32.777522, 35.023138);
 
-				// var mapOptions = {
-				// zoom: 16,
-				// center: ulman
-				// };	
+				var mapOptions = {
+				zoom: 16,
+				center: ulman
+				};	
 
-				// map = new google.maps.Map(document.getElementById('mapDiv'),
-				//   mapOptions);				
+				map = new google.maps.Map(document.getElementById('mapDiv'),
+				  mapOptions);				
 			
 				// var swNew = new google.maps.LatLng( 32.772556, 35.014608 );
 				// var neNew = new google.maps.LatLng( 32.781748, 35.029956 );
