@@ -160,19 +160,3 @@
 				log.info(user.name);
 			}
 
-			User.prototype.isValid = function(){
-				if(typeof this.id === 'undefined')
-					return false;
-				if(typeof this.name === 'undefined')
-					return false;
-				if(typeof this.pic === 'undefined')
-					return false;
-				if(typeof this.loc === 'undefined')
-					return false;
-				if(typeof this.loc.lat === 'undefined')
-					return false;
-				if(typeof this.loc.lng === 'undefined')
-					return false;
-
-				return true;
-			}
