@@ -120,7 +120,7 @@
 
 
 
-			google.maps.Map.prototype.addPerson = function(user){
+			Map.prototype.addPerson = function(user){
 				if(!user.isValid()){
 					return;
 				}
@@ -146,7 +146,7 @@
 				});
 			}
 
-			google.maps.Map.prototype.updateMarkers = function(){
+			Map.prototype.updateMarkers = function(){
 				this.removeMarkers();
 
 				this.addPerson(me);
@@ -156,7 +156,7 @@
 			};
 
 
-			google.maps.Map.prototype.markerClick = function(user){
+			Map.prototype.markerClick = function(user){
 				log.info(user.name);
 			}
 
