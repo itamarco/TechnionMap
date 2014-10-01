@@ -121,6 +121,7 @@
 
 
 			Map.prototype.addPerson = function(user){
+				log.info("UUUUUUUUUUUU");
 				if(!user.isValid()){
 					return;
 				}
@@ -147,6 +148,7 @@
 			}
 
 			Map.prototype.updateMarkers = function(){
+				log.info("UUUUUUUUUUUU");
 				this.removeMarkers();
 
 				this.addPerson(me);
