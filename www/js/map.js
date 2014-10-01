@@ -121,11 +121,38 @@
 
 
 			Map.prototype.addPerson = function(user){
-
+				if(!user.isValid()){
+					return;
+				}
+				this.addMarker({
+					lat: user.loc.lat,
+					lng: user.loc.lng,
+					title: 'Lima',
+					icon: {
+						url: user.pic,
+						scaledSize: {
+							width: 50,
+							height: 50
+						}
+					},
+					//shadow: 'schools_maps.shadow.png',
+					details: {
+						database_id: 42,
+						author: 'HPNeo'
+					},
+					click: function() {
+						this.markerClick(user);
+					}
+				});
 			}
 
 			Map.prototype.updateMarkers = function(){
+				this.removeMarkers();
 
+				this.addPerson(me);
+				for(var i in activeFriends){
+					map.addPerson(activeFriends[i]);
+				}
 			};
 
 
