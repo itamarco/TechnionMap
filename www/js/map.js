@@ -121,11 +121,11 @@
 
 
 			Map.prototype.addPerson = function(user){
-
+				log.info("add");
 			}
 
 			Map.prototype.updateMarkers = function(){
-
+				log.info("add");
 			};
 
 
