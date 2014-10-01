@@ -8,6 +8,13 @@
 
 			function initGmap(){
 
+				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
+				  mapId: '08097405334273999136-05414812628978701557',
+				  layerKey: 'bldgs',
+				  map: map,
+				  clickable: true,
+				  suppressInfoWindows: false
+				});
 
 
 				// map = new GMaps({
@@ -41,15 +48,15 @@
 /////////////////////////////   goggle map //////////////////////////////////
 
 
-				// var ulman = new google.maps.LatLng(32.777522, 35.023138);
+				var ulman = new google.maps.LatLng(32.777522, 35.023138);
 
-				// var mapOptions = {
-				// zoom: 16,
-				// center: ulman
-				// };	
+				var mapOptions = {
+				zoom: 16,
+				center: ulman
+				};	
 
-				// map = new google.maps.Map(document.getElementById('mapDiv'),
-				//   mapOptions);				
+				map = new google.maps.Map(document.getElementById('mapDiv'),
+				  mapOptions);				
 
 
 
@@ -76,53 +83,44 @@
 
 /////////////////////////////// YAKIR ////////////////////////////
 
-				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-				  mapId: '08097405334273999136-05414812628978701557',
-				  layerKey: 'bldgs',
-				  map: map,
-				  clickable: true,
-				  suppressInfoWindows: false
-				});
+				// var mapOptions = {
+				//   center: new google.maps.LatLng(32.777522, 35.023138),
+				//   zoom: 16
+				// };
+				// map = new google.maps.Map(document.getElementById('mapDiv'),
+				//   mapOptions);
 
-				var mapOptions = {
-				  center: new google.maps.LatLng(32.777522, 35.023138),
-				  zoom: 16
-				};
-				map = new google.maps.Map(document.getElementById('mapDiv'),
-				  mapOptions);
-
-				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-				  mapId: '08097405334273999136-05414812628978701557',
-				  layerKey: 'bldgs',
-				  map: map,
-				  clickable: true,
-				  suppressInfoWindows: false
-				});
+				// var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
+				//   mapId: '08097405334273999136-05414812628978701557',
+				//   layerKey: 'bldgs',
+				//   map: map,
+				//   clickable: true,
+				//   suppressInfoWindows: false
+				// });
 				
-				var styles = [
-				/*
-				 {
-					stylers: [
-					  { hue: "#00ffe6" },
-					  { saturation: -20 }
-					]
-				  },*/
-				  {
-					featureType: "all",
-					elementType: "labels",
-					stylers: [
-						{ visibility: "off" }
-					]
-				  }
-				];
-				map.setOptions({styles: styles});
+				// var styles = [
+				// /*
+				//  {
+				// 	stylers: [
+				// 	  { hue: "#00ffe6" },
+				// 	  { saturation: -20 }
+				// 	]
+				//   },*/
+				//   {
+				// 	featureType: "all",
+				// 	elementType: "labels",
+				// 	stylers: [
+				// 		{ visibility: "off" }
+				// 	]
+				//   }
+				// ];
+				// map.setOptions({styles: styles});
 				
 			}
 
 
 
 			Map.prototype.addPerson = function(user){
-				log.info("UUUUUUUUUUUU");
 				if(!user.isValid()){
 					return;
 				}
@@ -149,7 +147,6 @@
 			}
 
 			Map.prototype.updateMarkers = function(){
-				log.info("UUUUUUUUUUUU");
 				this.removeMarkers();
 
 				this.addPerson(me);
