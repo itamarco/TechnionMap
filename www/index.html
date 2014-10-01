@@ -164,11 +164,12 @@
 				initGmap();
 				google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			    //this part runs when the mapobject is created and rendered
-			    google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-			        //this part runs when the mapobject shown for the first time
-			        facebook.init();
+			    			        facebook.init();
 					facebook.login();
 					GeoLocation.get();
+			    google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+			        //this part runs when the mapobject shown for the first time
+
 			    });
 			});
 				
