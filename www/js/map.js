@@ -8,13 +8,7 @@
 
 			function initGmap(){
 
-				var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-				  mapId: '08097405334273999136-05414812628978701557',
-				  layerKey: 'bldgs',
-				  map: map,
-				  clickable: true,
-				  suppressInfoWindows: false
-				});
+
 
 
 				// map = new GMaps({
@@ -82,6 +76,14 @@
 
 
 /////////////////////////////// YAKIR ////////////////////////////
+				// var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
+				//   mapId: '08097405334273999136-05414812628978701557',
+				//   layerKey: 'bldgs',
+				//   map: map,
+				//   clickable: true,
+				//   suppressInfoWindows: false
+				// });
+
 
 				// var mapOptions = {
 				//   center: new google.maps.LatLng(32.777522, 35.023138),
@@ -120,45 +122,20 @@
 
 
 
-			Map.prototype.addPerson = function(user){
+			google.maps.Map.prototype.addPerson = function(user){
 				log.info("UUUUUUUUUUUU");
-				if(!user.isValid()){
-					return;
-				}
-				this.addMarker({
-					lat: user.loc.lat,
-					lng: user.loc.lng,
-					title: 'Lima',
-					icon: {
-						url: user.pic,
-						scaledSize: {
-							width: 50,
-							height: 50
-						}
-					},
-					//shadow: 'schools_maps.shadow.png',
-					details: {
-						database_id: 42,
-						author: 'HPNeo'
-					},
-					click: function() {
-						this.markerClick(user);
-					}
-				});
+
+
 			}
 
-			Map.prototype.updateMarkers = function(){
+			google.maps.Map.prototype.updateMarkers = function(){
 				log.info("UUUUUUUUUUUU");
-				this.removeMarkers();
 
-				this.addPerson(me);
-				for(var i in activeFriends){
-					map.addPerson(activeFriends[i]);
-				}
+
 			};
 
 
-			Map.prototype.markerClick = function(user){
+			google.maps.Map.prototype.markerClick = function(user){
 				log.info(user.name);
 			}
 
