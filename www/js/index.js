@@ -100,7 +100,7 @@ var GeoLocation = {
 
 function Server(){
     this.host = "http://5.144.63.8:8181";
-
+    this.status = "up";
     this.setHost = function(host){
         this.host = host;
     };
@@ -146,21 +146,11 @@ function Server(){
             contentType: 'application/json',
             dataType: 'jsonp',
             success: callBack,
-            error: function (jqXHR, exception) {
-                if (jqXHR.status === 0) {
-                    d('Not connect. Verify Network.');
-                } else if (jqXHR.status == 404) {
-                    d('Requested page not found. [404]');
-                } else if (jqXHR.status == 500) {
-                    d('Internal Server Error [500].');
-                } else if (exception === 'parsererror') {
-                    d('Requested JSON parse failed.');
-                } else if (exception === 'timeout') {
-                    d('Time out error.');
-                } else if (exception === 'abort') {
-                    d('Ajax request aborted.');
-                } else {
-                    d('Uncaught Error.\n' + jqXHR.responseText);
+            timeout: 5000,
+            error: function(x, t, m) {
+                if(t==="timeout") {
+                    server.status = "up";
+                    log.error("Server is down!");
                 }
             }
         });

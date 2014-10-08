@@ -76,7 +76,7 @@
 			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
 			<div id="fb-root"></div>
 					
-			<div role="main" class="ui-content" id="mapDiv">
+			<div role="main" class="ui-content" id="map-canvas">
 			</div>
 			<div class="floatingNav"id="userData"></div>
 			<div class="floatingNav">
@@ -162,6 +162,8 @@
 			
 			$(document).ready( function (){
 				initGmap();
+				server =  new Server();
+				server.request("ff","dd", function(dd){d('sss' + dd);})
 				google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			    //this part runs when the mapobject is created and rendered
 			    google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
@@ -184,13 +186,14 @@
 				facebook.api('me','id,name,picture', function(res){
 
 						me = new User(position, parseInt(res.id), res.name, res.picture.data.url);
-						server =  new Server();
+						$('#userData').html("Connected as " + me.name);
+						
 
 						map.addPerson(me);
 						server.updateUser(me, function(res){
 							d(res.msg);
 						});
-						$('#userData').html("Connected as " + me.name);
+						
 						
 					});
 				

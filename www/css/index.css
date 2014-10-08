@@ -96,7 +96,7 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-#mapDiv{
+#map-canvas{
 	position:fixed !important;
 	width:100%;
 	top:0;
