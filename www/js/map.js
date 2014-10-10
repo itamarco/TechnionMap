@@ -235,10 +235,6 @@
 				if(!user.isValid()){
 					return;
 				}
-				this.loc = loc;
-				this.id = id;
-				this.name = name;
-				this.pic = picUrl;
 
 
 				var pos = new google.maps.LatLng(user.loc.lat, user.loc.lng);
