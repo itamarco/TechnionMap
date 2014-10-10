@@ -82,8 +82,8 @@
 			<div class="floatingNav">
 				<h3>Position</h3>
 				<p id="cur_position"></p>
-				<button id="connectButton">Login</button>
-				<button id="moodButton">Set Mood</button>
+				<button id="connectButton">Me</button>
+				<button id="moodButton">My Mood</button>
 				<button id="friendsButton">Update Map</button>
 			</div>
 			<div class="floatingNav">
@@ -163,21 +163,17 @@
 			$(document).ready( function (){
 				initGmap();
 				server =  new Server();
-				server.request("ff","dd", function(dd){d('sss' + dd);})
-				google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-			    //this part runs when the mapobject is created and rendered
+
 			    google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			        //this part runs when the mapobject shown for the first time
 			        facebook.init();
 					facebook.login();
 					GeoLocation.get();
+					setButtonsAction();
 			    });
 			});
 				
-				// setTimeout(DEBUG_fb_login_event,5000);
-
-				setButtonsAction();
-			}); 
+			// setTimeout(DEBUG_fb_login_event,5000);
 			
 
 			FB.Event.subscribe('auth.login', function(response) {
@@ -237,8 +233,14 @@
 
 			function setButtonsAction(){
 
-				$('#connectButton').click(facebook.login);
+				$('#connectButton').click(function(){
+					if (typeof me === 'undefined') {
+ 						facebook.login();
+					}
+					map.panTo(new google.maps.LatLng(me.loc.lat, me.loc.lng));
+				});
 				$('#moodButton').click(function(){
+
 					$("#moodPopup").popup('open');
 					}
 				);
