@@ -6,74 +6,10 @@
 			
 			var lastValidCenter;
 
+			var markers = [];
 
 			var minZoomLevel = 17;
 			function initGmap(){
-
-
-
-				// map = new GMaps({
-				// 	el: '#mapDiv',
-				// 	lat: position.lat,
-				// 	lng: position.lng,
-				// 	zoom:16
-				// });
-
-				// var swNew = new google.maps.LatLng( 32.775569, 35.020059 );
-				// var neNew = new google.maps.LatLng(32.780134, 35.027484);
-				// var boundsNew = new google.maps.LatLngBounds( swNew, neNew );
-
-				// map.fitBounds( boundsNew ); 
-				// lastValidCenter = map.getCenter();
-
-				// google.maps.event.addListener(map, 'center_changed', function() {
-				// 	d("center");
-				//     if (allowedBounds.contains(map.getCenter())) {
-				//         // still within valid bounds, so save the last valid position
-				//         lastValidCenter = map.getCenter();
-				//         return; 
-				//     }
-
-				//     // not valid anymore => return to last valid position
-				//     map.panTo(lastValidCenter);
-				// });
-				
-		
-
-/////////////////////////////   goggle map //////////////////////////////////
-
-
-				// var ulman = new google.maps.LatLng(32.777522, 35.023138);
-
-				// var mapOptions = {
-				// zoom: 16,
-				// center: ulman
-				// };	
-
-				// map = new google.maps.Map(document.getElementById('mapDiv'),
-				//   mapOptions);				
-
-
-
-
-
-			
-				// var swNew = new google.maps.LatLng( 32.772556, 35.014608 );
-				// var neNew = new google.maps.LatLng( 32.781748, 35.029956 );
-				// var campusBounds = new google.maps.LatLngBounds( swNew, neNew );
-
-				// var campusOverlay = new google.maps.GroundOverlay(
-				// 	'img/campusMap.png',
-				// 	campusBounds);
-
-				// campusOverlay.setMap(map);
-
-
-
-
-
-
-
 
 
 /////////////////////////////// YAKIR ////////////////////////////
@@ -289,40 +225,48 @@
 			];
 			map.setOptions({styles: styles});
   	
-			}
+		}
 
-
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////     Extend       ///////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 
 			google.maps.prototype.addPerson = function(user){
-				log.info("UUUUUUUUUUUU");
 				if(!user.isValid()){
 					return;
 				}
-				this.addMarker({
-					lat: user.loc.lat,
-					lng: user.loc.lng,
-					title: 'Lima',
-					icon: {
+				this.loc = loc;
+				this.id = id;
+				this.name = name;
+				this.pic = picUrl;
+
+
+				var pos = new google.maps.LatLng(user.loc.lat, user.loc.lng);
+				var marker = new google.maps.Marker({
+				    position: pos,
+				    title:user.name,
+				    img: {
 						url: user.pic,
 						scaledSize: {
 							width: 50,
 							height: 50
 						}
 					},
-					//shadow: 'schools_maps.shadow.png',
-					details: {
-						database_id: 42,
-						author: 'HPNeo'
-					},
 					click: function() {
 						this.markerClick(user);
 					}
 				});
+
+				markers.push(marker);
+				marker.setMap(this);
 			}
 
 			google.maps.prototype.updateMarkers = function(){
-				log.info("UUUUUUUUUUUU");
-				this.removeMarkers();
+				for (var i = 0; i < markers.length; i++) {
+				    markers[i].setMap(null);
+				}
+				markers = [];
+
 
 				this.addPerson(me);
 				for(var i in activeFriends){
