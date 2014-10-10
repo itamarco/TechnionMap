@@ -76,8 +76,7 @@
 			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
 			<div id="fb-root"></div>
 					
-			<div role="main" class="ui-content" id="map-canvas">
-			</div>
+			<div role="main" class="ui-content" id="map-canvas"></div>
 			<div class="floatingNav"id="userData"></div>
 			<div class="floatingNav">
 				<h3>Position</h3>
@@ -86,15 +85,22 @@
 				<button id="moodButton">Mood</button>
 				<button id="friendsButton">Update</button>
 			</div>
-			<div class="floatingNav">
-				<h3>log</h3>
+			<div class="floating-mood" data-role="collapsible" data-theme="b" data-content-theme="c">
+			   <h3>My Mood</h3>
+				   <ul data-role="listview" data-inset="false" >
+				   	<li><a href="#">Studying..</a></li>
+				   	<li><a href="#">Hanging with friends</a></li>
+				   </ul>
+			</div>
+			<div class="floatingLog">
+				<p>log</p>
 				<p id="logData"></p>
 			</div>
 			<!-- Menues -->
 			<div data-role="popup" id="moodPopup">
 			    <h3>Your mood</h3>
 			    <input type="text" id="moodInput" value=""/>
-			    <button id="updateMoodButton">Update</button>
+			    <button id="updateMoodButton">Set</button>
 			</div>
 			<div data-role="popup" datd-theme="e" id="userPopup">
 				<p></p>
