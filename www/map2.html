@@ -11,6 +11,15 @@
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyCnsKcd_Ty9fI2Adikzn9MZnFYYleJlx0w"></script>
 <script>
+var markers = [];
+var me =new Object();
+				me.loc = new google.maps.LatLng(32.777522, 35.023138);
+				me.id = 45;
+				me.name = 'Itamar';
+				me.pic = 'http://thumbs.dreamstime.com/z/funny-smile-emoticon-illustration-30334639.jpg';
+
+
+
   var minZoomLevel = 17;
   var map;
   function initializeMap() {
@@ -180,10 +189,68 @@
 	 google.maps.event.addListener(map, 'zoom_changed', function () {
 		 if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
 	 });
+
+	 map.addPerson(me);
   }
 
   google.maps.event.addDomListener(window, 'load', initializeMap);
 
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////     Extend       ///////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+			google.maps.Map.prototype.addPerson = function(user){
+
+				
+
+
+				var pos = user.loc;
+				var marker = new google.maps.Marker({
+				    position: pos,
+				    title:user.name,
+				    icon: {
+						url: user.pic,
+						scaledSize: {
+							width: 50,
+							height: 50
+						}
+					},
+					click: function() {
+						this.markerClick(user);
+					}
+				});
+
+				markers.push(marker);
+				marker.addListener('click', function(){
+					markerClick(user);
+				});
+				marker.setMap(this);
+			}
+
+			google.maps.Map.prototype.updateMarkers = function(){
+				for (var i = 0; i < markers.length; i++) {
+				    markers[i].setMap(null);
+				}
+				markers = [];
+
+
+				this.addPerson(me);
+				for(var i in activeFriends){
+					map.addPerson(activeFriends[i]);
+				}
+			};
+
+
+			function markerClick(user){
+				alert(user.name);
+			}
 </script>
 </head>
 
