@@ -231,7 +231,7 @@
 ///////////////////////////     Extend       ///////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-			google.maps.prototype.addPerson = function(user){
+			google.maps.Map.prototype.addPerson = function(user){
 				if(!user.isValid()){
 					return;
 				}
