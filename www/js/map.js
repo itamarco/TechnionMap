@@ -236,12 +236,11 @@
 					return;
 				}
 
-
-				var pos = new google.maps.LatLng(user.loc.lat, user.loc.lng);
+				var pos = user.loc;
 				var marker = new google.maps.Marker({
 				    position: pos,
 				    title:user.name,
-				    img: {
+				    icon: {
 						url: user.pic,
 						scaledSize: {
 							width: 50,
@@ -254,10 +253,13 @@
 				});
 
 				markers.push(marker);
+				marker.addListener('click', function(){
+					markerClick(user);
+				});
 				marker.setMap(this);
 			}
 
-			google.maps.prototype.updateMarkers = function(){
+			google.maps.Map.prototype.updateMarkers = function(){
 				for (var i = 0; i < markers.length; i++) {
 				    markers[i].setMap(null);
 				}
@@ -271,7 +273,7 @@
 			};
 
 
-			google.maps.prototype.markerClick = function(user){
-				log.info(user.name);
+			function markerClick(user){
+				alert(user.name);
 			}
 
