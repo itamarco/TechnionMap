@@ -237,6 +237,7 @@
 				}
 
 				var pos = user.loc;
+				d(user.pic);
 				var marker = new google.maps.Marker({
 				    position: pos,
 				    title:user.name,
@@ -246,9 +247,6 @@
 							width: 50,
 							height: 50
 						}
-					},
-					click: function() {
-						this.markerClick(user);
 					}
 				});
 
