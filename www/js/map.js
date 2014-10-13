@@ -106,7 +106,7 @@
 
 			 // Limit the zoom level
 			 google.maps.event.addListener(map, 'zoom_changed', function () {
-				 if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
+				 //if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
 			 });
 
 			var mapsEngineLayer1 = new google.maps.visualization.MapsEngineLayer({
