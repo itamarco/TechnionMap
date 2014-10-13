@@ -237,7 +237,10 @@
 				}
 
 				var pos = user.loc;
-				d(user.pic);
+
+				user.pic = "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1024px-Smiley.svg.png";
+				d(pos.lat);
+				d(pos.lng);
 				var marker = new google.maps.Marker({
 				    position: pos,
 				    title:user.name,
