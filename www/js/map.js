@@ -238,9 +238,6 @@
 
 				var pos = user.loc;
 
-				user.pic = "http://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1024px-Smiley.svg.png";
-				d(pos.lat);
-				d(pos.lng);
 				var marker = new google.maps.Marker({
 				    position: pos,
 				    title:user.name,
@@ -257,7 +254,7 @@
 				marker.addListener('click', function(){
 					markerClick(user);
 				});
-				marker.setMap(this);
+				marker.setMap(map);
 			}
 
 			google.maps.Map.prototype.updateMarkers = function(){
