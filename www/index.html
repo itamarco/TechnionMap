@@ -202,13 +202,20 @@
 				facebook.api('me/friends','id,name,picture',function(res){
 					var friendsList = [];
 					res.data.forEach(function(friend){
-						friendsList.push(parseInt(friend.id));
+						friendsList.push(friend.id);
+						if(friend.id == 852254152){
+							d("Gerson in the friends list")
+						}
 						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
 
 						});
 						
 					//update friends list in servver
-					server.updateFriends(me,friendsList,function(){});
+					server.updateFriends(me,friendsList,function(res){
+						if(res.status == "OK"){							
+							d("Friends insrt: " + res.msg);
+						}
+					});
 					
 					//periodically get friends locations from server
 					(function friendsLocation(){
@@ -287,7 +294,7 @@
 				var gershon = new User({lat:32.776814, lng:35.020981},"852254152","Gershon Shertzer","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c66.66.828.828/s50x50/531144_10151109118009153_1499380021_n.jpg");
 
 				server.updateUser(mordechai, function(res){
-							d("Gerson Inserted");
+							d("Mordechai Inserted");
 						});
 				server.updateUser(gershon, function(res){
 							d("Gerson Inserted");
