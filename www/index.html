@@ -203,8 +203,8 @@
 					d("Got facebook friends");
 					var friendsList = [];
 					res.data.forEach(function(friend){
-						friendsList.push(friend.id);
-						if(friend.id == 852254152){
+						friendsList.push(parseInt(friend.id));
+						if(friend.id == "852254152"){
 							d("Gerson in the friends list")
 						}
 						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
