@@ -26,7 +26,7 @@
 	<body>
 		<!-- debug log -->
 		<script>
-			var debug_tmap = true;
+			var debug_t = true;
 			var log = {
 				outlet: "#logData",
 
@@ -170,7 +170,7 @@
 					facebook.login();
 					GeoLocation.get();
 					setButtonsAction();
-					if(debug_tmap === true){
+					if(debug_t === true){
 						debug_tmap();
 					}
 			    });
@@ -283,8 +283,8 @@
 			}
 
 			function debug_tmap(){
-				var mordechai = new User("{\"lat\":32.778564, \"lng\":35.020531}", "709124754","Mordechai Sanders","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c0.0.50.50/p50x50/942767_10151713398224755_1454006514_n.jpg");
-				var gershon = new User("{\"lat\":32.776814, \"lng\":35.020981}","852254152","Gershon Shertzer","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c66.66.828.828/s50x50/531144_10151109118009153_1499380021_n.jpg");
+				var mordechai = new User({lat:32.778564, lng:35.020531}, "709124754","Mordechai Sanders","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c0.0.50.50/p50x50/942767_10151713398224755_1454006514_n.jpg");
+				var gershon = new User({lat:32.776814, lng:35.020981},"852254152","Gershon Shertzer","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c66.66.828.828/s50x50/531144_10151109118009153_1499380021_n.jpg");
 
 				server.updateUser(mordechai, function(res){
 							d("Gerson Inserted");
