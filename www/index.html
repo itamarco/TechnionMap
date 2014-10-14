@@ -200,6 +200,7 @@
 
 				//get friends data;
 				facebook.api('me/friends','id,name,picture',function(res){
+					d("Got facebook friends");
 					var friendsList = [];
 					res.data.forEach(function(friend){
 						friendsList.push(friend.id);

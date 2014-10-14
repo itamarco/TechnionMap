@@ -131,6 +131,7 @@ function Server(){
         var json = new Object();
         json.fn = fn;
         json.data = data;
+        d("Request: " + JSON.stringify(json));
         this.ajaxCall(json,callback);
     };
     this.connectionError = function(){
