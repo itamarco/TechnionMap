@@ -223,7 +223,7 @@
 						server.getFriends(me, function(response){
 							activeFriends = [];
 							response.data.forEach(function(f){
-								d(f.name);
+								d("FRRRRRRnd : " + f.name);
 								// if(friend.id in friends){
 								// 	friends[friend.id].loc = friend.loc;
 								var friend = new User(f.location,f.userId, f.name, f.thumbnailURL);
