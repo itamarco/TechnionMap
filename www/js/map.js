@@ -263,19 +263,19 @@
 				}
 				markers = [];
 
-
+				d("FrindsArray[0] is " + friendsArray[0].name)
 				map.addPerson(me);
-				for(var i in friendsArray){
+				friendsArray.map(function(friend){
 					map.addPerson(friendsArray[i]);
-				}
+				});
 			};
 
 
-			function markerClick(user){
+			function markerClick(user){1413378728373
 				$("#user_name").html(user.name);
 				$("user_pic").html("<img src='"+ user.pic + "'/>");
 				$("#userPopup").popup('open');
-				var j = new Date(1413367614526);
+				var j = new Date(1413378728373);
 				console.log(j.getHours());
 				console.log(j.getMinutes());
 			}
