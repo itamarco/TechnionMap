@@ -264,13 +264,14 @@
 				markers = [];
 
 				map.addPerson(me);
-				friendsArray.map(function(friend){
+				friendsArray.forEach(function(friend){
+					d(friend.name + " to map");
 					map.addPerson(friend);
 				});
 			};
 
 
-			function markerClick(user){1413378728373
+			function markerClick(user){
 				$("#user_name").html(user.name);
 				$("user_pic").html("<img src='"+ user.pic + "'/>");
 				$("#userPopup").popup('open');

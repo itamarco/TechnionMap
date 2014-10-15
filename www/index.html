@@ -26,7 +26,7 @@
 	<body>
 		<!-- debug log -->
 		<script>
-			var debug_t = true;
+			var debug_t = false;
 			var log = {
 				outlet: "#logData",
 
@@ -217,7 +217,7 @@
 					//update friends list in servver
 					server.updateFriends(me,friendsList,function(res){
 						if(res.status == "OK"){							
-							d("Friends insrt: " + res.msg);
+							d("Friends inserted with msg: " + res.msg);
 						}
 					});
 					
@@ -226,11 +226,8 @@
 						server.getFriends(me, function(response){
 							activeFriends = [];
 							response.data.forEach(function(f){
-								// if(friend.id in friends){
-								// 	friends[friend.id].loc = friend.loc;
 								var friend = new User(f.location,"", f.name, f.thumbnailURL);
 								activeFriends.push(friend);
-								// }
 							});
 							//add friends to map
 							map.updateMarkers(activeFriends);
