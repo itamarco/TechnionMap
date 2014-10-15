@@ -275,5 +275,8 @@
 				$("#user_name").html(user.name);
 				$("user_pic").html("<img src='"+ user.pic + "'/>");
 				$("#userPopup").popup('open');
+				var j = new Date(1413367614526);
+				console.log(j.getHours());
+				console.log(j.getMinutes());
 			}
 
