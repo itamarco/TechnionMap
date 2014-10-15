@@ -226,6 +226,7 @@
 						server.getFriends(me, function(response){
 							activeFriends = [];
 							response.data.forEach(function(f){
+								d("pic: " + f.location.lat + " " + f.thumbnailURL);
 								var friend = new User(f.location,"", f.name, f.thumbnailURL);
 								activeFriends.push(friend);
 							});
