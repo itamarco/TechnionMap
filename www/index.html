@@ -97,7 +97,15 @@
 			    <button id="updateMoodButton">Set</button>
 			</div>
 			<div data-role="popup" datd-theme="e" id="userPopup">
-				<p></p>
+				<div class="user_header">
+					<p id="user_name"></p>
+					<p id="user_pic"></p>
+				</div>
+				<div class="user_data">
+					<p id="user_mood"></p>
+					<p>Last seen at <span id="user_lastUpdateTime"></span></p>
+					<button id="closeUserPopup">Close</button>
+				</div>
 			</div>
 			<!-- Msgs -->
 			<div data-role="popup" datd-theme="e" id="noNetwork">
@@ -147,7 +155,7 @@
 			};
 			var friends = {}; 
 			var activeFriends  = [];
-			var intervalTime = 3*60*1000;
+			var intervalTime = 1*60*1000;
 			/////////////////////////////
 
 
@@ -204,12 +212,7 @@
 					var friendsList = [];
 					res.data.forEach(function(friend){
 						friendsList.push(parseInt(friend.id));
-						if(friend.id == "852254152"){
-							d("Gerson in the friends list")
-						}
-						//friends[friend.id] = new User({},friend.id, friend.name, friend.picture.data.url);
-
-						});
+					});
 						
 					//update friends list in servver
 					server.updateFriends(me,friendsList,function(res){
@@ -223,15 +226,14 @@
 						server.getFriends(me, function(response){
 							activeFriends = [];
 							response.data.forEach(function(f){
-								d("FRRRRRRnd : " + f.name);
 								// if(friend.id in friends){
 								// 	friends[friend.id].loc = friend.loc;
-								var friend = new User(f.location,f.userId, f.name, f.thumbnailURL);
+								var friend = new User(f.location,"", f.name, f.thumbnailURL);
 								activeFriends.push(friend);
 								// }
 							});
 							//add friends to map
-							map.updateMarkers();
+							map.updateMarkers(activeFriends);
 						});
 						//repeat
 						setTimeout(friendsLocation, intervalTime);
@@ -263,9 +265,12 @@
 				});
 				$('#updateMoodButton').click(function(){
 					me.mood = $("#moodInput").val();
-					$( "#moodPopup" ).popup( "close" )
+					$( "#moodPopup" ).popup( "close" );
 					$("#moodInput").val("");
 					server.updateUser(me,function(e){});
+				});
+				$('#closeUserPopup').click(function(){
+					$( "#userPopup" ).popup( "close" );
 				});
 			}
 

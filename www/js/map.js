@@ -8,7 +8,7 @@
 
 			var markers = [];
 
-			var minZoomLevel = 17;
+			var minZoomLevel = 13;
 			function initGmap(){
 
 
@@ -257,21 +257,23 @@
 				marker.setMap(map);
 			}
 
-			google.maps.Map.prototype.updateMarkers = function(){
+			google.maps.Map.prototype.updateMarkers = function(friendsArray){
 				for (var i = 0; i < markers.length; i++) {
 				    markers[i].setMap(null);
 				}
 				markers = [];
 
 
-				this.addPerson(me);
-				for(var i in activeFriends){
-					map.addPerson(activeFriends[i]);
+				map.addPerson(me);
+				for(var i in friendsArray){
+					map.addPerson(friendsArray[i]);
 				}
 			};
 
 
 			function markerClick(user){
-				alert(user.name);
+				$("#user_name").html(user.name);
+				$("user_pic").html("<img src='"+ user.pic + "'/>");
+				$("#userPopup").popup('open');
 			}
 
