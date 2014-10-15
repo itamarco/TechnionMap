@@ -263,10 +263,9 @@
 				}
 				markers = [];
 
-				d("FrindsArray[0] is " + friendsArray[0].name)
 				map.addPerson(me);
 				friendsArray.map(function(friend){
-					map.addPerson(friendsArray[i]);
+					map.addPerson(friend);
 				});
 			};
 
