@@ -257,14 +257,14 @@
 				marker.setMap(map);
 			}
 
-			google.maps.Map.prototype.updateMarkers = function(friendsArray){
+			google.maps.Map.prototype.updateMarkers = function(){
 				for (var i = 0; i < markers.length; i++) {
 				    markers[i].setMap(null);
 				}
 				markers = [];
 
 				map.addPerson(me);
-				friendsArray.forEach(function(friend){
+				activeFriends.forEach(function(friend){
 					d(friend.name + " to map");
 					map.addPerson(friend);
 				});
@@ -274,10 +274,10 @@
 			function markerClick(user){
 				$("#user_name").html(user.name);
 				$("#user_mood").html(user.mood);
-				$("#user_pic").html("<img src='"+ user.pic + "' width=200 height=200 />");
+				$("#user_pic").html("<img src='"+ user.pic + "' width=150 height=150 />");
 				if(user.lastTime !== 'undefined'){
 					var j = new Date(user.lastTime);
-					$("#user_lastUpdateTime").html(j.getHours + ":" + j.getMinutes);
+					$("#user_lastUpdateTime").html(j.getHours() + ":" + j.getMinutes());
 					console.log(j.getHours());
 					console.log(j.getMinutes());
 				}

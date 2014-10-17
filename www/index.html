@@ -210,9 +210,7 @@
 						
 
 						map.addPerson(me);
-						server.updateUser(me, function(res){
-							d(res.msg);
-						});
+						activeFriendsactiveFriendsactiveFriends
 						
 						
 					});
@@ -243,7 +241,7 @@
 								activeFriends.push(friend);
 							});
 							//add friends to map
-							map.updateMarkers(activeFriends);
+							map.updateMarkers();
 						});
 						//repeat
 						setTimeout(friendsLocation, intervalTime);
