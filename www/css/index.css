@@ -112,11 +112,6 @@ h1 {
 	width: 26%;
 }
 
-.floating-mood{
-    position: absolute;
-    width:100%;
-    bottom: 10em;
-}
 
 .floatingLog {
     position: absolute;
@@ -129,3 +124,16 @@ h1 {
 }
 
 
+#userPopup{
+    width:80%;
+    position:absolute;
+    top: 30px;
+    text-align: center;
+}
+
+#moodPopup{
+    width:80%;
+    position:absolute;
+    top: 30px;
+    text-align: center;
+}
