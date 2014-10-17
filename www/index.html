@@ -26,7 +26,7 @@
 	<body>
 		<!-- debug log -->
 		<script>
-			var debug_t = false;
+			var debug_t = true;
 			var log = {
 				outlet: "#logData",
 
@@ -272,9 +272,6 @@
 				});
 			}
 
-			function setUserMood(mood){
-
-			}
 
 			User.prototype.isValid = function(){
 				if(typeof this.id === 'undefined')
