@@ -99,7 +99,7 @@ var GeoLocation = {
 
 
 function Server(){
-    this.host = "http://77.125.79.6:8181";
+    this.host = "http://192.168.43.6:8181";
     this.status = "up";
     this.setHost = function(host){
         this.host = host;
