@@ -159,12 +159,25 @@
 			/////////////////////////////
 
 
+			var User = function(loc, id, name, picUrl, mood, lastTime){
+				this.loc = loc;
+				this.id = id;
+				this.name = name;
+				this.pic = picUrl;
+				this.mood = mood;
+				this.lastTime = lastTime;
+			};
+
+
 			var User = function(loc, id, name, picUrl){
 				this.loc = loc;
 				this.id = id;
 				this.name = name;
 				this.pic = picUrl;
+				this.mood = "Having fun with Technion foursquare";
 			};
+
+
 
 			App.initialize();
 			
@@ -226,8 +239,7 @@
 						server.getFriends(me, function(response){
 							activeFriends = [];
 							response.data.forEach(function(f){
-								d("pic: " + f.location.lat + " " + f.thumbnailURL);
-								var friend = new User(f.location,"", f.name, f.thumbnailURL);
+								var friend = new User(f.location,"", f.name, f.thumbnailURL, f.mood, f.lastUpdateTime);
 								activeFriends.push(friend);
 							});
 							//add friends to map

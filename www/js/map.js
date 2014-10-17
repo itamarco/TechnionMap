@@ -273,9 +273,12 @@
 
 			function markerClick(user){
 				$("#user_name").html(user.name);
-				$("user_pic").html("<img src='"+ user.pic + "'/>");
+				$("#user_mood").html(user.mood);
+				$("#user_pic").html("<img src='"+ user.pic + "'/>");
+				var j = new Date(user.lastTime);
+				$("#user_lastUpdateTime").html(j.getHours + ":" + j.getMinutes);
 				$("#userPopup").popup('open');
-				var j = new Date(1413378728373);
+				
 				console.log(j.getHours());
 				console.log(j.getMinutes());
 			}

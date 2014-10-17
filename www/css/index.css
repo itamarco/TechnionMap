@@ -126,14 +126,16 @@ h1 {
 
 #userPopup{
     width:80%;
-    position:absolute;
+    position:fixed;
+    overflow: auto;
     top: 30px;
     text-align: center;
 }
 
 #moodPopup{
     width:80%;
-    position:absolute;
+    position:fixed;
+    overflow: auto;
     top: 30px;
     text-align: center;
 }
