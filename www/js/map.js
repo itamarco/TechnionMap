@@ -8,7 +8,7 @@
 
 			var markers = [];
 
-			var minZoomLevel = 13;
+			var minZoomLevel = 15;
 			function initGmap(){
 
 
@@ -274,12 +274,14 @@
 			function markerClick(user){
 				$("#user_name").html(user.name);
 				$("#user_mood").html(user.mood);
-				$("#user_pic").html("<img src='"+ user.pic + "'/>");
-				var j = new Date(user.lastTime);
-				$("#user_lastUpdateTime").html(j.getHours + ":" + j.getMinutes);
+				$("#user_pic").html("<img src='"+ user.pic + "' width=200 height=200 />");
+				if(user.lastTime !== 'undefined'){
+					var j = new Date(user.lastTime);
+					$("#user_lastUpdateTime").html(j.getHours + ":" + j.getMinutes);
+					console.log(j.getHours());
+					console.log(j.getMinutes());
+				}
 				$("#userPopup").popup('open');
 				
-				console.log(j.getHours());
-				console.log(j.getMinutes());
 			}
 

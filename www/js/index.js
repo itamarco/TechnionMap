@@ -86,7 +86,9 @@ var GeoLocation = {
             if(typeof me !== 'undefined'){
                 me.loc = position;
                 map.updateMarkers();
-                server.set({location: position});
+                server.updateUser(me, function(res){
+                            d("Location update sent. " + res.msg);
+                        });
             }         
             
     },
