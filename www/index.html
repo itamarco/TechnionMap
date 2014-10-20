@@ -105,7 +105,7 @@
 				<div class="user_data">
 					<p id="user_mood"></p>
 					<p>Last seen at <span id="user_lastUpdateTime"></span></p>
-					<button id="closePopup">Close</button>
+					<button is="closeUserPopup">Close</button>
 				</div>
 			</div>
 
@@ -116,7 +116,7 @@
 			    <p>Port</p>
 			    <input type="text" id="serverPort" value=""/>
 			    <button id="updateServerAddress">Set</button>
-				<button id="closePopup">Cancel</button>
+				<button id="closeServerPopup">Cancel</button>
 			</div>
 			<!-- Msgs -->
 			<div data-role="popup" datd-theme="e" id="noNetwork">
@@ -298,11 +298,14 @@
 				$('#updateServerAddress').click(function(){
 					var ip = $("#serverAddress").val();
 					var port = $("#serverPort").val();
-					$( "#moodPopup" ).popup( "close" );
+					$( "#serverPopup" ).popup( "close" );
 					server.setHost(ip,port);
 				});
-				$('.closePopup').click(function(){
+				$('#closeUserPopup').click(function(){
 					$( "#userPopup" ).popup( "close" );
+				});
+				$('#closeServerPopup').click(function(){
+					$( "#serverPopup" ).popup( "close" );
 				});
 			}
 
