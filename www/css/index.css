@@ -127,8 +127,8 @@ h1 {
 .popup{
     width:80%;
     position:fixed;
-    overflow: auto;
     top: 30px;
+    left:100px;
     text-align: center;
 }
 

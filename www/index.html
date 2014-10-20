@@ -274,8 +274,7 @@
 				$('#moodButton').click(function(e){
 					e.preventDefault();
 					$("#moodPopup").popup('open');
-					}
-				);
+				});
 				$('#friendsButton').click(function(){
 					server.updateUser(me, function(res){
 						d("Got server response");
