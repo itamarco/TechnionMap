@@ -145,7 +145,7 @@ function Server(){
     this.ajaxCall = function(jsonRequest, callBack){
         $.ajax({
            type: 'POST',
-            url: 'http://' + this.ip + this.port,
+            url: 'http://' + this.ip + ":" + this.port,
             data: {d: JSON.stringify(jsonRequest)}, 
             crossDomain: true,
             contentType: 'application/json',
