@@ -101,10 +101,12 @@ var GeoLocation = {
 
 
 function Server(){
-    this.host = "http://192.168.43.6:8181";
+    this.ip = "192.168.43.6";
+    this.port ="8181";
     this.status = "up";
-    this.setHost = function(host){
-        this.host = host;
+    this.setHost = function(ip, port){
+        this.ip = ip;
+        this.port = port;
     };
     this.updateUser = function(user,callback){
         var data = new Object();
@@ -143,7 +145,7 @@ function Server(){
     this.ajaxCall = function(jsonRequest, callBack){
         $.ajax({
            type: 'POST',
-            url: this.host,
+            url: 'http://' + this.ip + this.port,
             data: {d: JSON.stringify(jsonRequest)}, 
             crossDomain: true,
             contentType: 'application/json',

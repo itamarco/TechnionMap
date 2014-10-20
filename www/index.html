@@ -85,18 +85,19 @@
 				<button id="connectButton">Me</button>
 				<button id="moodButton">Mood</button>
 				<button id="friendsButton">Update</button>
+				<button id="configServer">Config</button>
 			</div>
 			<div class="floatingLog">
 				<p>log</p>
 				<p id="logData"></p>
 			</div>
 			<!-- Menues -->
-			<div data-role="popup" id="moodPopup">
+			<div data-role="popup" id="moodPopup" class="popup">
 			    <h3>Your mood</h3>
 			    <input type="text" id="moodInput" value=""/>
 			    <button id="updateMoodButton">Set</button>
 			</div>
-			<div data-role="popup" datd-theme="e" id="userPopup">
+			<div data-role="popup" datd-theme="e" id="userPopup" class="popup">
 				<div class="user_header">
 					<p id="user_name"></p>
 					<p id="user_pic"></p>
@@ -104,8 +105,18 @@
 				<div class="user_data">
 					<p id="user_mood"></p>
 					<p>Last seen at <span id="user_lastUpdateTime"></span></p>
-					<button id="closeUserPopup">Close</button>
+					<button id="closePopup">Close</button>
 				</div>
+			</div>
+
+			<div data-role="popup" datd-theme="e" id="serverPopup" class="popup">
+			    <h3>Server Config</h3>
+			    <p>IP</p>
+			    <input type="text" id="serverAddress" value=""/>
+			    <p>Port</p>
+			    <input type="text" id="serverPort" value=""/>
+			    <button id="updateServerAddress">Set</button>
+				<button id="closePopup">Cancel</button>
 			</div>
 			<!-- Msgs -->
 			<div data-role="popup" datd-theme="e" id="noNetwork">
@@ -260,8 +271,8 @@
 					}
 					map.panTo(new google.maps.LatLng(me.loc.lat, me.loc.lng));
 				});
-				$('#moodButton').click(function(){
-
+				$('#moodButton').click(function(e){
+					e.preventDefault();
 					$("#moodPopup").popup('open');
 					}
 				);
@@ -277,7 +288,21 @@
 					$("#moodInput").val("");
 					server.updateUser(me,function(e){});
 				});
-				$('#closeUserPopup').click(function(){
+
+				$('#configServer').click(function(e){
+					e.preventDefault();
+					$("#serverAddress").val(server.ip);
+					$("#serverPort").val(server.port);
+					$("#serverPopup").popup('open');
+				});
+
+				$('#updateServerAddress').click(function(){
+					var ip = $("#serverAddress").val();
+					var port = $("#serverPort").val();
+					$( "#moodPopup" ).popup( "close" );
+					server.setHost(ip,port);
+				});
+				$('.closePopup').click(function(){
 					$( "#userPopup" ).popup( "close" );
 				});
 			}
