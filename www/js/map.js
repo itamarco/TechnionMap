@@ -276,7 +276,7 @@
 				$("#user_mood").html(user.mood);
 				$("#user_pic").html("<img src='"+ user.pic + "' width=150 height=150 />");
 				if(user.lastTime !== 'undefined'){
-					var j = new Date(user.lastTime);
+					var j = new Date(parseInt(user.lastTime));
 					$("#user_lastUpdateTime").html(j.getHours() + ":" + j.getMinutes());
 					console.log(j.getHours());
 					console.log(j.getMinutes());
