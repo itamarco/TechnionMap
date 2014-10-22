@@ -109,7 +109,7 @@ var GeoLocation = {
 
 function Server(){
     this.ip = "5.22.135.136";
-    this.port ="8181";
+    this.port ="3000";
     this.status = "up";
     this.setHost = function(ip, port){
         this.ip = ip;
