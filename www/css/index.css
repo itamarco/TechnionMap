@@ -109,15 +109,13 @@ h1 {
 	position:fixed;
 	bottom: 18px; 
 	width: 80%;
-    left: 40px;
+    right: 20px;
 }
 
 
 .floatingLog {
-    position: relative;
     background-color: white;
     overflow: auto;
-    top:2em;
     height: 8em;
     margin: 4px;
     width:100%;
