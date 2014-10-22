@@ -105,11 +105,17 @@ h1 {
 	left:0;
 }
 
+#userData{
+    position:fixed;
+    top: 20px; 
+    left: 50px;
+}
+
 .floatingNav {
 	position:fixed;
-	bottom: 18px; 
-	width: 80%;
-    right: 20px;
+	bottom: 22px; 
+	width: 70%;
+    right: 10px;
 }
 
 
