@@ -71,9 +71,9 @@
 
 
 		<!-- ------------------------------------------------------------------------------ -->
-		<!-- --------------------------------  Login Page  -------------------------------- -->
+		<!-- --------------------------------  Main Page  -------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
-		<div data-role="page" id="login" data-theme="b">
+		<div data-role="page" id="main" data-theme="b">
 			<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
 			<div id="fb-root"></div>
 					
@@ -126,12 +126,18 @@
 		</div>
 
 		<!-- ------------------------------------------------------------------------------ -->
-		<!-- --------------------------------- ??? Page---------------------------------- -->
+		<!-- -------------------------------- Menu page ---------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
-		<div data-role="page" id="aaaaa">
+		<div data-role="page" id="menu">
 			<div data-role="header"></div>
-			<div data-role="content">
-
+		<div class="floatingNav">
+				<h3>Position</h3>
+				<p id="cur_position"></p>
+				<button id="connectButton">Me</button>
+				<button id="moodButton">Mood</button>
+				<button id="friendsButton">Update</button>
+				<button id="configServer">Config</button>
+				<button id="backButton">Back</button>
 			</div>
 			<div data-role="footer"></div>
 		</div>
@@ -306,6 +312,9 @@
 				});
 				$('#closeServerPopup').click(function(){
 					$( "#serverPopup" ).popup( "close" );
+				});
+				$('#backButton').click(function(){
+					$.mobile.navigate( "#main" );
 				});
 			}
 

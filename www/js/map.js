@@ -60,8 +60,14 @@
 
 			  
 			var mapOptions = {
-			  center: new google.maps.LatLng(32.777522, 35.023138),
-			  zoom: minZoomLevel
+				center: new google.maps.LatLng(32.777522, 35.023138),
+				zoom: minZoomLevel,
+				panControl: false,
+				zoomControl: true,
+				mapTypeControl: false,
+				scaleControl: true,
+				streetViewControl: false,
+				overviewMapControl: false
 			};
 			map = new google.maps.Map(document.getElementById('map-canvas'),
 			  mapOptions);

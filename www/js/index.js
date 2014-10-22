@@ -11,6 +11,7 @@ var App = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('menubutton', this.onMenuButton, false);
     },
     // deviceready Event Handler
     //
@@ -29,6 +30,9 @@ var App = {
         receivedElement.setAttribute('style', 'display:block;');
 
         log.info('Received Event: ' + id);
+    },
+    onMenuButton: function() {
+        $.mobile.navigate( "#menu" );
     }
 };
 
