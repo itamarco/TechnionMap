@@ -35,7 +35,7 @@ var App = {
         $.mobile.navigate( "#menu" );
         $("#my_name").html(me.name);
         $("#my_mood").html(me.mood);
-        $("#my_pic").html("<img src='"+ me.pic + "' width=150 height=150 />");
+        $("#my_pic").html("<img src='"+ me.pic + "' width=100 height=100 />");
     }
 };
 
@@ -108,8 +108,8 @@ var GeoLocation = {
 
 
 function Server(){
-    this.ip = "192.168.43.6";
-    this.port ="8181";
+    this.ip = "nssl-dev.technion.ac.il";
+    this.port ="80";
     this.status = "up";
     this.setHost = function(ip, port){
         this.ip = ip;

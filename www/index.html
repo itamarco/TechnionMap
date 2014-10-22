@@ -80,8 +80,8 @@
 			<div role="main" class="ui-content" id="map-canvas"></div>
 			<div class="floatingNav"id="userData"></div>
 			<div class="floatingNav">
-				<button id="connectButton">Me</button>
-				<button id="moodButton">Mood</button>
+				<button id="connectButton">Locate Me</button>
+				<button id="moodButton">My Mood</button>
 				<button id="friendsButton">Update</button>
 			</div>
 			<!-- Menues -->
@@ -100,16 +100,6 @@
 					<p>Last seen at <span id="user_lastUpdateTime"></span></p>
 					<button is="closeUserPopup">Close</button>
 				</div>
-			</div>
-
-			<div data-role="popup" datd-theme="e" id="serverPopup" class="popup">
-			    <h3>Server Config</h3>
-			    <p>IP</p>
-			    <input type="text" id="serverAddress" value=""/>
-			    <p>Port</p>
-			    <input type="text" id="serverPort" value=""/>
-			    <button id="updateServerAddress">Set</button>
-				<button id="closeServerPopup">Cancel</button>
 			</div>
 			<!-- Msgs -->
 			<div data-role="popup" datd-theme="e" id="noNetwork">
@@ -132,14 +122,24 @@
 				<p id="cur_position"></p>
 				<button id="configServer">Config Server</button>
 				<button id="backButton">Back</button>
-			</div>
-			<div data-role="footer"></div>
+		
 		</div>
 		<div class="floatingLog">
 			<p>log</p>
 			<p id="logData"></p>
 		</div>
 		<div class="ui-footer ui-footer-fullscreen ui-bar-a ui-footer-fixed slideup" data-fullscreen="true" data-position="fixed" data-theme="a" data-role="footer" role="contentinfo">(c) Itamar Cohen & Yakir udi</div>
+
+			<div data-role="popup" datd-theme="e" id="serverPopup" class="popup">
+			    <h3>Server Config</h3>
+			    <p>IP</p>
+			    <input type="text" id="serverAddress" value=""/>
+			    <p>Port</p>
+			    <input type="text" id="serverPort" value=""/>
+			    <button id="updateServerAddress">Set</button>
+				<button id="closeServerPopup">Cancel</button>
+			</div>
+		</div>
 
 		<!-- ------------------------------------------------------------------------------ -->
 		<!-- --------------------------------- JavaScript  -------------------------------- -->
