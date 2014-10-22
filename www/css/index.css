@@ -106,18 +106,17 @@ h1 {
 }
 
 .floatingNav {
-	position:relative;
-	top: 40px; 
-	left:10px;
-	width: 26%;
+	position:fixed;
+	bottom: 18px; 
+	width: 80%;
 }
 
 
 .floatingLog {
-    position: absolute;
+    position: relative;
     background-color: white;
     overflow: auto;
-    bottom:2em;
+    top:2em;
     height: 8em;
     margin: 4px;
     width:100%;

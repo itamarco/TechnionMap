@@ -33,6 +33,9 @@ var App = {
     },
     onMenuButton: function() {
         $.mobile.navigate( "#menu" );
+        $("#my_name").html(me.name);
+        $("#my_mood").html(me.mood);
+        $("#my_pic").html("<img src='"+ me.pic + "' width=150 height=150 />");
     }
 };
 

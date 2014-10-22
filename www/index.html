@@ -80,16 +80,9 @@
 			<div role="main" class="ui-content" id="map-canvas"></div>
 			<div class="floatingNav"id="userData"></div>
 			<div class="floatingNav">
-				<h3>Position</h3>
-				<p id="cur_position"></p>
 				<button id="connectButton">Me</button>
 				<button id="moodButton">Mood</button>
 				<button id="friendsButton">Update</button>
-				<button id="configServer">Config</button>
-			</div>
-			<div class="floatingLog">
-				<p>log</p>
-				<p id="logData"></p>
 			</div>
 			<!-- Menues -->
 			<div data-role="popup" id="moodPopup" class="popup">
@@ -129,19 +122,24 @@
 		<!-- -------------------------------- Menu page ---------------------------------- -->
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="menu">
-			<div data-role="header"></div>
+		<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
+
 		<div class="floatingNav">
+				<p id="my_name"></p>
+				<p id="my_pic"></p>
+				<p id="my_mood"></p>
 				<h3>Position</h3>
 				<p id="cur_position"></p>
-				<button id="connectButton">Me</button>
-				<button id="moodButton">Mood</button>
-				<button id="friendsButton">Update</button>
-				<button id="configServer">Config</button>
+				<button id="configServer">Config Server</button>
 				<button id="backButton">Back</button>
 			</div>
 			<div data-role="footer"></div>
 		</div>
-
+		<div class="floatingLog">
+			<p>log</p>
+			<p id="logData"></p>
+		</div>
+		<div class="ui-footer ui-footer-fullscreen ui-bar-a ui-footer-fixed slideup" data-fullscreen="true" data-position="fixed" data-theme="a" data-role="footer" role="contentinfo">(c) Itamar Cohen & Yakir udi</div>
 
 		<!-- ------------------------------------------------------------------------------ -->
 		<!-- --------------------------------- JavaScript  -------------------------------- -->

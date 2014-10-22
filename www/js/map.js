@@ -62,7 +62,7 @@
 			var mapOptions = {
 				center: new google.maps.LatLng(32.777522, 35.023138),
 				zoom: minZoomLevel,
-				panControl: false,
+				panControl: true,
 				zoomControl: true,
 				mapTypeControl: false,
 				scaleControl: true,
