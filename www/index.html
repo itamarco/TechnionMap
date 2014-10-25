@@ -225,9 +225,8 @@
 						
 
 						map.addPerson(me);
-						activeFriendsactiveFriendsactiveFriends
 						
-						
+						server.updateUser(me, function(){});
 					});
 				
 				
@@ -251,12 +250,23 @@
 					(function friendsLocation(){
 						server.getFriends(me, function(response){
 							activeFriends = [];
-							response.data.forEach(function(f){
-								var friend = new User(f.location,"", f.name, f.thumbnailURL, f.mood, f.lastUpdateTime);
-								activeFriends.push(friend);
-							});
-							//add friends to map
-							map.updateMarkers();
+							if(response.msg == "No User found"){
+								server.updateUser(me, function(){});
+								d("User has not added to server");
+							} else if (response.msg == "User hasn't added friends yet") {
+								server.updateFriends(me,friendsList,function(res){
+									if(res.status == "OK"){							
+										d("Friends inserted with msg: " + res.msg);
+									}
+								});
+							} else {
+								response.data.forEach(function(f){
+									var friend = new User(f.location,"", f.name, f.thumbnailURL, f.mood, f.lastUpdateTime);
+									activeFriends.push(friend);
+								});
+								//add friends to map
+								map.updateMarkers();
+							}
 						});
 						//repeat
 						setTimeout(friendsLocation, intervalTime);
