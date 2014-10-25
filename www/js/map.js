@@ -76,13 +76,13 @@
 			
 			// bounds of the desired area
 			var allowedBounds = new google.maps.LatLngBounds(
+				//שמאל למטה
 				 new google.maps.LatLng(32.772064, 35.014585), 
+				 //ימינה למטה
 				 new google.maps.LatLng(32.782861, 35.030342)
 			); 
-			//32.772064, 35.014585 bl
-			//32.783826, 35.014371 tl 
-			//32.782861, 35.030342 tr
-			//32.772252, 35.030428 br 
+		
+
 			var boundLimits = {
 				maxLat : allowedBounds.getNorthEast().lat(),
 				maxLng : allowedBounds.getNorthEast().lng(),
