@@ -280,9 +280,14 @@
 					$("#moodPopup").popup('open');
 				});
 				$('#friendsButton').click(function(){
-					server.updateUser(me, function(res){
-						d("Got server response");
-							d(res.msg);
+					server.getFriends(me, function(response){
+							activeFriends = [];
+							response.data.forEach(function(f){
+								var friend = new User(f.location,"", f.name, f.thumbnailURL, f.mood, f.lastUpdateTime);
+								activeFriends.push(friend);
+							});
+							//add friends to map
+							map.updateMarkers();
 						});
 				});
 				$('#updateMoodButton').click(function(){
