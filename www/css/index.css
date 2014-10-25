@@ -121,7 +121,8 @@ h1 {
 
 .floatingLog {
     background-color: white;
-    max-height:10em;
+    height:12em;
+    overflow: auto;
     margin: 4px;
     width:100%;
 }
