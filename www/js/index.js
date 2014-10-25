@@ -12,6 +12,7 @@ var App = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('menubutton', this.onMenuButton, false);
+        document.addEventListener('backbutton', this.onBackButton, false);
     },
     // deviceready Event Handler
     //
@@ -36,7 +37,11 @@ var App = {
         $("#my_name").html(me.name);
         $("#my_mood").html(me.mood);
         $("#my_pic").html("<img src='"+ me.pic + "' width=100 height=100 />");
+    },
+    onBackButton: function() {
+        navigator.app.exitApp();
     }
+
 };
 
 
