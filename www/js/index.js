@@ -12,7 +12,7 @@ var App = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('menubutton', this.onMenuButton, false);
-        document.addEventListener('backbutton', this.onBackButton, false);
+        // document.addEventListener('backbutton', this.onBackButton, false);
     },
     // deviceready Event Handler
     //
