@@ -235,11 +235,11 @@
 				$("#user_name").html(user.name);
 				$("#user_mood").html(user.mood);
 				$("#user_pic").html("<img src='"+ user.pic + "' width=150 height=150 />");
-				if(user.lastTime !== 'undefined'){
-					var j = new Date(parseInt(user.lastTime) * 1000) ;
+				if(user.lastTime !== null){
+					var j = new Date(parseInt(user.lastTime));
 					$("#user_lastUpdateTime").html(j.getHours() + ":" + j.getMinutes());
 				}
 				$("#userPopup").popup('open');
-				
+				return false;
 			}
 
