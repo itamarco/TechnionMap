@@ -113,14 +113,14 @@
 		<!-- ------------------------------------------------------------------------------ -->
 		<div data-role="page" id="menu">
 		<div div class="ui-header ui-header-fullscreen ui-bar-inherit ui-header-fixed slidedown" data-fullscreen="true" data-position="fixed" data-role="header" role="banner">Technion interactive campus map</div>
-
-		<div>
+		<div class="config_area">
 				<p id="my_name"></p>
 				<p id="my_pic"></p>
 				<p id="my_mood"></p>
 				<h3>Position</h3>
 				<p id="cur_position"></p>
 				<button id="configServer">Config Server</button>
+				<button id="exitButton">Exit</button>
 				<button id="backButton">Back</button>
 		
 		</div>
@@ -329,6 +329,9 @@
 				});
 				$('#backButton').click(function(){
 					$.mobile.navigate( "#main" );
+				});
+				$('#exitButton').click(function(){
+					navigator.app.exitApp();
 				});
 			}
 
