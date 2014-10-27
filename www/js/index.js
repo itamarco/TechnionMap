@@ -175,8 +175,8 @@ function Server(){
 
     this.checkServer = function(){
         var jsonRequest = new Object();
-        json.fn = "upsertUser";
-        json.data = me;
+        jsonRequest.fn = "upsertUser";
+        jsonRequest.data = me;
         $.ajax({
            type: 'POST',
             url: 'http://' + this.ip + ":" + this.port,
@@ -196,11 +196,8 @@ function Server(){
                     );
                 }
             }
-        });
-
-
-        
-    }
+        });  
+    };
 };
 
 
