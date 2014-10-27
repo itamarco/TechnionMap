@@ -98,7 +98,7 @@
 				<div class="user_data">
 					<p id="user_mood"></p>
 					<p>Last seen at <span id="user_lastUpdateTime"></span></p>
-					<button id="closeUserPopup">Close</button>
+					<!-- <button id="closeUserPopup">Close</button> -->
 				</div>
 			</div>
 			<!-- Msgs -->
@@ -184,15 +184,6 @@
 			};
 
 
-			var User = function(loc, id, name, picUrl){
-				this.loc = loc;
-				this.id = id;
-				this.name = name;
-				this.pic = picUrl;
-				this.mood = "Having fun with Technion foursquare";
-			};
-
-
 
 			App.initialize();
 			
@@ -221,7 +212,7 @@
 				// get user data
 				facebook.api('me','id,name,picture', function(res){
 
-						me = new User(position, parseInt(res.id), res.name, res.picture.data.url);
+						me = new User(position, parseInt(res.id), res.name, res.picture.data.url,"Having fun with Technion foursquare", null);
 						$('#userData').html("Connected as " + me.name);
 
 						map.addPerson(me);
@@ -354,8 +345,8 @@
 			}
 
 			function debug_tmap(){
-				var mordechai = new User({lat:32.778564, lng:35.020531}, 709124754,"Mordechai Sanders","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c0.0.50.50/p50x50/942767_10151713398224755_1454006514_n.jpg?oh=7ae4f57447681444cf78b74e3c97e34f&oe=54B0DC7E&__gda__=1420701143_e124fd97bd904cb083cac350426b93b9");
-				var gershon = new User({lat:32.776814, lng:35.020981}, 852254152,"Gershon Shertzer","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c66.66.828.828/s50x50/531144_10151109118009153_1499380021_n.jpg?oh=4492f08f92134695ade342435d6ea4f8&oe=54B65BC4&__gda__=1421834796_ce1ea871e9afa27f56036738ba039237");
+				var mordechai = new User({lat:32.778564, lng:35.020531}, 709124754,"Mordechai Sanders","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c0.0.50.50/p50x50/942767_10151713398224755_1454006514_n.jpg?oh=7ae4f57447681444cf78b74e3c97e34f&oe=54B0DC7E&__gda__=1420701143_e124fd97bd904cb083cac350426b93b9","Having fun with Technion foursquare", null);
+				var gershon = new User({lat:32.776814, lng:35.020981}, 852254152,"Gershon Shertzer","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c66.66.828.828/s50x50/531144_10151109118009153_1499380021_n.jpg?oh=4492f08f92134695ade342435d6ea4f8&oe=54B65BC4&__gda__=1421834796_ce1ea871e9afa27f56036738ba039237", "Having fun with Technion foursquare", null);
 
 				server.updateUser(mordechai, function(res){
 							d("Mordechai Inserted");

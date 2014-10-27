@@ -12,52 +12,6 @@
 			function initGmap(){
 
 
-/////////////////////////////// YAKIR ////////////////////////////
-
-			// 	var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-			// 	  mapId: '08097405334273999136-05414812628978701557',
-			// 	  layerKey: 'bldgs',
-			// 	  map: map,
-			// 	  clickable: true,
-			// 	  suppressInfoWindows: false
-			// 	});
-
-			// 	var mapOptions = {
-			// 	  center: new google.maps.LatLng(32.777522, 35.023138),
-			// 	  zoom: 16
-			// 	};
-			// 	map = new google.maps.Map(document.getElementById('mapDiv'),
-			// 	  mapOptions);
-
-			// 	var mapsEngineLayer = new google.maps.visualization.MapsEngineLayer({
-			// 	  mapId: '08097405334273999136-05414812628978701557',
-			// 	  layerKey: 'bldgs',
-			// 	  map: map,
-			// 	  clickable: true,
-			// 	  suppressInfoWindows: false
-			// 	});
-				
-			// 	var styles = [
-			// 	/*
-			// 	 {
-			// 		stylers: [
-			// 		  { hue: "#00ffe6" },
-			// 		  { saturation: -20 }
-			// 		]
-			// 	  },*/
-			// 	  {
-			// 		featureType: "all",
-			// 		elementType: "labels",
-			// 		stylers: [
-			// 			{ visibility: "off" }
-			// 		]
-			// 	  }
-			// 	];
-			// 	map.setOptions({styles: styles});
-			
-
-			//////////////////////////////////////////// yakir 3 //////////////
-
 			  
 			var mapOptions = {
 				center: new google.maps.LatLng(32.777522, 35.023138),
@@ -282,10 +236,8 @@
 				$("#user_mood").html(user.mood);
 				$("#user_pic").html("<img src='"+ user.pic + "' width=150 height=150 />");
 				if(user.lastTime !== 'undefined'){
-					var j = new Date(parseInt(user.lastTime));
+					var j = new Date(parseInt(user.lastTime) * 1000) ;
 					$("#user_lastUpdateTime").html(j.getHours() + ":" + j.getMinutes());
-					console.log(j.getHours());
-					console.log(j.getMinutes());
 				}
 				$("#userPopup").popup('open');
 				

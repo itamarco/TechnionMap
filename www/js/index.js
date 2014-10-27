@@ -202,37 +202,3 @@ function Server(){
 
 
 
-
-
-// this.set = function(property, value){
-    //     var jsonRequest = {
-    //         method: "set",
-    //         userId: this.userId,
-    //         property: property,
-    //         value: value
-    //     }
-    //     this.ajaxCall(jsonRequest, function(res){
-    //         d(res);
-    //     });
-    // };
-    // this.get = function(property, callBack){
-    //     var jsonRequest = {
-    //         method: "POST",
-    //         userId: this.userId,
-    //         property: property
-    //     }
-
-    //     this.ajaxCall(jsonRequest, function(res){
-    //         d(res);
-    //     });
-
-    //     respone = {
-    //         status:"success",
-    //         data: [
-    //             {id: 698687482, loc: {lat: position.lat - 0.0012, lng: position.lng - 0.002}},
-    //             {id: 554861654, loc: {lat: position.lat - 0.0002, lng: position.lng + 0.002}},
-    //             {id: 749873231, loc:{lat: position.lat - 0.0004, lng: position.lng + 0.008}}
-    //         ]
-    //     };
-    //     callBack(respone);
-    // };
