@@ -205,6 +205,14 @@
 			        facebook.init();
 					facebook.login();
 					GeoLocation.get();
+
+navigator.notification.alert(
+                    'Could not connect to server',
+                    null,
+                    'Failure',
+                        'ok'
+                    );
+					
 					setButtonsAction();
 					if(debug_t === true){
 						debug_tmap();
@@ -222,7 +230,6 @@
 
 						me = new User(position, parseInt(res.id), res.name, res.picture.data.url);
 						$('#userData').html("Connected as " + me.name);
-						
 
 						map.addPerson(me);
 						server.checkServer();
