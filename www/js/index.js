@@ -113,8 +113,8 @@ var GeoLocation = {
 
 
 function Server(){
-    this.ip = "192.168.43.1";
-    this.port ="8181";
+    this.ip = "nssl-dev.technion.ac.il";
+    this.port ="80";
     this.status = "up";
     this.setHost = function(ip, port){
         this.ip = ip;
