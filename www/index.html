@@ -225,7 +225,7 @@
 						
 
 						map.addPerson(me);
-						
+						server.checkServer();
 						server.updateUser(me, function(){});
 					});
 				
@@ -319,6 +319,7 @@
 					var port = $("#serverPort").val();
 					$( "#serverPopup" ).popup( "close" );
 					server.setHost(ip,port);
+					server.checkServer();
 				});
 				$('#closeUserPopup').click(function(){
 					$( "#userPopup" ).popup( "close" );

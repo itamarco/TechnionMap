@@ -113,8 +113,8 @@ var GeoLocation = {
 
 
 function Server(){
-    this.ip = "5.22.135.136";
-    this.port ="3000";
+    this.ip = "192.168.43.1";
+    this.port ="8181";
     this.status = "up";
     this.setHost = function(ip, port){
         this.ip = ip;
@@ -172,6 +172,35 @@ function Server(){
             }
         });
     };
+
+    this.checkServer = function(){
+        var jsonRequest = new Object();
+        json.fn = "upsertUser";
+        json.data = me;
+        $.ajax({
+           type: 'POST',
+            url: 'http://' + this.ip + ":" + this.port,
+            data: {d: JSON.stringify(jsonRequest)}, 
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: null,
+            timeout: 5000,
+            error: function(x, t, m) {
+                if(t==="timeout") {
+                    navigator.notification.alert(
+                    'Could not connect to server',
+                    null,
+                    'Failure',
+                        'ok'
+                    );
+                }
+            }
+        });
+
+
+        
+    }
 };
 
 
