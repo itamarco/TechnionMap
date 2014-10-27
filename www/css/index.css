@@ -127,6 +127,9 @@ h1 {
     width:100%;
 }
 
+.config_area {
+    margin: 10px;
+}
 
 .popup{
     width:70%;
