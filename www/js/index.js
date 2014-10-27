@@ -175,8 +175,7 @@ function Server(){
 
     this.checkServer = function(){
         var jsonRequest = new Object();
-        jsonRequest.fn = "upsertUser";
-        jsonRequest.data = me;
+        jsonRequest.fn = "isUp";
         $.ajax({
            type: 'POST',
             url: 'http://' + this.ip + ":" + this.port,
