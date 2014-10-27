@@ -8,7 +8,7 @@
 
 			var markers = [];
 
-			var minZoomLevel = 15;
+			var minZoomLevel = 17;
 			function initGmap(){
 
 
