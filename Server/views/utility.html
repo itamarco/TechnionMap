@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+   
+<html>
+    <head>
+        <title>Utility</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+        
+        .inputDiv{display: inline; width:400px;}
+    </style>
+    </head>
+    <body>
+		<h1>Utility page for Technion Map</h1>
+        <section>
+            <div class ="inputDiv">
+            </label>User ID (/password for admin):
+            <input type="text" id="userId" placeholder="ASAT" />
+			<br />
+			<br />
+			</label>Name (/Query _id for admin):
+            <input type="text" id="name" value="אס''ט ASAT" />
+			<br />
+			<br />
+			</label>Mood:
+            <input type="text" id="mood" size = "55" value="צהרי יום ד'-הופעה ובירה" />
+			<br />
+			<br />
+			</label>Thumbnail URL:
+            <input type="text" id="picURL"  size = "65" value="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/t1.0-1/p160x160/10171807_626324310789821_2511776999472515106_n.jpg" required/>
+			<br />
+			<br />
+			</label>Location:
+			<select id="location">
+				  <option value="32.777175, 35.022269">Lawn</option>
+				  <option value="32.777491, 35.022929">Amphitheatre</option>
+				  <option value="32.776478, 35.022870">Student Union Bldg.</option>
+				  <option value="32.776528, 35.021703">Churchill</option>
+				  <option value="32.776528, 35.021703">Library</option>
+				  <option value="32.779580, 35.018776">Sport Center</option>
+				  <option value="32.780891, 35.021835">MAKAK</option>
+				  <option value="32.777649, 35.021599">Computer Science</option>
+				  <option value="32.775888, 35.024727">Electrical Eng.</option>
+				  <option value="32.777878, 35.023047">Mathematics</option>
+				  <option value="32.777891, 35.022500">Architecture</option>
+				  <option value="32.777117, 35.023628">Ullman</option>
+				  <option value="32.776561, 35.025113">Physics</option>
+				  <option value="32.777435, 35.025945">Chemistry</option>
+				  <option value="32.775064, 35.026500">BioMedical Eng.</option>
+				  <option value="32.775304, 35.025485">Materials Eng.</option>
+				  <option value="32.778869, 35.022212">Civil Eng.</option>
+				  <option value="32.776867, 35.026599">Bioligy</option>
+				  <option value="32.774314, 35.022603">Mechanical Eng.</option>
+				  <option value="32.773547, 35.021531">Aerosapce Eng.</option>
+				  <option value="32.774208, 35.023876">Industrial Eng.</option>
+				  <option value="32.777756, 35.026842">BioTechnology</option>
+				  <option value="32.778135, 35.027143">Chemical Eng.</option>	   
+			</select>
+			<button onclick="sendJson('promoted')">promoted Login</button>
+			<br />
+			<br />
+			</label>For admin use:
+			<select id="fn">
+				  <option value="getUser">get user</option>
+				  <option value="getAllUsers">get all users</option>
+				   <option value="getAllPromUsers">get all promoted</option>
+				  <option value="deleteUser">delete user</option>
+				  <option value="resetDB">reset Users DB</option>
+			</select>
+			<br />
+			<br />
+			<button onclick="sendJson('admin')">Admin action</button>
+            </div>
+        </section>
+        <section>
+            <pre id="response"></pre>
+        </section>
+        
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function getUserText(user){
+			var fixedMood = $('#mood').val().replace(/"/g,"''"); //to avoid JSON parsing errors
+			var fixedDisplayName = $('#name').val().replace(/"/g,"''"); //to avoid JSON parsing errors
+			var parsedLocation = $('#location').val().split(",");
+			if (user === 'promoted'){
+				var j = '{ '+'"fn": "upsertPromoted"'+', "data" : { "userId":"'+$('#userId').val()+'", "name":"'+fixedDisplayName+
+					'", "mood": "'+fixedMood+ '", "picURL":"'+$('#picURL').val()+ '", "location":{"lat":'+parsedLocation[0]+',"lng":'+parsedLocation[1]+'}}}';
+				return JSON.parse(j);
+			}else {
+				var j = '{ '+'"fn":"'+ $('#fn').val() + '","data" : { "pass":"'+$('#userId').val()+'", "queryId":"'+fixedDisplayName+ '"}}';
+				return JSON.parse(j);
+			}
+        }
+        function jsonCallback(data){
+            document.getElementById('response').innerHTML = syntaxHighlight(data);
+        }
+        function sendJson(user){
+			if ( (user==='promoted') && (($('#userId').val()=== "") || ($('#name').val()==="") || ($('#mood').val()==="") || ($('#picURL').val()==="") )){
+				jsonCallback( "All Fields Up From This Button Are Required");
+			}else {
+				var json = getUserText(user);
+				$.ajax({
+					type: 'POST',
+					url: "http://nssl-dev.technion.ac.il",
+					data: {d: JSON.stringify(json)}, 
+					crossDomain: true,
+					contentType: 'application/json',
+					dataType: 'jsonp',
+					success: jsonCallback,
+					error: function (jqXHR, exception) {
+						if (jqXHR.status === 0) {
+							d('Not connect. Verify Network.');
+						} else if (jqXHR.status == 404) {
+							d('Requested page not found. [404]');
+						} else if (jqXHR.status == 500) {
+							d('Internal Server Error [500].');
+						} else if (exception === 'parsererror') {
+							d('Requested JSON parse failed.');
+						} else if (exception === 'timeout') {
+							d('Time out error.');
+						} else if (exception === 'abort') {
+							d('Ajax request aborted.');
+						} else {
+							d('Uncaught Error.\n' + jqXHR.responseText);
+						}
+					}
+				});
+			}
+		}
+        
+        function d(text){
+            console.log(text);
+        }
+		 function syntaxHighlight(json) {
+			return JSON.stringify(json, undefined, 2);
+		 }
+    </script>
+    </body>
+</html>
